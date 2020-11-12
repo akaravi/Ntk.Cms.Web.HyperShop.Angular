@@ -8,11 +8,27 @@ import { ToastrModule, ToastrService } from 'ngx-toastr';
 import { SharedModule } from './shared/shared.module';
 import { CoreAuthService, EnumDeviceType, EnumOperatingSystemType, TokenDeviceClientInfoDtoModel } from 'ntk-cms-api';
 import { DOCUMENT } from '@angular/common';
+import { PageAboutUsComponent } from './pages/aboutUs/aboutUs.component';
+import { PageContantUsComponent } from './pages/contantUs/contantUs.component';
+import { PageHomeComponent } from './pages/home/home.component';
+import { PageHyperShopCartComponent } from './pages/hyperShopCart/hyperShopCart.component';
+import { PageHyperShopListComponent } from './pages/hyperShopList/hyperShopList.component';
+import { PageHyperShopViewComponent } from './pages/hyperShopView/hyperShopView.component';
+import { PageNewsListComponent } from './pages/newsList/newsList.component';
+import { PageNewsViewComponent } from './pages/newsView/newsView.component';
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    PageHomeComponent,
+    PageAboutUsComponent,
+    PageContantUsComponent,
+    PageNewsListComponent,
+    PageNewsViewComponent,
+    PageHyperShopCartComponent,
+    PageHyperShopListComponent,
+    PageHyperShopViewComponent
   ],
   imports: [
     BrowserModule,

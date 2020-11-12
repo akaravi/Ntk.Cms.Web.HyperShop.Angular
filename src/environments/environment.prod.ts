@@ -8,10 +8,17 @@ export const environment = {
     configRouteThumbnails: 'https://oco.ir/imageThumbnails/',
     configRouteUploadFileContent: 'https://apicms.ir/api/v1/FileContent/upload/',
   },
+  cmsUiConfig : {
+    Pathlogin: '/auth/login',
+    Pathlogout: '/auth/logout',
+    PathRegistery: '/auth/registery',
+    PathSelectSite: '/site/selection',
+    Pathdashboard: '/dashboard',
+  },
   cmsTokenConfig : {
-    SecurityKey: 'qwp123456',
+    SecurityKey: '000000000',
     ClientMACAddress: '',
-    OSType: EnumOperatingSystemType.Windows,
+    OSType: EnumOperatingSystemType.none,
     DeviceType: EnumDeviceType.WebSite,
     PackageName: '',
   }

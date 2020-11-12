@@ -1,3 +1,36 @@
+|-- app
+     |-- modules
+       |-- home
+           |-- [+] components
+           |-- [+] pages
+           |-- home-routing.module.ts
+           |-- home.module.ts
+     |-- core
+       |-- [+] authentication
+       |-- [+] footer
+       |-- [+] guards
+       |-- [+] http
+       |-- [+] interceptors
+       |-- [+] mocks
+       |-- [+] services
+       |-- [+] header
+       |-- core.module.ts
+       |-- ensureModuleLoadedOnceGuard.ts
+       |-- logger.service.ts
+     |
+     |-- shared
+          |-- [+] components
+          |-- [+] directives
+          |-- [+] pipes
+          |-- [+] models
+     |
+     |-- [+] configs
+|-- assets
+     |-- scss
+          |-- [+] partials
+          |-- _base.scss
+          |-- styles.scss
+
 ============================
 ng build --prod
 http-server -p 8080 -c-1 dist/<project-name>
