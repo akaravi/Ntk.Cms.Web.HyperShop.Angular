@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CoreAuthService } from 'ntk-cms-api';
 
 @Component({
   selector: 'app-home',
@@ -7,7 +8,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PageHomeComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    public coreAuthService: CoreAuthService,
+  ) { }
 
   ngOnInit() {
   }

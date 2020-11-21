@@ -17,29 +17,31 @@ export class CoreSiteViewComponent implements OnInit {
 
   ) {
     this.coreAuthService.CorrectTokenInfoBSObs.subscribe((value) => {
-      if (value == null || value.UserId == null || value.UserId === 0) {
-        this.coreAuthService.CorrectTokenInfoBSRenew();
-      }
       this.TokenInfo = value;
       this.DataGetOne();
     });
+
   }
 
-  ngOnInit() {
-    this.DataGetOne();
+  ngOnInit(): void {
+    this.coreAuthService.CorrectTokenInfoBSRenew();
+
   }
-  DataGetOne() {
-    this.loadingStatus = true;
-    this.coreSiteService.ServiceGetOneById(this.TokenInfo.SiteId).subscribe(
-      (next) => {
-        if (next.IsSuccess) {
+  DataGetOne(): void {
+    if (this.TokenInfo && this.TokenInfo.SiteId > 0) {
+
+      this.loadingStatus = true;
+      this.coreSiteService.ServiceGetOneById(this.TokenInfo.SiteId).subscribe(
+        (next) => {
+
           this.dataModelResult = next;
+
+          this.loadingStatus = false;
+        },
+        (error) => {
+          this.loadingStatus = false;
         }
-        this.loadingStatus = false;
-      },
-      (error) => {
-        this.loadingStatus = false;
-      }
-    );
+      );
+    }
   }
 }

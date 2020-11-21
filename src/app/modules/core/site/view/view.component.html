@@ -1,3 +1,14 @@
 <p>
   coreSiteView works!
 </p>
+<div *ngIf="dataModelResult && dataModelResult.IsSuccess && dataModelResult.Item">
+=================
+<br>
+Title:
+{{dataModelResult.Item.Title}}
+<br>
+Description:
+{{dataModelResult.Item.Description}}
+<br>
+=================
+</div>

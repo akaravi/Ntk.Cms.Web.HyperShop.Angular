@@ -23,9 +23,7 @@ export class HyperShopContentListComponent implements OnInit {
     this.filterModelContent.AccessLoad = true;
     this.hyperShopContentService.ServiceGetAll(this.filterModelContent).subscribe(
       (next) => {
-        if (next.IsSuccess) {
-          this.dataModelResult = next;
-        }
+        this.dataModelResult = next;
         this.loadingStatus = false;
 
       },
