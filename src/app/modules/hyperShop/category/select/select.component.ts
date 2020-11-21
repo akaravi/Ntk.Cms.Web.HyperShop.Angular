@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-news-category-select',
+  selector: 'app-hypershop-category-select',
   templateUrl: './select.component.html',
   styleUrls: ['./select.component.scss']
 })
-export class NewsCategorySelectComponent implements OnInit {
+export class HyperShopCategorySelectComponent implements OnInit {
 
   constructor() { }
 
