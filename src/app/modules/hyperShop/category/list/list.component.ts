@@ -1,17 +1,17 @@
 import { Component, OnInit } from '@angular/core';
-import { ErrorExcptionResult, FilterModel, NewsCategoryModel, NewsCategoryService } from 'ntk-cms-api';
+import { ErrorExcptionResult, FilterModel, HyperShopCategoryModel, HyperShopCategoryService } from 'ntk-cms-api';
 
 @Component({
-  selector: 'app-news-category-list',
+  selector: 'app-hypershop-category-list',
   templateUrl: './list.component.html',
   styleUrls: ['./list.component.scss']
 })
-export class NewsCategoryListComponent implements OnInit {
+export class HyperShopCategoryListComponent implements OnInit {
   filterModelCategory = new FilterModel();
-  dataModelResult: ErrorExcptionResult<NewsCategoryModel> = new ErrorExcptionResult<NewsCategoryModel>();
+  dataModelResult: ErrorExcptionResult<HyperShopCategoryModel> = new ErrorExcptionResult<HyperShopCategoryModel>();
   loadingStatus = false;
 
-  constructor(private newsCategoryService: NewsCategoryService) { }
+  constructor(private hyperShopCategoryService: HyperShopCategoryService) { }
 
   ngOnInit() {
     this.DataGetAll();
@@ -20,7 +20,7 @@ export class NewsCategoryListComponent implements OnInit {
   DataGetAll(): void {
     this.loadingStatus = true;
     this.filterModelCategory.AccessLoad = true;
-    this.newsCategoryService.ServiceGetAll(this.filterModelCategory).subscribe(
+    this.hyperShopCategoryService.ServiceGetAll(this.filterModelCategory).subscribe(
       (next) => {
         if (next.IsSuccess) {
           this.dataModelResult = next;

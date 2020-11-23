@@ -11,7 +11,7 @@ import { PageHyperShopViewComponent } from './pages/hyperShopView/hyperShopView.
 
 const routes: Routes = [
   {
-    path: '',
+    path: '**',
     pathMatch: 'full',
     component: PageHomeComponent,
     // resolve: {item: AppResolver}

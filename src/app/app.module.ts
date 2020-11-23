@@ -6,7 +6,7 @@ import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { ToastrModule, ToastrService } from 'ngx-toastr';
 import { SharedModule } from './shared/shared.module';
-import { CoreAuthService, EnumDeviceType, EnumOperatingSystemType,  TokenDeviceClientInfoDtoModel } from 'ntk-cms-api';
+import { CoreAuthService, CoreSiteService, EnumDeviceType, EnumOperatingSystemType,  HyperShopContentService,  TokenDeviceClientInfoDtoModel } from 'ntk-cms-api';
 import { DOCUMENT } from '@angular/common';
 import { PageAboutUsComponent } from './pages/aboutUs/aboutUs.component';
 import { PageContantUsComponent } from './pages/contantUs/contantUs.component';
@@ -18,6 +18,11 @@ import { PageNewsListComponent } from './pages/newsList/newsList.component';
 import { PageNewsViewComponent } from './pages/newsView/newsView.component';
 import { NewsModule } from './modules/news/news.module';
 import { NewsContentListComponent } from './modules/news/content/list/list.component';
+import { HttpClientModule } from '@angular/common/http';
+import { NewsContentViewComponent } from './modules/news/content/view/view.component';
+import { HyperShopContentListComponent } from './modules/hyperShop/content/list/list.component';
+import { CoreModule } from './modules/core/core.module';
+import { CoreSiteViewComponent } from './modules/core/site/view/view.component';
 
 
 @NgModule({
@@ -32,19 +37,26 @@ import { NewsContentListComponent } from './modules/news/content/list/list.compo
     PageHyperShopListComponent,
     PageHyperShopViewComponent,
     NewsContentListComponent,
+    NewsContentViewComponent,
+    HyperShopContentListComponent,
+    CoreSiteViewComponent
   ],
   imports: [
-    Component ,
     BrowserModule,
+    HttpClientModule,
+    SharedModule.forRoot(),
     AppRoutingModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
     ToastrModule.forRoot(),
     SharedModule,
-    NewsModule
+    NewsModule,
+    CoreModule
   ],
   providers: [
     ToastrService,
     CoreAuthService,
+    HyperShopContentService,
+    CoreSiteService
   ],
   bootstrap: [AppComponent]
 })
@@ -63,8 +75,8 @@ export class AppModule {
         SecurityKey: environment.cmsTokenConfig.SecurityKey,
         ClientMACAddress: '',
         NotificationId: '',
-        OSType: EnumOperatingSystemType.none,
-        DeviceType: EnumDeviceType.WebSite,
+        OSType: environment.cmsTokenConfig.OSType,
+        DeviceType:  environment.cmsTokenConfig.DeviceType,
         PackageName: environment.cmsTokenConfig.PackageName,
         AppBuildVer: 0,
         AppSourceVer: '',
@@ -75,8 +87,6 @@ export class AppModule {
         Language: '',
         DeviceBrand: ''
       };
-
-
       this.coreAuthService.ServiceGetTokenDevice(model).toPromise();
     }
   }

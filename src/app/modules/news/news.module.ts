@@ -1,7 +1,7 @@
 import { Component, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NewsComponent } from './news.component';
-import { NewsContentService } from 'ntk-cms-api';
+import { NewsCategoryService, NewsCommentService, NewsContentService } from 'ntk-cms-api';
 
 @NgModule({
   imports: [
@@ -12,6 +12,10 @@ import { NewsContentService } from 'ntk-cms-api';
 
 
   ],
-  providers:[NewsContentService,]
+  providers:[
+    NewsContentService,
+    NewsCategoryService,
+    NewsCommentService,
+  ]
 })
 export class NewsModule { }
