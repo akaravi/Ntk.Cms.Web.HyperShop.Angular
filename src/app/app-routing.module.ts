@@ -1,52 +1,54 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
-import { PageHomeComponent } from './pages/home/home.component';
-import { PageAboutUsComponent } from './pages/aboutUs/aboutUs.component';
-import { PageContantUsComponent } from './pages/contantUs/contantUs.component';
-import { PageNewsListComponent } from './pages/newsList/newsList.component';
-import { PageNewsViewComponent } from './pages/newsView/newsView.component';
-import { PageHyperShopCartComponent } from './pages/hyperShopCart/hyperShopCart.component';
-import { PageHyperShopListComponent } from './pages/hyperShopList/hyperShopList.component';
-import { PageHyperShopViewComponent } from './pages/hyperShopView/hyperShopView.component';
+import {RouterModule, Routes} from '@angular/router';
+import { MainComponent } from './components/main/main.component';
+import { HomeComponent } from './components/shop/home/home.component';
+import { DemoComponent } from './components/demo/demo.component';
 
-const routes: Routes = [
+
+const appRoutes: Routes = [
+  {
+    path: '',
+    redirectTo: 'home',
+    pathMatch: 'full'
+  },
+  // {
+  //   path: 'home',
+  //   component: DemoComponent
+  // },
+  {
+    path: '',
+    component: MainComponent,
+    children: [
+      {
+        path: 'home',
+        loadChildren: () => import('./components/shop/shop.module').then(m => m.ShopModule)
+      },
+      {
+        path: 'pages',
+        loadChildren: () => import('./components/pages/pages.module').then(m => m.PagesModule)
+
+      },
+      {
+        path: 'blog',
+        loadChildren: () => import('./components/blog/blog.module').then(m => m.BlogModule)
+      },
+      {
+        path: 'news',
+        loadChildren: () => import('./components/news/news.module').then(m => m.NewsModule)
+      },
+    ]
+  },
   {
     path: '**',
-    pathMatch: 'full',
-    component: PageHomeComponent,
-    // resolve: {item: AppResolver}
-  },
-  {
-    path: 'aboutus',
-    component: PageAboutUsComponent,
-  },
-  {
-    path: 'contactus',
-    component: PageContantUsComponent,
-  },
-  {
-    path: 'news',
-    component: PageNewsListComponent,
-  },
-  {
-    path: 'newsview',
-    component: PageNewsViewComponent,
-  },
-  {
-    path: 'hypershopcart',
-    component: PageHyperShopCartComponent,
-  },
-  {
-    path: 'hypershoplist',
-    component: PageHyperShopListComponent,
-  },
-  {
-    path: 'hypershopview',
-    component: PageHyperShopViewComponent,
-  },
+    redirectTo: 'home'
+  }
 ];
+
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  declarations: [],
+  imports: [
+    RouterModule.forRoot(appRoutes)
+  ],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

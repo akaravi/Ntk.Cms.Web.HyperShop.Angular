@@ -1,62 +1,47 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { Component, Inject, NgModule } from '@angular/core';
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { ServiceWorkerModule } from '@angular/service-worker';
-import { environment } from '../environments/environment';
-import { ToastrModule, ToastrService } from 'ngx-toastr';
-import { SharedModule } from './shared/shared.module';
-import { CoreAuthService, CoreSiteService, EnumDeviceType, EnumOperatingSystemType,  HyperShopContentService,  TokenDeviceClientInfoDtoModel } from 'ntk-cms-api';
-import { DOCUMENT } from '@angular/common';
-import { PageAboutUsComponent } from './pages/aboutUs/aboutUs.component';
-import { PageContantUsComponent } from './pages/contantUs/contantUs.component';
-import { PageHomeComponent } from './pages/home/home.component';
-import { PageHyperShopCartComponent } from './pages/hyperShopCart/hyperShopCart.component';
-import { PageHyperShopListComponent } from './pages/hyperShopList/hyperShopList.component';
-import { PageHyperShopViewComponent } from './pages/hyperShopView/hyperShopView.component';
-import { PageNewsListComponent } from './pages/newsList/newsList.component';
-import { PageNewsViewComponent } from './pages/newsView/newsView.component';
-import { NewsModule } from './modules/news/news.module';
-import { NewsContentListComponent } from './modules/news/content/list/list.component';
+import { Inject, NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
-import { NewsContentViewComponent } from './modules/news/content/view/view.component';
-import { HyperShopContentListComponent } from './modules/hyperShop/content/list/list.component';
-import { CoreModule } from './modules/core/core.module';
-import { CoreSiteViewComponent } from './modules/core/site/view/view.component';
+import { AppComponent } from './app.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { DemoComponent } from './components/demo/demo.component';
+import { NgxSpinnerModule } from 'ngx-spinner';
+import { NgxImgZoomModule } from 'ngx-img-zoom';
+
+
+import { MainComponent } from './components/main/main.component';
+
+import { AppRoutingModule } from './app-routing.module';
+import { ShopModule } from './components/shop/shop.module';
+import { SharedModule } from './components/shared/shared.module';
+import { environment } from 'src/environments/environment';
+import { CoreAuthService, TokenDeviceClientInfoDtoModel } from 'ntk-cms-api';
+import { DOCUMENT } from '@angular/common';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    PageHomeComponent,
-    PageAboutUsComponent,
-    PageContantUsComponent,
-    PageNewsListComponent,
-    PageNewsViewComponent,
-    PageHyperShopCartComponent,
-    PageHyperShopListComponent,
-    PageHyperShopViewComponent,
-    NewsContentListComponent,
-    NewsContentViewComponent,
-    HyperShopContentListComponent,
-    CoreSiteViewComponent
+    DemoComponent,
+    MainComponent
+
+
+
   ],
   imports: [
+    NgxSpinnerModule,
     BrowserModule,
-    HttpClientModule,
-    SharedModule.forRoot(),
-    AppRoutingModule,
-    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
-    ToastrModule.forRoot(),
     SharedModule,
-    NewsModule,
-    CoreModule
+    ShopModule,
+    HttpClientModule,
+    BrowserAnimationsModule,
+    FormsModule,
+    ReactiveFormsModule,
+    AppRoutingModule,
+    NgxImgZoomModule
   ],
   providers: [
-    ToastrService,
-    CoreAuthService,
-    HyperShopContentService,
-    CoreSiteService
+    CoreAuthService
   ],
   bootstrap: [AppComponent]
 })
