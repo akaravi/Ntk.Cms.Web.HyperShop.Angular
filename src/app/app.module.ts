@@ -17,6 +17,7 @@ import { SharedModule } from './components/shared/shared.module';
 import { environment } from 'src/environments/environment';
 import { CoreAuthService, TokenDeviceClientInfoDtoModel } from 'ntk-cms-api';
 import { DOCUMENT } from '@angular/common';
+import { ServiceWorkerModule } from '@angular/service-worker';
 
 
 @NgModule({
@@ -38,7 +39,8 @@ import { DOCUMENT } from '@angular/common';
     FormsModule,
     ReactiveFormsModule,
     AppRoutingModule,
-    NgxImgZoomModule
+    NgxImgZoomModule,
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [
     CoreAuthService
