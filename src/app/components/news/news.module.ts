@@ -7,6 +7,7 @@ import { NewsDetailsComponent } from './news-details/news-details.component';
 import { NewsColumnComponent } from './news-column/news-column.component';
 import { NewsListComponent } from './news-list/news-list.component';
 import { SharedModule } from './../shared/shared.module';
+import { CoreModuleTagService, NewsCommentService, NewsContentService, NewsContentTagService } from 'ntk-cms-api';
 
 
 
@@ -22,6 +23,12 @@ import { SharedModule } from './../shared/shared.module';
     NewsDetailsComponent,
     NewsColumnComponent,
     NewsListComponent
+  ],
+  providers: [
+    CoreModuleTagService,
+    NewsContentService,
+    NewsContentTagService,
+    NewsCommentService
   ]
 })
 export class NewsModule { }

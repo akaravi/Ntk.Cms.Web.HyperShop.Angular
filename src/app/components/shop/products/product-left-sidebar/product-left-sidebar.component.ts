@@ -25,29 +25,29 @@ export class ProductLeftSidebarComponent implements OnInit {
   public tags: any[] = [];
   public colors: any[] = [];
 
-  constructor(private productService: ProductService,
+  constructor(
     private hyperShopContentService: HyperShopContentService,
     private route: ActivatedRoute) {
     this.route.params.subscribe(
       (params: Params) => {
-        const category = params.category;
-        const filteModelContent = new FilterModel();
-
-        if (category && category != 'all') {
-          const aaa = {
-            PropertyName: 'CategoryId',
-            IntValue1: +category,
-          };
-          filteModelContent.Filters.push(aaa as FilterDataModel);
-        }
-        this.hyperShopContentService.ServiceGetAll(filteModelContent).subscribe(products => {
-          this.allItems = products.ListItems;
-          this.products = products.ListItems.slice(0.8);
-          this.getTags(products)
-          this.getColors(products)
-        })
+        this.dataGetAll(params.category)
       }
     )
+  }
+  dataGetAll(category: number): void {
+    const filteModelContent = new FilterModel();
+    if (category>0) {
+      const filterDataModel = new FilterDataModel();
+      filterDataModel.PropertyName = 'CategoryCode';
+      filterDataModel.Value = category;
+      filteModelContent.Filters.push(filterDataModel);
+    }
+    this.hyperShopContentService.ServiceGetAll(filteModelContent).subscribe(products => {
+      this.allItems = products.ListItems;
+      this.products = products.ListItems.slice(0.8);
+      this.getTags(products)
+      this.getColors(products)
+    })
   }
 
 

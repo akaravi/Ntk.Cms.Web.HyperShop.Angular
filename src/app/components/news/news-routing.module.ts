@@ -10,9 +10,14 @@ const routes: Routes = [
   {
     path: '',
     children: [
-      { path: 'news-list', component: NewsListComponent},
-      { path: 'news-column', component: NewsColumnComponent},
-      { path: 'news-details', component: NewsDetailsComponent}
+      { path: '', component: NewsListComponent},
+      { path: 'list', component: NewsListComponent},
+      { path: 'list/:id', component: NewsListComponent},
+      { path: 'listtag/:tag', component: NewsListComponent},
+      { path: 'column/:', component: NewsColumnComponent},
+      { path: 'column/:id', component: NewsColumnComponent},
+      { path: 'columntag/:tag', component: NewsColumnComponent},
+      { path: 'details/:id', component: NewsDetailsComponent}
     ]
   }
 ];
