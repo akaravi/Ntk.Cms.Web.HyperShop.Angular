@@ -8,7 +8,7 @@ import {
 import { Component, OnInit } from '@angular/core';
 
 import { CartItem } from 'src/app/modals/cart-item';
-import { ProductService } from '../../shared/services/product.service';
+
 import { CartService } from '../../shared/services/cart.service';
 
 @Component({
@@ -21,7 +21,7 @@ export class HomeThreeComponent implements OnInit {
   dataModelContentResult: ErrorExcptionResult<HyperShopContentModel> = new ErrorExcptionResult<HyperShopContentModel>();
   loadingStatus = false;
   constructor(
-    private productService: ProductService,
+    // private productService: ProductService,
     private cartService: CartService,
     private hyperShopContentService: HyperShopContentService
   ) {}
@@ -85,10 +85,10 @@ export class HomeThreeComponent implements OnInit {
       .subscribe(
         (shoppingCartItems) => (this.shoppingCartItems = shoppingCartItems)
       );
-    this.productService.getProducts().subscribe((product: HyperShopContentModel[]) => {
-      this.products = product;
-      console.log(product);
-    });
+    // this.productService.getProducts().subscribe((product: HyperShopContentModel[]) => {
+    //   this.products = product;
+    //   console.log(product);
+    // });
     this.DataProductGetAll();
   }
 

@@ -1,5 +1,6 @@
+import { AppConfigService } from './core/services/core/appConfig.service';
 import { BrowserModule } from '@angular/platform-browser';
-import { Inject, NgModule } from '@angular/core';
+import { APP_INITIALIZER, Inject, NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -18,7 +19,10 @@ import { environment } from 'src/environments/environment';
 import { CoreAuthService, TokenDeviceClientInfoDtoModel } from 'ntk-cms-api';
 import { DOCUMENT } from '@angular/common';
 import { ServiceWorkerModule } from '@angular/service-worker';
-
+import { AccessHelper } from './core/common/helper/accessHelper';
+export function appInit(appConfigService: AppConfigService) {
+  return () => appConfigService.load();
+}
 
 @NgModule({
   declarations: [
@@ -43,38 +47,25 @@ import { ServiceWorkerModule } from '@angular/service-worker';
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [
-    CoreAuthService
+    CoreAuthService,
+    AccessHelper,
+    AppConfigService,
+    {
+      provide: APP_INITIALIZER,
+      useFactory: appInit,
+      multi: true,
+      deps: [AppConfigService]
+    }
+
   ],
   bootstrap: [AppComponent]
 })
 export class AppModule {
 
-  constructor(private coreAuthService: CoreAuthService, @Inject(DOCUMENT) private document: Document) {
+  constructor(private coreAuthService: CoreAuthService, @Inject(DOCUMENT) private document: Document, private accessHelper: AccessHelper) {
     // karavi:Important For Test To Local Service
     if (environment.cmsServerConfig.configApiServerPath && environment.cmsServerConfig.configApiServerPath.length > 0) {
       this.coreAuthService.setConfig(environment.cmsServerConfig.configApiServerPath);
-    }
-    const domain = this.document.location.hostname;
-    console.log('domain:', domain);
-    const DeviceToken = this.coreAuthService.getDeviceToken();
-    if (!DeviceToken || DeviceToken.length === 0) {
-      const model: TokenDeviceClientInfoDtoModel = {
-        SecurityKey: environment.cmsTokenConfig.SecurityKey,
-        ClientMACAddress: '',
-        NotificationId: '',
-        OSType: environment.cmsTokenConfig.OSType,
-        DeviceType:  environment.cmsTokenConfig.DeviceType,
-        PackageName: environment.cmsTokenConfig.PackageName,
-        AppBuildVer: 0,
-        AppSourceVer: '',
-        Country: '',
-        LocationLat: '',
-        LocationLong: '',
-        SimCard: '',
-        Language: '',
-        DeviceBrand: ''
-      };
-      this.coreAuthService.ServiceGetTokenDevice(model).toPromise();
     }
   }
 
