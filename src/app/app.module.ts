@@ -1,3 +1,4 @@
+
 import { AppConfigService } from './core/services/core/appConfig.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { APP_INITIALIZER, Inject, NgModule } from '@angular/core';
@@ -20,6 +21,7 @@ import { CoreAuthService, TokenDeviceClientInfoDtoModel } from 'ntk-cms-api';
 import { DOCUMENT } from '@angular/common';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { AccessHelper } from './core/common/helper/accessHelper';
+
 export function appInit(appConfigService: AppConfigService) {
   return () => appConfigService.load();
 }
@@ -44,7 +46,11 @@ export function appInit(appConfigService: AppConfigService) {
     ReactiveFormsModule,
     AppRoutingModule,
     NgxImgZoomModule,
-    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
+
+  ],
+  exports:[
+
   ],
   providers: [
     CoreAuthService,
@@ -55,7 +61,8 @@ export function appInit(appConfigService: AppConfigService) {
       useFactory: appInit,
       multi: true,
       deps: [AppConfigService]
-    }
+    },
+
 
   ],
   bootstrap: [AppComponent]
