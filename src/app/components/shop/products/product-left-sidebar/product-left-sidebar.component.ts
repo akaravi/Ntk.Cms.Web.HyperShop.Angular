@@ -42,7 +42,7 @@ export class ProductLeftSidebarComponent implements OnInit {
       filterDataModel.Value = category;
       filteModelContent.Filters.push(filterDataModel);
     }
-    this.hyperShopContentService.ServiceGetAll(filteModelContent).subscribe(products => {
+    this.hyperShopContentService.ServiceGetAllMicroService(filteModelContent).subscribe(products => {
       this.allItems = products.ListItems;
       this.products = products.ListItems.slice(0.8);
       this.getTags(products)

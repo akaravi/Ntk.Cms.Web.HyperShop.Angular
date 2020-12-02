@@ -42,7 +42,7 @@ export class ProductDetailsComponent implements OnInit {
     this.route.params.subscribe(params => {
 
       const id = params['id'];
-      this.hyperShopContentService.ServiceGetOne(id).subscribe(
+      this.hyperShopContentService.ServiceGetOneMicroService(id).subscribe(
         (next) => {
           if (next.IsSuccess) {
             this.product = next.Item;

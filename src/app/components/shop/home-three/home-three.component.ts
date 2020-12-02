@@ -96,7 +96,7 @@ export class HomeThreeComponent implements OnInit {
     this.loadingStatus = true;
     this.filterModelCategory.AccessLoad = true;
     this.hyperShopContentService
-      .ServiceGetAll(this.filterModelCategory)
+      .ServiceGetAllMicroService(this.filterModelCategory)
       .subscribe(
         (next) => {
           if (next.IsSuccess) {

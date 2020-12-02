@@ -21,7 +21,7 @@ export class CategoriesComponent implements OnInit {
   DataGetAll(): void {
     this.loadingStatus = true;
     this.filterModelCategory.AccessLoad = true;
-    this.hyperShopCategoryService.ServiceGetAll(this.filterModelCategory).subscribe(
+    this.hyperShopCategoryService.ServiceGetAllMicroService(this.filterModelCategory).subscribe(
       (next) => {
         if (next.IsSuccess) {
           this.dataModelResult = next;
