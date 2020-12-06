@@ -21,6 +21,7 @@ import { CoreAuthService, TokenDeviceClientInfoDtoModel } from 'ntk-cms-api';
 import { DOCUMENT } from '@angular/common';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { AccessHelper } from './core/common/helper/accessHelper';
+import { SplashComponent } from './components/splash/splash.component';
 
 export function appInit(appConfigService: AppConfigService) {
   return () => appConfigService.load();
@@ -30,16 +31,13 @@ export function appInit(appConfigService: AppConfigService) {
   declarations: [
     AppComponent,
     DemoComponent,
-    MainComponent
-
-
-
+    MainComponent,
+    SplashComponent
   ],
   imports: [
     NgxSpinnerModule,
     BrowserModule,
     SharedModule,
-    ShopModule,
     HttpClientModule,
     BrowserAnimationsModule,
     FormsModule,

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ErrorExcptionResult, FilterModel, HyperShopCategoryModel, HyperShopCategoryService } from 'ntk-cms-api';
+import { ErrorExceptionResult, FilterModel, HyperShopCategoryModel, HyperShopCategoryService } from 'ntk-cms-api';
 
 @Component({
   selector: 'app-categories-menu',
@@ -8,7 +8,7 @@ import { ErrorExcptionResult, FilterModel, HyperShopCategoryModel, HyperShopCate
 })
 export class CategoriesMenuComponent implements OnInit {
   filterModelCategory = new FilterModel();
-  dataModelResult: ErrorExcptionResult<HyperShopCategoryModel> = new ErrorExcptionResult<HyperShopCategoryModel>();
+  dataModelResult: ErrorExceptionResult<HyperShopCategoryModel> = new ErrorExceptionResult<HyperShopCategoryModel>();
   loadingStatus = false;
 
   constructor(private hyperShopCategoryService: HyperShopCategoryService) { }

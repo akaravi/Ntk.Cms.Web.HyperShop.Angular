@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CoreModuleTagModel, CoreModuleTagService, EnumSortType, ErrorExcptionResult, FilterDataModel, FilterModel, BlogContentModel, BlogContentService } from 'ntk-cms-api';
+import { CoreModuleTagModel, CoreModuleTagService, EnumSortType, ErrorExceptionResult, FilterDataModel, FilterModel, BlogContentModel, BlogContentService } from 'ntk-cms-api';
 
 @Component({
   selector: 'app-blog-column',
@@ -10,8 +10,8 @@ export class BlogColumnComponent implements OnInit {
 
 
   constructor(private blogContentService: BlogContentService,private coreModuleTagService: CoreModuleTagService) { }
-  dataModelResult = new ErrorExcptionResult<BlogContentModel>();
-  dataModelTagResult = new ErrorExcptionResult<CoreModuleTagModel>();
+  dataModelResult = new ErrorExceptionResult<BlogContentModel>();
+  dataModelTagResult = new ErrorExceptionResult<CoreModuleTagModel>();
   ngOnInit() {
     this.dataGetAll(null);
     this.dataTagGetAll();

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
-import { CoreModuleTagModel, CoreModuleTagService, EnumSortType, ErrorExcptionResult, FilterDataModel, FilterModel, NewsContentModel, NewsContentService } from 'ntk-cms-api';
+import { CoreModuleTagModel, CoreModuleTagService, EnumSortType, ErrorExceptionResult, FilterDataModel, FilterModel, NewsContentModel, NewsContentService } from 'ntk-cms-api';
 
 @Component({
   selector: 'app-news-column',
@@ -19,9 +19,9 @@ export class NewsColumnComponent implements OnInit {
   }
   category = 0;
   tag = 0;
-  dataModelResult = new ErrorExcptionResult<NewsContentModel>();
-  dataModelLastResult = new ErrorExcptionResult<NewsContentModel>();
-  dataModelTagResult = new ErrorExcptionResult<CoreModuleTagModel>();
+  dataModelResult = new ErrorExceptionResult<NewsContentModel>();
+  dataModelLastResult = new ErrorExceptionResult<NewsContentModel>();
+  dataModelTagResult = new ErrorExceptionResult<CoreModuleTagModel>();
   ngOnInit() {
     this.dataGetAll(this.category, this.tag);
     this.dataGetAllLast();

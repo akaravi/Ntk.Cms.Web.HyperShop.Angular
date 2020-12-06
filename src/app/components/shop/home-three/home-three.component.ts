@@ -1,5 +1,5 @@
 import {
-  ErrorExcptionResult,
+  ErrorExceptionResult,
   FilterModel,
   HyperShopCategoryService,
   HyperShopContentModel,
@@ -18,7 +18,7 @@ import { CartService } from '../../shared/services/cart.service';
 })
 export class HomeThreeComponent implements OnInit {
   filterModelCategory = new FilterModel();
-  dataModelContentResult: ErrorExcptionResult<HyperShopContentModel> = new ErrorExcptionResult<HyperShopContentModel>();
+  dataModelContentResult: ErrorExceptionResult<HyperShopContentModel> = new ErrorExceptionResult<HyperShopContentModel>();
   loadingStatus = false;
   constructor(
     // private productService: ProductService,

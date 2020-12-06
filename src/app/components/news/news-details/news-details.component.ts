@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
-import { CoreModuleTagModel, CoreModuleTagService, ErrorExcptionResult, FilterModel, NewsContentModel, NewsContentService, NewsContentTagService, EnumSortType, FilterDataModel, NewsCommentService, NewsCommentModel } from 'ntk-cms-api';
+import { CoreModuleTagModel, CoreModuleTagService, ErrorExceptionResult, FilterModel, NewsContentModel, NewsContentService, NewsContentTagService, EnumSortType, FilterDataModel, NewsCommentService, NewsCommentModel } from 'ntk-cms-api';
 
 @Component({
   selector: 'app-news-details',
@@ -8,10 +8,10 @@ import { CoreModuleTagModel, CoreModuleTagService, ErrorExcptionResult, FilterMo
   styleUrls: ['./news-details.component.sass']
 })
 export class NewsDetailsComponent implements OnInit {
-  dataModelResult = new ErrorExcptionResult<NewsContentModel>();
-  dataModelCommentResult = new ErrorExcptionResult<NewsCommentModel>();
-  dataModelTagResult = new ErrorExcptionResult<CoreModuleTagModel>();
-  dataModelTagRelatResult = new ErrorExcptionResult<CoreModuleTagModel>();
+  dataModelResult = new ErrorExceptionResult<NewsContentModel>();
+  dataModelCommentResult = new ErrorExceptionResult<NewsCommentModel>();
+  dataModelTagResult = new ErrorExceptionResult<CoreModuleTagModel>();
+  dataModelTagRelatResult = new ErrorExceptionResult<CoreModuleTagModel>();
   dataModelComment = new NewsCommentModel();
 
   constructor(private newsContentService: NewsContentService,

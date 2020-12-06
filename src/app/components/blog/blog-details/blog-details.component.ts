@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
-import { CoreModuleTagModel, CoreModuleTagService, ErrorExcptionResult, FilterModel, BlogContentModel, BlogContentService, BlogContentTagService, EnumSortType, FilterDataModel, BlogCommentService, BlogCommentModel } from 'ntk-cms-api';
+import { CoreModuleTagModel, CoreModuleTagService, ErrorExceptionResult, FilterModel, BlogContentModel, BlogContentService, BlogContentTagService, EnumSortType, FilterDataModel, BlogCommentService, BlogCommentModel } from 'ntk-cms-api';
 
 @Component({
   selector: 'app-blog-details',
@@ -8,10 +8,10 @@ import { CoreModuleTagModel, CoreModuleTagService, ErrorExcptionResult, FilterMo
   styleUrls: ['./blog-details.component.sass']
 })
 export class BlogDetailsComponent implements OnInit {
-  dataModelResult = new ErrorExcptionResult<BlogContentModel>();
-  dataModelCommentResult = new ErrorExcptionResult<BlogCommentModel>();
-  dataModelTagResult = new ErrorExcptionResult<CoreModuleTagModel>();
-  dataModelTagRelatResult = new ErrorExcptionResult<CoreModuleTagModel>();
+  dataModelResult = new ErrorExceptionResult<BlogContentModel>();
+  dataModelCommentResult = new ErrorExceptionResult<BlogCommentModel>();
+  dataModelTagResult = new ErrorExceptionResult<CoreModuleTagModel>();
+  dataModelTagRelatResult = new ErrorExceptionResult<CoreModuleTagModel>();
   dataModelComment = new BlogCommentModel();
 
   constructor(private blogContentService: BlogContentService,

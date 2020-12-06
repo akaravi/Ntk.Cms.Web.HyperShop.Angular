@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { ErrorExcptionResultBase } from 'ntk-cms-api';
+import { ErrorExceptionResultBase } from 'ntk-cms-api';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
