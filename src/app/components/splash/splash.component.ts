@@ -1,8 +1,9 @@
 import { DOCUMENT } from '@angular/common';
 import { Component, OnInit, Inject } from '@angular/core';
-import { ErrorExceptionResult, TokenInfoModel, TokenDeviceClientInfoDtoModel, CoreAuthService } from 'ntk-cms-api';
+import { ErrorExceptionResult, TokenInfoModel, TokenDeviceClientInfoDtoModel, CoreAuthService, CoreSiteService, CoreSiteModel } from 'ntk-cms-api';
 import { AccessHelper } from 'src/app/core/common/helper/accessHelper';
 import { environment } from 'src/environments/environment';
+import { Subscriber } from 'rxjs';
 
 @Component({
   selector: 'app-splash',
@@ -11,13 +12,22 @@ import { environment } from 'src/environments/environment';
 })
 export class SplashComponent implements OnInit {
   dateModelTokenInfo: ErrorExceptionResult<TokenInfoModel>;
-  constructor(private coreAuthService: CoreAuthService, @Inject(DOCUMENT) private document: Document) {
+  dateModelCoreSite: ErrorExceptionResult<CoreSiteModel>;
+  constructor(private coreAuthService: CoreAuthService,
+    private coreSiteService: CoreSiteService,
+    @Inject(DOCUMENT) private document: Document) {
     this.dateModelTokenInfo = new ErrorExceptionResult<TokenInfoModel>();
   }
 
   loding = true;
   ngOnInit(): void {
 
+    this.TokenDevice();
+
+  }
+
+
+  private TokenDevice(): void {
     const domain = this.document.location.hostname;
     console.log('domain:', domain);
     const model: TokenDeviceClientInfoDtoModel = {
@@ -37,14 +47,16 @@ export class SplashComponent implements OnInit {
       DeviceBrand: ''
     };
     this.coreAuthService.ServiceGetTokenDevice(model).subscribe((next) => {
-      this.dateModelTokenInfo = next
+      this.dateModelTokenInfo = next;
       this.loding = false;
-      if(this.dateModelTokenInfo.IsSuccess)
-      {
-// گرفتن مشخصات سایت موجود
+      if (this.dateModelTokenInfo.IsSuccess) {
+        this.CurrentSite();
       }
     });
-
   }
-
+  private CurrentSite(): void {
+    this.coreSiteService.ServiceCurrectSite().subscribe((next) => {
+      this.dateModelCoreSite = next;
+    });
+  }
 }

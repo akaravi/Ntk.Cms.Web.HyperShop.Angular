@@ -24,6 +24,8 @@
         </div>
     </div>
 bb{{dateModelTokenInfo| json}}aa
+{{dateModelCoreSite|json}}
+cc
     <div *ngIf="!loding && dateModelTokenInfo?.IsSuccess==false" class="likeUs sec-padding">
         <div class="container">
             <div class="theme-features">
@@ -32,7 +34,7 @@ bb{{dateModelTokenInfo| json}}aa
                         <h2>برروز خطا در اجرای </h2>
                         <ul>
                             <li fxLayout="row"><i class="material-icons">check</i><span>{{dateModelTokenInfo.ErrorMessage}}</span> </li>
-                            <li fxLayout="row"><i class="material-icons">check</i><span>Lifetime regular updates</span></li>
+                            <li fxLayout="row"><i class="material-icons">check</i><span>Call Admin</span></li>
                             <li fxLayout="row"><i class="material-icons">check</i><span>6 months free support</span></li>
                             <li fxLayout="row"><i class="material-icons">check</i><span>Full access to all files included in the package</span></li>
                         </ul>
@@ -45,7 +47,7 @@ bb{{dateModelTokenInfo| json}}aa
 
     <div class="footer">
         <div class="container">
-            <p>Copyrights © 2020 by Lamarena. All Rights Reserved. </p>
+            <p>Copyrights © 2020 by NTK co. All Rights Reserved. </p>
         </div>
     </div>
 </div>
