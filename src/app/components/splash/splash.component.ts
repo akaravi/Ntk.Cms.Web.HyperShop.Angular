@@ -1,6 +1,6 @@
 import { DOCUMENT } from '@angular/common';
 import { Component, OnInit, Inject } from '@angular/core';
-import { ErrorExceptionResult, TokenInfoModel, TokenDeviceClientInfoDtoModel, CoreAuthService, CoreSiteService, CoreSiteModel } from 'ntk-cms-api';
+import { ErrorExceptionResult, TokenInfoModel, TokenDeviceClientInfoDtoModel, CoreAuthService, CoreSiteService, CoreSiteModel, WebDesignerMainIntroService, WebDesignerMainIntroModel } from 'ntk-cms-api';
 import { AccessHelper } from 'src/app/core/common/helper/accessHelper';
 import { environment } from 'src/environments/environment';
 import { Subscriber } from 'rxjs';
@@ -13,8 +13,10 @@ import { Subscriber } from 'rxjs';
 export class SplashComponent implements OnInit {
   dateModelTokenInfo: ErrorExceptionResult<TokenInfoModel>;
   dateModelCoreSite: ErrorExceptionResult<CoreSiteModel>;
+  dateModelWebDesignerMainIntro: ErrorExceptionResult<WebDesignerMainIntroModel>;
   constructor(private coreAuthService: CoreAuthService,
     private coreSiteService: CoreSiteService,
+    private webDesignerMainIntroService: WebDesignerMainIntroService,
     @Inject(DOCUMENT) private document: Document) {
     this.dateModelTokenInfo = new ErrorExceptionResult<TokenInfoModel>();
   }
@@ -22,12 +24,12 @@ export class SplashComponent implements OnInit {
   loding = true;
   ngOnInit(): void {
 
-    this.TokenDevice();
+    this.DataTokenDevice();
 
   }
 
 
-  private TokenDevice(): void {
+  private DataTokenDevice(): void {
     const domain = this.document.location.hostname;
     console.log('domain:', domain);
     const model: TokenDeviceClientInfoDtoModel = {
@@ -50,13 +52,21 @@ export class SplashComponent implements OnInit {
       this.dateModelTokenInfo = next;
       this.loding = false;
       if (this.dateModelTokenInfo.IsSuccess) {
-        this.CurrentSite();
+        this.DataCurrentSite();
       }
     });
   }
-  private CurrentSite(): void {
+  private DataCurrentSite(): void {
     this.coreSiteService.ServiceCurrectSite().subscribe((next) => {
       this.dateModelCoreSite = next;
+      if (this.dateModelCoreSite.IsSuccess && this.dateModelCoreSite.Item.Id > 0) {
+        this.DataIntro();
+      }
+    });
+  }
+  private DataIntro(): void {
+    this.webDesignerMainIntroService.ServiceGetAll(null).subscribe((next) => {
+      this.dateModelWebDesignerMainIntro = next;
     });
   }
 }

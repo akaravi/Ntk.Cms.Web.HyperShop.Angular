@@ -1,5 +1,5 @@
 <div class="demo-wrapper">
-    <div class="demo-header">
+    <div *ngIf="loding" class="demo-header">
         <div class="container">
             <div class="demo-header-wrap" fxLayout='column' fxLayout.lt-md="column">
                 <div fxFlex="100" fxFlex.gt-sm="40" class="left-panel">
@@ -23,6 +23,31 @@
             </div>
         </div>
     </div>
+
+    <div *ngIf="dateModelCoreSite?.IsSuccess" class="demo-header">
+      <div class="container">
+          <div class="demo-header-wrap" fxLayout='column' fxLayout.lt-md="column">
+              <div fxFlex="100" fxFlex.gt-sm="40" class="left-panel">
+                  <div class="logo"><img src="assets/images/logo-white.png" alt=""> </div>
+                  <div class="text-intro">
+                      <h1><span class="powerful">POWERFUL</span><br>{{dateModelCoreSite.Item.Title}}<br><span class="theme">Ecommerce Theme</span> </h1>
+                  </div>
+                  <ul fxLayout="row" fxLayout.lt-md="column" fxLayoutAlign="center center">
+                      <li fxLayout="row"><i class="material-icons">check</i><span>Quality check by Envato</span> </li>
+                      <li fxLayout="row"><i class="material-icons">check</i><span>Lifetime regular updates</span></li>
+                      <li fxLayout="row"><i class="material-icons">check</i><span>6 months free support</span></li>
+                      <li fxLayout="row"><i class="material-icons">check</i><span>Full access to all files included in the package</span></li>
+                  </ul>
+                  <div class="button">
+                      <a target="_blank" href="https://themeforest.net/item/sophia-angular-material-ecommerce-template/24219775" class="ped-btn left-btn">Buy Now</a>
+                  </div>
+              </div>
+              <!-- <div fxFlex="100" fxFlex.gt-sm="60" class="right-panel">
+                <img src="assets/images/demo/laptop.png" alt="">
+            </div> -->
+          </div>
+      </div>
+  </div>
 bb{{dateModelTokenInfo| json}}aa
 {{dateModelCoreSite|json}}
 cc

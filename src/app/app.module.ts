@@ -17,7 +17,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { ShopModule } from './components/shop/shop.module';
 import { SharedModule } from './components/shared/shared.module';
 import { environment } from 'src/environments/environment';
-import { CoreAuthService, CoreSiteService, TokenDeviceClientInfoDtoModel } from 'ntk-cms-api';
+import { CoreAuthService, CoreSiteService, TokenDeviceClientInfoDtoModel, WebDesignerMainIntroService } from 'ntk-cms-api';
 import { DOCUMENT } from '@angular/common';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { AccessHelper } from './core/common/helper/accessHelper';
@@ -53,6 +53,7 @@ export function appInit(appConfigService: AppConfigService) {
   providers: [
     CoreAuthService,
     CoreSiteService,
+    WebDesignerMainIntroService,
     AccessHelper,
     AppConfigService,
 
