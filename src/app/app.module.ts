@@ -18,7 +18,7 @@ import { ShopModule } from './components/shop/shop.module';
 import { SharedModule } from './components/shared/shared.module';
 import { environment } from 'src/environments/environment';
 import { CoreAuthService, CoreSiteService, TokenDeviceClientInfoDtoModel, WebDesignerMainIntroService } from 'ntk-cms-api';
-import { DOCUMENT } from '@angular/common';
+import { DOCUMENT, HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { AccessHelper } from './core/common/helper/accessHelper';
 import { SplashComponent } from './components/splash/splash.component';
@@ -63,7 +63,7 @@ export function appInit(appConfigService: AppConfigService) {
       multi: true,
       deps: [AppConfigService]
     },
-
+    {provide: LocationStrategy, useClass: HashLocationStrategy}
 
   ],
   bootstrap: [AppComponent]
