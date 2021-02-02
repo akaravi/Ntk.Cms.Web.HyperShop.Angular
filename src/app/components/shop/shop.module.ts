@@ -10,7 +10,7 @@ import { ProductDialogComponent } from './products/product-dialog/product-dialog
 import { ProductLeftSidebarComponent } from './products/product-left-sidebar/product-left-sidebar.component';
 import { ProductVerticalComponent } from './products/product-vertical/product-vertical.component';
 import { CommonModule } from '@angular/common';
-import { ShopRoutingModule } from './shop-routing.module';
+import { ShopRouting } from './shop.routing';
 import { SharedModule } from '../shared/shared.module';
 import { SwiperModule } from 'ngx-swiper-wrapper';
 import { FlexLayoutModule } from '@angular/flex-layout';
@@ -59,7 +59,7 @@ import { HyperShopCategoryService, HyperShopContentService } from 'ntk-cms-api';
   ],
   imports: [
     CommonModule,
-    ShopRoutingModule,
+    ShopRouting,
     SharedModule,
     SwiperModule,
     FormsModule,

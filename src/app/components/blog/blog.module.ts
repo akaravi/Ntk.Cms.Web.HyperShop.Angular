@@ -1,7 +1,7 @@
 import { FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { BlogRoutingModule } from './blog-routing.module';
+import { BlogRouting } from './blog.routing';
 
 import { BlogDetailsComponent } from './blog-details/blog-details.component';
 import { BlogColumnComponent } from './blog-column/blog-column.component';
@@ -16,7 +16,7 @@ import { BlogCommentService, BlogContentService, BlogContentTagService, CoreModu
     CommonModule,
     FormsModule,
     SharedModule,
-    BlogRoutingModule
+    BlogRouting
 
   ],
   declarations: [

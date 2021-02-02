@@ -1,7 +1,7 @@
 import { FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { NewsRoutingModule } from './news-routing.module';
+import { NewsRouting} from './news.routing';
 
 import { NewsDetailsComponent } from './news-details/news-details.component';
 import { NewsColumnComponent } from './news-column/news-column.component';
@@ -16,7 +16,7 @@ import { CoreModuleTagService, NewsCommentService, NewsContentService, NewsConte
     CommonModule,
     FormsModule,
     SharedModule,
-    NewsRoutingModule
+    NewsRouting
 
   ],
   declarations: [

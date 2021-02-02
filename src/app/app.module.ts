@@ -13,7 +13,7 @@ import { NgxImgZoomModule } from 'ngx-img-zoom';
 
 import { MainComponent } from './components/main/main.component';
 
-import { AppRoutingModule } from './app-routing.module';
+import { AppRouting } from './app.routing';
 import { ShopModule } from './components/shop/shop.module';
 import { SharedModule } from './components/shared/shared.module';
 import { environment } from 'src/environments/environment';
@@ -42,7 +42,7 @@ export function appInit(appConfigService: AppConfigService) {
     BrowserAnimationsModule,
     FormsModule,
     ReactiveFormsModule,
-    AppRoutingModule,
+    AppRouting,
     NgxImgZoomModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
 
