@@ -17,11 +17,8 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import {NgxPaginationModule} from 'ngx-pagination';
 import { HomeTwoComponent } from './home-two/home-two.component';
 import { HomeThreeComponent } from './home-three/home-three.component';
-// Import the library
 import { NgxImageZoomModule } from 'ngx-image-zoom';
-
 import { ProductCarouselComponent } from './../shop/home/product-carousel/product-carousel.component';
-import { from } from 'rxjs';
 import { ProductCarouselTwoComponent } from './home-two/product-carousel-two/product-carousel-two.component';
 import { ProductCarouselThreeComponent } from './home-three/product-carousel-three/product-carousel-three.component';
 import { BrandsComponent } from './widgets/brands/brands.component';
