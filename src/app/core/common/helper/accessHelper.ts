@@ -1,9 +1,11 @@
 import { DOCUMENT } from '@angular/common';
-import { Inject } from '@angular/core';
+import { Inject, Injectable } from '@angular/core';
 import { CoreAuthService, ErrorExceptionResult, TokenDeviceClientInfoDtoModel } from 'ntk-cms-api';
 import { environment } from 'src/environments/environment';
 
-
+@Injectable({
+  providedIn: 'root',
+})
 export class AccessHelper {
   constructor(private coreAuthService: CoreAuthService, @Inject(DOCUMENT) private document: Document) { }
   CheckTokenDevice(): any {
