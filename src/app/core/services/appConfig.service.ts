@@ -1,4 +1,4 @@
-import { AccessHelper } from './../../common/helper/accessHelper';
+import { AccessHelper } from '../common/helper/accessHelper';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 // import 'rxjs/add/operator/toPromise';
