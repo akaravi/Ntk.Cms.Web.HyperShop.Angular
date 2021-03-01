@@ -9,19 +9,15 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DemoComponent } from './components/demo/demo.component';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { NgxImgZoomModule } from 'ngx-img-zoom';
-
-
 import { MainComponent } from './components/main/main.component';
-
-import { AppRouting } from './app.routing';
-import { ShopModule } from './components/shop/shop.module';
-import { SharedModule } from './components/shared/shared.module';
+import { SharedModule } from './shared/shared.module';
 import { environment } from 'src/environments/environment';
 import { CoreAuthService, CoreSiteService, TokenDeviceClientInfoDtoModel, WebDesignerMainIntroService } from 'ntk-cms-api';
 import { DOCUMENT, HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { AccessHelper } from './core/common/helper/accessHelper';
-import { SplashComponent } from './components/splash/splash.component';
+import { SplashComponent } from './pages/splash/splash.component';
+import { AppRouting } from './app.routing';
 
 export function appInit(appConfigService: AppConfigService) {
   return () => appConfigService.load();
@@ -35,14 +31,14 @@ export function appInit(appConfigService: AppConfigService) {
     SplashComponent
   ],
   imports: [
-    NgxSpinnerModule,
+    AppRouting,
     BrowserModule,
-    SharedModule,
     HttpClientModule,
+    NgxSpinnerModule,
+    SharedModule,
     BrowserAnimationsModule,
     FormsModule,
     ReactiveFormsModule,
-    AppRouting,
     NgxImgZoomModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
 
@@ -69,12 +65,10 @@ export function appInit(appConfigService: AppConfigService) {
   bootstrap: [AppComponent]
 })
 export class AppModule {
-
   constructor(private coreAuthService: CoreAuthService, @Inject(DOCUMENT) private document: Document, private accessHelper: AccessHelper) {
     // karavi:Important For Test To Local Service
     if (environment.cmsServerConfig.configApiServerPath && environment.cmsServerConfig.configApiServerPath.length > 0) {
       this.coreAuthService.setConfig(environment.cmsServerConfig.configApiServerPath);
     }
   }
-
 }

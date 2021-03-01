@@ -1,10 +1,10 @@
 import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
 import {CartItem} from '../../modals/cart-item';
-import {ProductService} from '../shared/services/product.service';
-import {CartService} from '../shared/services/cart.service';
+import {ProductService} from '../../shared/services/product.service';
+import {CartService} from '../../shared/services/cart.service';
 import { Router, NavigationEnd } from '@angular/router';
-import { SidebarMenuService } from '../shared/sidebar/sidebar-menu.service';
-import { SidenavMenu } from '../shared/sidebar/sidebar-menu.model';
+import { SidebarMenuService } from '../../shared/sidebar/sidebar-menu.service';
+import { SidenavMenu } from '../../shared/sidebar/sidebar-menu.model';
 import { HyperShopContentModel } from 'ntk-cms-api';
 
 @Component({

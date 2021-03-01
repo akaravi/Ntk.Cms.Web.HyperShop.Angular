@@ -1,10 +1,9 @@
 import { NgModule } from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 import { MainComponent } from './components/main/main.component';
-import { SplashComponent } from './components/splash/splash.component';
+import { SplashComponent } from './pages/splash/splash.component';
 
-
-const appRoutes: Routes = [
+const routes: Routes = [
   // {
   //   path: '',
   //   redirectTo: 'home',
@@ -20,20 +19,20 @@ const appRoutes: Routes = [
     children: [
       {
         path: '',
-        loadChildren: () => import('./components/shop/shop.module').then(m => m.ShopModule)
+        loadChildren: () => import('./modules/shop/shop.module').then(m => m.ShopModule)
       },
       {
         path: 'pages',
-        loadChildren: () => import('./components/pages/pages.module').then(m => m.PagesModule)
+        loadChildren: () => import('./pages/pages.module').then(m => m.PagesModule)
 
       },
       {
         path: 'blog',
-        loadChildren: () => import('./components/blog/blog.module').then(m => m.BlogModule)
+        loadChildren: () => import('./modules/blog/blog.module').then(m => m.BlogModule)
       },
       {
         path: 'news',
-        loadChildren: () => import('./components/news/news.module').then(m => m.NewsModule)
+        loadChildren: () => import('./modules/news/news.module').then(m => m.NewsModule)
       },
     ]
   },
@@ -44,10 +43,7 @@ const appRoutes: Routes = [
 ];
 
 @NgModule({
-  declarations: [],
-  imports: [
-    RouterModule.forRoot(appRoutes)
-  ],
-  exports: [RouterModule]
+  imports: [RouterModule.forRoot(routes)],
+  exports: [RouterModule],
 })
-export class AppRouting { }
+export class AppRouting {}
