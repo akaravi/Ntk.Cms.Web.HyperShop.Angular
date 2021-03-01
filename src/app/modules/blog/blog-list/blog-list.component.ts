@@ -19,7 +19,7 @@ export class BlogListComponent implements OnInit {
     if (category && category !== 'all') {
       const aaa = {
         PropertyName: 'LinkCategoryId',
-        IntValue1: +category,
+        Value: +category,
       };
       filteModelContent.Filters.push(aaa as FilterDataModel);
     }

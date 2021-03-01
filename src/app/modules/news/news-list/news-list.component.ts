@@ -32,14 +32,14 @@ export class NewsListComponent implements OnInit {
     if (category > 0) {
       const filterDataModel = new FilterDataModel();
       filterDataModel.PropertyName = 'LinkCategoryId';
-      filterDataModel.IntValue1 = category;
+      filterDataModel.Value = category;
       filteModelContent.Filters.push(filterDataModel);
     }
     if (tag > 0) {
       const filterDataModel = new FilterDataModel();
       filterDataModel.PropertyName = 'ContentTags';
-      filterDataModel.PropertyAnyName = 'LinkTagid';
-      filterDataModel.IntValue1 = tag;
+      filterDataModel.PropertyAnyName = 'LinkTagId';
+      filterDataModel.Value = tag;
       filteModelContent.Filters.push(filterDataModel);
     }
     this.newsContentService.ServiceGetAll(filteModelContent).subscribe(next => {

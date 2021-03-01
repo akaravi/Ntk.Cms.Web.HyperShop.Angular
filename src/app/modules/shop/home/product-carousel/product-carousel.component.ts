@@ -1,14 +1,13 @@
 import { Component, OnInit, EventEmitter, Output, Input } from '@angular/core';
 
-import {  SwiperDirective } from 'ngx-swiper-wrapper';
 import { SwiperConfigInterface } from 'ngx-swiper-wrapper';
-import { MatDialog } from '@angular/material';
 import { Router } from '@angular/router';
 import { ProductDialogComponent } from '../../products/product-dialog/product-dialog.component';
 import { CartService } from 'src/app/shared/services/cart.service';
 import { ProductService } from 'src/app/shared/services/product.service';
 import { WishlistService } from 'src/app/shared/services/wishlist.service';
 import { HyperShopContentModel } from 'ntk-cms-api';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-product-carousel',
@@ -23,7 +22,7 @@ export class ProductCarouselComponent implements OnInit {
 
   ngOnInit() {
   }
-  ngAfterViewInit(){
+  ngAfterViewInit() {
     this.config = {
       observer: true,
       slidesPerView: 5,
@@ -55,31 +54,31 @@ export class ProductCarouselComponent implements OnInit {
   }
 
 
-  public openProductDialog(product){
+  public openProductDialog(product) {
     let dialogRef = this.dialog.open(ProductDialogComponent, {
-        data: product,
-        panelClass: 'product-dialog',
+      data: product,
+      panelClass: 'product-dialog',
     });
     dialogRef.afterClosed().subscribe(product => {
-      if(product){
+      if (product) {
         this.router.navigate(['/products', product.id, product.Name]);
       }
     });
   }
 
-   // Add to cart
-   public addToCart(product: HyperShopContentModel,  quantity: number = 1) {
-    this.cartService.addToCart(product,quantity);
+  // Add to cart
+  public addToCart(product: HyperShopContentModel, quantity: number = 1) {
+    this.cartService.addToCart(product, quantity);
     console.log(product, quantity);
   }
 
-   // Add to wishlist
-   public addToWishlist(product: HyperShopContentModel) {
+  // Add to wishlist
+  public addToWishlist(product: HyperShopContentModel) {
     this.wishlistService.addToWishlist(product);
- }
+  }
 
-    // Add to compare
-    public addToCompare(product: HyperShopContentModel) {
-      this.productService.addToCompare(product);
-   }
+  // Add to compare
+  public addToCompare(product: HyperShopContentModel) {
+    this.productService.addToCompare(product);
+  }
 }

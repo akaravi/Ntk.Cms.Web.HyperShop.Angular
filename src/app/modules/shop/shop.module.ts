@@ -13,7 +13,7 @@ import { CommonModule } from '@angular/common';
 import { ShopRouting } from './shop.routing';
 import { SharedModule } from '../../shared/shared.module';
 import { SwiperModule } from 'ngx-swiper-wrapper';
-import { FlexLayoutModule } from '@angular/flex-layout';
+// import { FlexLayoutModule } from '@angular/flex-layout';
 import {NgxPaginationModule} from 'ngx-pagination';
 import { HomeTwoComponent } from './home-two/home-two.component';
 import { HomeThreeComponent } from './home-three/home-three.component';
@@ -61,9 +61,9 @@ import { HyperShopCategoryService, HyperShopContentService } from 'ntk-cms-api';
     SwiperModule,
     FormsModule,
     ReactiveFormsModule,
-    FlexLayoutModule,
+    // FlexLayoutModule,
     NgxPaginationModule,
-    NgxImageZoomModule.forRoot() // <-- Add this line
+    NgxImageZoomModule//.forRoot() // <-- Add this line
 
   ],
   exports: [

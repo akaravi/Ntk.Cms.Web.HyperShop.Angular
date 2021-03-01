@@ -43,11 +43,11 @@ export class BlogDetailsComponent implements OnInit {
     const filteModelContent = new FilterModel();
     const filterDataModel = new FilterDataModel();
     filterDataModel.PropertyName = 'LinkContentId';
-    filterDataModel.IntValue1 = id;
+    filterDataModel.Value = id;
     filteModelContent.Filters.push(filterDataModel);
     this.blogContentTagService.ServiceGetAll(filteModelContent).subscribe(next => {
       if (next.IsSuccess && next.ListItems.length > 0) {
-        let concat = next.ListItems.map(x => x.LinkTagid).reduce((g: any, LinkTagid: number) => {
+        let concat = next.ListItems.map(x => x.LinkTagId).reduce((g: any, LinkTagId: number) => {
           g += name;
           return g;
         }, '');
@@ -62,7 +62,7 @@ export class BlogDetailsComponent implements OnInit {
     const filteModelContent = new FilterModel();
     const filterDataModel = new FilterDataModel();
     filterDataModel.PropertyName = 'LinkContentId';
-    filterDataModel.IntValue1 = id;
+    filterDataModel.Value = id;
     filteModelContent.Filters.push(filterDataModel);
     this.blogCommentService.ServiceGetAll(filteModelContent).subscribe(next => {
       this.dataModelCommentResult = next;
@@ -75,7 +75,7 @@ export class BlogDetailsComponent implements OnInit {
     const filteModelContent = new FilterModel();
     const filterDataModel = new FilterDataModel();
     filterDataModel.PropertyName = 'Id';
-    filterDataModel.IntContainValues = ids;
+    filterDataModel.Values = ids;
 
     filteModelContent.Filters.push(filterDataModel);
     filteModelContent.SortType = EnumSortType.Random;

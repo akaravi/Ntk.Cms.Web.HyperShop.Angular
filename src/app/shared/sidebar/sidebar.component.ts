@@ -21,7 +21,7 @@ import { Router } from '@angular/router';
 })
 export class SidebarComponent implements OnInit {
   expanded: boolean;
-  @HostBinding('attr.aria-expanded') ariaExpanded = this.expanded;
+  @HostBinding('attr.aria-expanded') ariaExpanded ;
   @Input() item: SidenavMenu;
   @Input() depth: number;
 
@@ -29,6 +29,7 @@ export class SidebarComponent implements OnInit {
     if (this.depth === undefined) {
       this.depth = 0;
     }
+   this. ariaExpanded = this.expanded;
   }
 
   ngOnInit() {

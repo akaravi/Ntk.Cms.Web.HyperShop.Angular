@@ -2,11 +2,11 @@ import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 import { CartService } from 'src/app/shared/services/cart.service';
 import { ProductService } from 'src/app/shared/services/product.service';
 import { WishlistService } from 'src/app/shared/services/wishlist.service';
-import { MatDialog } from '@angular/material';
 import { Router } from '@angular/router';
 
 import { ProductDialogComponent } from '../product-dialog/product-dialog.component';
 import { HyperShopContentModel } from 'ntk-cms-api';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-product',

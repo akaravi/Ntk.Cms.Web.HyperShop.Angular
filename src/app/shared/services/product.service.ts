@@ -2,9 +2,9 @@ import { Injectable } from '@angular/core';
 import { Observable, BehaviorSubject, Subscriber } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 
-import { MatSnackBar } from '@angular/material';
 import { map } from 'rxjs/operators';
 import { HyperShopContentModel } from 'ntk-cms-api';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 
 

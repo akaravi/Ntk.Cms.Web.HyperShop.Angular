@@ -4,13 +4,13 @@ import { MainComponent } from './components/main/main.component';
 import { SplashComponent } from './pages/splash/splash.component';
 
 const routes: Routes = [
-  // {
-  //   path: '',
-  //   redirectTo: 'home',
-  //   pathMatch: 'full'
-  // },
   {
     path: '',
+    redirectTo: 'home',
+    pathMatch: 'full'
+  },
+  {
+    path: 'splash',
     component: SplashComponent
   },
   {
@@ -43,7 +43,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, { relativeLinkResolution: 'legacy' })],
   exports: [RouterModule],
 })
 export class AppRouting {}

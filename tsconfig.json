@@ -25,6 +25,7 @@
     "tslib": "1.10.0"
   },
   "angularCompilerOptions": {
-    "enableIvy": false
+    "enableIvy": false,
+    "disableTypeScriptVersionCheck": true
   }
 }

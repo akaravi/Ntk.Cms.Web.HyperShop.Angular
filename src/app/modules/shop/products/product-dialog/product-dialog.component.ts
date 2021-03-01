@@ -1,10 +1,10 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { ProductService } from 'src/app/shared/services/product.service';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 
 import { CartService } from 'src/app/shared/services/cart.service';
 import { Router } from '@angular/router';
 import { HyperShopContentModel } from 'ntk-cms-api';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-product-dialog',

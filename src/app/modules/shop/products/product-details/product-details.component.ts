@@ -1,12 +1,11 @@
 import { Component, OnInit, ViewChild, Output, EventEmitter } from '@angular/core';
-
 import { ProductService } from 'src/app/shared/services/product.service';
 import { ActivatedRoute, Params, Router } from '@angular/router';
-import { MatDialog } from '@angular/material';
 import { CartService } from 'src/app/shared/services/cart.service';
 import { SwiperDirective, SwiperConfigInterface } from 'ngx-swiper-wrapper';
 import { ProductZoomComponent } from './product-zoom/product-zoom.component';
 import { HyperShopContentModel, HyperShopContentService } from 'ntk-cms-api';
+import { MatDialog } from '@angular/material/dialog';
 
 
 @Component({
@@ -24,21 +23,17 @@ export class ProductDetailsComponent implements OnInit {
 
   public product: HyperShopContentModel = new HyperShopContentModel();
   public products: HyperShopContentModel[] = [];
-
   public image: any;
   public zoomImage: any;
-
   public counter: number = 1;
-
-  index: string;
-  bigProductImageIndex = 0;
-  loadingStatus = false;
   constructor(private route: ActivatedRoute,
     private hyperShopContentService: HyperShopContentService,
     public productsService: ProductService,
     public dialog: MatDialog,
     private router: Router,
     private cartService: CartService) {
+      this.loadingStatus = false;
+
     this.route.params.subscribe(params => {
 
       const id = params['id'];
@@ -56,7 +51,9 @@ export class ProductDetailsComponent implements OnInit {
 
     });
   }
-
+  loadingStatus: boolean ;
+  index: string;
+  bigProductImageIndex = 0;
   ngOnInit() {
 
 
