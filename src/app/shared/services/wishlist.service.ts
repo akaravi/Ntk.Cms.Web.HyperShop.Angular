@@ -29,7 +29,7 @@ export class WishlistService {
 
   // If item is aleready added In wishlist
   public hasProduct(product: HyperShopContentModel): boolean {
-    const item = products.find(item => item.id === product.Code);
+    const item = products.find(x => x.id === product.Code);
     return item !== undefined;
   }
 

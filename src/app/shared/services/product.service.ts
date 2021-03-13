@@ -25,7 +25,7 @@ export class ProductService {
   public observer: Subscriber<{}>;
 
   constructor(private httpClient: HttpClient, public snackBar: MatSnackBar) {
-    this.compareProducts.subscribe(products => products = products)
+    this.compareProducts.subscribe(products => products = products);
   }
 
   private products(): Observable<HyperShopContentModel[]> {

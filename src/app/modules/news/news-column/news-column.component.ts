@@ -15,7 +15,7 @@ export class NewsColumnComponent implements OnInit {
         this.tag = params.tag;
         this.category = params.id;
       }
-    )
+    );
   }
   category = 0;
   tag = 0;

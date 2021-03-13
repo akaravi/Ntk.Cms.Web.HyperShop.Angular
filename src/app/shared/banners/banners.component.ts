@@ -6,19 +6,17 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./banners.component.sass']
 })
 export class BannersComponent implements OnInit {
-
   @Input('banners') banners: Array<any> = [];
-
   constructor() { }
 
-  ngOnInit() {
+  ngOnInit(): void {
   }
 
-  public getBanner(index){
+  public getBanner(index): any {
     return this.banners[index];
   }
 
-  public getBgImage(index){
+  public getBgImage(index): any {
     let bgImage = {
       'background-image': index != null ? "url(" + this.banners[index].image + ")" : "url(https://via.placeholder.com/600x400/ff0000/fff/)"
     };

@@ -33,6 +33,8 @@
 
 ============================
 ng build --prod
+ng b --prod --aot=false --build-optimizer=false
+
 http-server -p 8080 -c-1 dist/<project-name>
 ============================
 ng add @angular/pwa --project ntk-cms-web-qwp

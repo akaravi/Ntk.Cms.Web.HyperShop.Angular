@@ -1,7 +1,7 @@
 import { Component, OnInit, HostBinding, Input } from '@angular/core';
 import { SidebarMenuService } from './sidebar-menu.service';
-import {animate, state, style, transition, trigger} from '@angular/animations';
-import {  SidenavMenu } from './sidebar-menu.model';
+import { animate, state, style, transition, trigger } from '@angular/animations';
+import { SidenavMenu } from './sidebar-menu.model';
 import { Router } from '@angular/router';
 
 
@@ -11,8 +11,8 @@ import { Router } from '@angular/router';
   styleUrls: ['./sidebar.component.scss'],
   animations: [
     trigger('indicatorRotate', [
-      state('collapsed', style({transform: 'rotate(0deg)'})),
-      state('expanded', style({transform: 'rotate(180deg)'})),
+      state('collapsed', style({ transform: 'rotate(0deg)' })),
+      state('expanded', style({ transform: 'rotate(180deg)' })),
       transition('expanded <=> collapsed',
         animate('225ms cubic-bezier(0.4,0.0,0.2,1)')
       ),
@@ -21,15 +21,15 @@ import { Router } from '@angular/router';
 })
 export class SidebarComponent implements OnInit {
   expanded: boolean;
-  @HostBinding('attr.aria-expanded') ariaExpanded ;
+  @HostBinding('attr.aria-expanded') ariaExpanded;
   @Input() item: SidenavMenu;
   @Input() depth: number;
 
-  constructor(private sidenavMenuService:SidebarMenuService, public router: Router) {
+  constructor(private sidenavMenuService: SidebarMenuService, public router: Router) {
     if (this.depth === undefined) {
       this.depth = 0;
     }
-   this. ariaExpanded = this.expanded;
+    this.ariaExpanded = this.expanded;
   }
 
   ngOnInit() {

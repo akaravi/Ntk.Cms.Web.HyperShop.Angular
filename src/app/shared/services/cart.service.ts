@@ -39,7 +39,7 @@ export class CartService {
     let item: CartItem | boolean = false;
     // If Products exist
     const hasItem = products.find((items, index) => {
-      if (items.product.id == product.Code) {
+      if (items.product.id === product.Code) {
         const qty = products[index].quantity + quantity;
         const stock = this.calculateStockCounts(products[index], quantity);
         if (qty != 0 && stock) {
