@@ -23,7 +23,7 @@ import { MatDialog } from '@angular/material/dialog';
   styleUrls: ['./product-carousel-three.component.sass'],
 })
 export class ProductCarouselThreeComponent implements OnInit, AfterViewInit {
-  @Output() onOpenProductDialog: EventEmitter<any> = new EventEmitter();
+  @Output() onOpenProductDialog: EventEmitter<any> = new EventEmitter<any>();
   @Input('product') product: Array<HyperShopContentModel> = [];
   public config: SwiperConfigInterface = {};
 

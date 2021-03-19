@@ -19,8 +19,8 @@ export class BannersFourComponent implements OnInit {
   }
 
   public getBgImage(index): any {
-    let bgImage = {
-      'background-image': index != null ? "url(" + this.banners[index].image + ")" : "url(https://via.placeholder.com/600x400/ff0000/fff/)"
+    const bgImage = {
+      'background-image': index != null ? 'url(' + this.banners[index].image + ')' : 'url(https://via.placeholder.com/600x400/ff0000/fff/)'
     };
     return bgImage;
   }

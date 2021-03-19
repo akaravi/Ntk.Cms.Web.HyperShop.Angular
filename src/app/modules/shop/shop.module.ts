@@ -14,7 +14,7 @@ import { ShopRouting } from './shop.routing';
 import { SharedModule } from '../../shared/shared.module';
 import { SwiperModule } from 'ngx-swiper-wrapper';
 // import { FlexLayoutModule } from '@angular/flex-layout';
-import {NgxPaginationModule} from 'ngx-pagination';
+import { NgxPaginationModule } from 'ngx-pagination';
 import { HomeTwoComponent } from './home-two/home-two.component';
 import { HomeThreeComponent } from './home-three/home-three.component';
 import { NgxImageZoomModule } from 'ngx-image-zoom';
@@ -63,7 +63,7 @@ import { HyperShopCategoryService, HyperShopContentService } from 'ntk-cms-api';
     ReactiveFormsModule,
     // FlexLayoutModule,
     NgxPaginationModule,
-    NgxImageZoomModule//.forRoot() // <-- Add this line
+    NgxImageZoomModule// .forRoot() // <-- Add this line
 
   ],
   exports: [
@@ -72,11 +72,11 @@ import { HyperShopCategoryService, HyperShopContentService } from 'ntk-cms-api';
 
   ],
 
-  entryComponents:[
+  entryComponents: [
     ProductDialogComponent,
     ProductZoomComponent
   ],
-  providers:[
+  providers: [
     HyperShopCategoryService,
     HyperShopContentService
   ]

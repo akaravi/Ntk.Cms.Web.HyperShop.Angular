@@ -35,7 +35,8 @@ export class CartService {
 
   // Add to cart
   public addToCart(product: HyperShopContentModel, quantity: number) {
-    let message, status;
+    let message='';
+    let status='';
     let item: CartItem | boolean = false;
     // If Products exist
     const hasItem = products.find((items, index) => {
@@ -68,12 +69,14 @@ export class CartService {
 
   // Calculate Product stock Counts
   public calculateStockCounts(product: CartItem, quantity): CartItem | Boolean {
-    let message, status;
+
     const qty = product.quantity + quantity;
     const stock = product.product.Count;
     if (stock < qty) {
       // this.toastrService.error('You can not add more items than available. In stock '+ stock +' items.');
-      this.snackBar.open('You can not choose more items than available. In stock ' + stock + ' items.', '×', { panelClass: 'error', verticalPosition: 'top', duration: 3000 });
+      this.snackBar.open('You can not choose more items than available. In stock ' + stock + ' items.', '×',
+        { panelClass: 'error', verticalPosition: 'top', duration: 3000 }
+      );
       return false
     }
     return true
@@ -103,7 +106,7 @@ export class CartService {
   // Update Cart Value
   public updateCartQuantity(product: HyperShopContentModel, quantity: number): CartItem | boolean {
     return products.find((items, index) => {
-      if (items.product.id == product.Code) {
+      if (items.product.id === product.Code) {
         const qty = products[index].quantity + quantity;
         const stock = this.calculateStockCounts(products[index], quantity);
         if (qty != 0 && stock)

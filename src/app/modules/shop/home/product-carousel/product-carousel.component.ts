@@ -1,4 +1,4 @@
-import { Component, OnInit, EventEmitter, Output, Input } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output, Input, AfterViewInit } from '@angular/core';
 
 import { SwiperConfigInterface } from 'ngx-swiper-wrapper';
 import { Router } from '@angular/router';
@@ -14,15 +14,21 @@ import { MatDialog } from '@angular/material/dialog';
   templateUrl: './product-carousel.component.html',
   styleUrls: ['./product-carousel.component.sass']
 })
-export class ProductCarouselComponent implements OnInit {
-  @Output() onOpenProductDialog: EventEmitter<any> = new EventEmitter();
+export class ProductCarouselComponent implements OnInit, AfterViewInit {
+  @Output() onOpenProductDialog: EventEmitter<any> = new EventEmitter<any>();
   @Input('product') product: Array<HyperShopContentModel> = [];
   public config: SwiperConfigInterface = {};
-  constructor(private dialog: MatDialog, private router: Router, private cartService: CartService, private productService: ProductService, private wishlistService: WishlistService) { }
+  constructor(
+    private dialog: MatDialog,
+    private router: Router,
+    private cartService: CartService,
+    private productService: ProductService,
+    private wishlistService: WishlistService
+  ) { }
 
-  ngOnInit() {
+  ngOnInit(): void {
   }
-  ngAfterViewInit() {
+  ngAfterViewInit(): void {
     this.config = {
       observer: true,
       slidesPerView: 5,
@@ -54,8 +60,8 @@ export class ProductCarouselComponent implements OnInit {
   }
 
 
-  public openProductDialog(product) {
-    let dialogRef = this.dialog.open(ProductDialogComponent, {
+  public openProductDialog(product): void {
+    const dialogRef = this.dialog.open(ProductDialogComponent, {
       data: product,
       panelClass: 'product-dialog',
     });
@@ -67,18 +73,18 @@ export class ProductCarouselComponent implements OnInit {
   }
 
   // Add to cart
-  public addToCart(product: HyperShopContentModel, quantity: number = 1) {
+  public addToCart(product: HyperShopContentModel, quantity: number = 1): void {
     this.cartService.addToCart(product, quantity);
     console.log(product, quantity);
   }
 
   // Add to wishlist
-  public addToWishlist(product: HyperShopContentModel) {
+  public addToWishlist(product: HyperShopContentModel): void {
     this.wishlistService.addToWishlist(product);
   }
 
   // Add to compare
-  public addToCompare(product: HyperShopContentModel) {
+  public addToCompare(product: HyperShopContentModel): void {
     this.productService.addToCompare(product);
   }
 }

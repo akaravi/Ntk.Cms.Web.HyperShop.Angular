@@ -45,7 +45,7 @@ export class HomeFourComponent implements OnInit {
 
   }
 
-  ngOnInit() {
+  ngOnInit():void {
     this.productService.getBanners()
     .subscribe(
       data => this.banners = data

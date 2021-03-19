@@ -1,6 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
-import { CoreModuleTagModel, CoreModuleTagService, EnumSortType, ErrorExceptionResult, FilterDataModel, FilterModel, NewsContentModel, NewsContentService } from 'ntk-cms-api';
+import {
+  CoreModuleTagModel,
+  CoreModuleTagService,
+  EnumSortType,
+  ErrorExceptionResult,
+  FilterDataModel,
+  FilterModel,
+  NewsContentModel,
+  NewsContentService
+} from 'ntk-cms-api';
 
 @Component({
   selector: 'app-news-column',
@@ -8,7 +17,11 @@ import { CoreModuleTagModel, CoreModuleTagService, EnumSortType, ErrorExceptionR
   styleUrls: ['./news-column.component.sass']
 })
 export class NewsColumnComponent implements OnInit {
-  constructor(private newsContentService: NewsContentService, private coreModuleTagService: CoreModuleTagService, private route: ActivatedRoute) {
+  constructor(
+    private newsContentService: NewsContentService,
+    private coreModuleTagService: CoreModuleTagService,
+    private route: ActivatedRoute
+  ) {
 
     this.route.params.subscribe(
       (params: Params) => {

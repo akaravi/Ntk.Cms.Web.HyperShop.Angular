@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, ViewChild, Output, EventEmitter, AfterViewInit } from '@angular/core';
 import { ProductService } from 'src/app/shared/services/product.service';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { CartService } from 'src/app/shared/services/cart.service';
@@ -13,10 +13,10 @@ import { MatDialog } from '@angular/material/dialog';
   templateUrl: './product-details.component.html',
   styleUrls: ['./product-details.component.sass']
 })
-export class ProductDetailsComponent implements OnInit {
+export class ProductDetailsComponent implements OnInit ,AfterViewInit{
 
   public config: SwiperConfigInterface = {};
-  @Output() onOpenProductDialog: EventEmitter<any> = new EventEmitter();
+  @Output() onOpenProductDialog: EventEmitter<any> = new EventEmitter<any>();
 
   @ViewChild('zoomViewer', { static: true }) zoomViewer;
   @ViewChild(SwiperDirective, { static: true }) directiveRef: SwiperDirective;
@@ -25,7 +25,7 @@ export class ProductDetailsComponent implements OnInit {
   public products: HyperShopContentModel[] = [];
   public image: any;
   public zoomImage: any;
-  public counter: number = 1;
+  public counter = 1;
   constructor(private route: ActivatedRoute,
     private hyperShopContentService: HyperShopContentService,
     public productsService: ProductService,
@@ -36,7 +36,7 @@ export class ProductDetailsComponent implements OnInit {
 
     this.route.params.subscribe(params => {
 
-      const id = params['id'];
+      const id = params.id;
       this.hyperShopContentService.ServiceGetOneMicroService(id).subscribe(
         (next) => {
           if (next.IsSuccess) {
@@ -62,7 +62,7 @@ export class ProductDetailsComponent implements OnInit {
   }
 
 
-  ngAfterViewInit() {
+  ngAfterViewInit(): void {
     this.config = {
       observer: true,
       slidesPerView: 3,
@@ -95,7 +95,7 @@ export class ProductDetailsComponent implements OnInit {
 
 
   public openProductDialog(product, bigProductImageIndex) {
-    let dialogRef = this.dialog.open(ProductZoomComponent, {
+    const dialogRef = this.dialog.open(ProductZoomComponent, {
       data: { product, index: bigProductImageIndex },
       panelClass: 'product-dialog',
     });
@@ -136,7 +136,7 @@ export class ProductDetailsComponent implements OnInit {
 
   // Add to cart
   public addToCart(product: HyperShopContentModel, quantity) {
-    if (quantity == 0) return false;
+    if (quantity === 0) return false;
     this.cartService.addToCart(product, parseInt(quantity));
   }
 
@@ -151,16 +151,15 @@ export class ProductDetailsComponent implements OnInit {
 
   public onMouseMove(e) {
     if (window.innerWidth >= 1280) {
-      var image, offsetX, offsetY, x, y, zoomer;
-      image = e.currentTarget;
-      offsetX = e.offsetX;
-      offsetY = e.offsetY;
-      x = offsetX / image.offsetWidth * 100;
-      y = offsetY / image.offsetHeight * 100;
-      zoomer = this.zoomViewer.nativeElement.children[0];
+      const image = e.currentTarget;
+      const offsetX = e.offsetX;
+      const offsetY = e.offsetY;
+      const x = offsetX / image.offsetWidth * 100;
+      const y = offsetY / image.offsetHeight * 100;
+      const zoomer = this.zoomViewer.nativeElement.children[0];
       if (zoomer) {
         zoomer.style.backgroundPosition = x + '% ' + y + '%';
-        zoomer.style.display = "block";
+        zoomer.style.display = 'block';
         zoomer.style.height = image.height + 'px';
         zoomer.style.width = image.width + 'px';
       }
@@ -168,7 +167,7 @@ export class ProductDetailsComponent implements OnInit {
   }
 
   public onMouseLeave(event) {
-    this.zoomViewer.nativeElement.children[0].style.display = "none";
+    this.zoomViewer.nativeElement.children[0].style.display = 'none';
   }
 
   public openZoomViewer() {

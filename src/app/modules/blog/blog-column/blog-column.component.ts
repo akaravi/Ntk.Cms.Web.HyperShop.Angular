@@ -1,5 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import { CoreModuleTagModel, CoreModuleTagService, EnumSortType, ErrorExceptionResult, FilterDataModel, FilterModel, BlogContentModel, BlogContentService } from 'ntk-cms-api';
+import {
+  CoreModuleTagModel,
+  CoreModuleTagService,
+  EnumSortType,
+  ErrorExceptionResult,
+  FilterDataModel,
+  FilterModel,
+  BlogContentModel,
+  BlogContentService
+} from 'ntk-cms-api';
 
 @Component({
   selector: 'app-blog-column',
@@ -9,7 +18,7 @@ import { CoreModuleTagModel, CoreModuleTagService, EnumSortType, ErrorExceptionR
 export class BlogColumnComponent implements OnInit {
 
 
-  constructor(private blogContentService: BlogContentService,private coreModuleTagService: CoreModuleTagService) { }
+  constructor(private blogContentService: BlogContentService, private coreModuleTagService: CoreModuleTagService) { }
   dataModelResult = new ErrorExceptionResult<BlogContentModel>();
   dataModelTagResult = new ErrorExceptionResult<CoreModuleTagModel>();
   ngOnInit() {
@@ -31,8 +40,8 @@ export class BlogColumnComponent implements OnInit {
   }
   dataTagGetAll(): void {
     const filteModelContent = new FilterModel();
-    filteModelContent.SortType=EnumSortType.Random;
-     this.coreModuleTagService.ServiceGetAll(filteModelContent).subscribe(next => {
+    filteModelContent.SortType = EnumSortType.Random;
+    this.coreModuleTagService.ServiceGetAll(filteModelContent).subscribe(next => {
       this.dataModelTagResult = next;
     })
   }

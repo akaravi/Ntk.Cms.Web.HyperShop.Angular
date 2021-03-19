@@ -82,12 +82,15 @@ export class ProductService {
 
   // Add to compare
   public addToCompare(product: HyperShopContentModel): HyperShopContentModel | boolean {
-    let message, status;
+    let message='';
+    let status='';
     let item: HyperShopContentModel | boolean = false;
     if (this.hasProduct(product)) {
       item = products.filter(item => item.id === product.Code)[0];
       const index = products.indexOf(item);
-      this.snackBar.open('The product  ' + product.Name + ' already added to comparison list.', '×', { panelClass: 'error', verticalPosition: 'top', duration: 3000 });
+      this.snackBar.open('The product  ' + product.Name + ' already added to comparison list.', '×',
+        { panelClass: 'error', verticalPosition: 'top', duration: 3000 }
+      );
 
     } else {
       if (products.length < 4)
@@ -113,7 +116,7 @@ export class ProductService {
   public getProductByCategory(category: string): Observable<HyperShopContentModel[]> {
     return this.products().pipe(map(items =>
       items.filter((item: HyperShopContentModel) => {
-        if (category == 'all')
+        if (category === 'all')
           return item
         else
           return item.Category === category;

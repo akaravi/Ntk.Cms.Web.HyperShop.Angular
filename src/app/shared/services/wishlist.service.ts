@@ -35,7 +35,8 @@ export class WishlistService {
 
   // Add to wishlist
   public addToWishlist(product: HyperShopContentModel): HyperShopContentModel | boolean {
-    let message, status;
+    let message='';
+    let status='';
     let item: HyperShopContentModel | boolean = false;
     if (this.hasProduct(product)) {
       item = products.filter(item => item.id === product.Code)[0];

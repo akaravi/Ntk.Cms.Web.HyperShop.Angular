@@ -30,8 +30,9 @@ export class AccessHelper {
         DeviceBrand: ''
       };
       return this.coreAuthService.ServiceGetTokenDevice(model).subscribe((next) => {
-        return next
-      });
+        return next;
+      })
+      ;
     }
   }
   AccessDeleteRow(model: ErrorExceptionResult<any>): boolean {

@@ -1,6 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
-import { CoreModuleTagModel, CoreModuleTagService, ErrorExceptionResult, FilterModel, NewsContentModel, NewsContentService, NewsContentTagService, EnumSortType, FilterDataModel, NewsCommentService, NewsCommentModel } from 'ntk-cms-api';
+import {
+  CoreModuleTagModel,
+   CoreModuleTagService,
+    ErrorExceptionResult,
+    FilterModel,
+    NewsContentModel, NewsContentService, NewsContentTagService, EnumSortType, FilterDataModel, NewsCommentService, NewsCommentModel } from 'ntk-cms-api';
 
 @Component({
   selector: 'app-news-details',
@@ -47,7 +52,7 @@ export class NewsDetailsComponent implements OnInit {
     filteModelContent.Filters.push(filterDataModel);
     this.newsContentTagService.ServiceGetAll(filteModelContent).subscribe(next => {
       if (next.IsSuccess && next.ListItems.length > 0) {
-        let concat = next.ListItems.map(x => x.LinkTagId).reduce((g: any, LinkTagId: number) => {
+        const concat = next.ListItems.map(x => x.LinkTagId).reduce((g: any, LinkTagId: number) => {
           g += name;
           return g;
         }, '');

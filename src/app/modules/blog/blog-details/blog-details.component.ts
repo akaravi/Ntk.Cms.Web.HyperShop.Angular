@@ -1,6 +1,18 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
-import { CoreModuleTagModel, CoreModuleTagService, ErrorExceptionResult, FilterModel, BlogContentModel, BlogContentService, BlogContentTagService, EnumSortType, FilterDataModel, BlogCommentService, BlogCommentModel } from 'ntk-cms-api';
+import {
+  CoreModuleTagModel,
+  CoreModuleTagService,
+  ErrorExceptionResult,
+  FilterModel,
+  BlogContentModel,
+  BlogContentService,
+  BlogContentTagService,
+  EnumSortType,
+  FilterDataModel,
+  BlogCommentService,
+  BlogCommentModel
+} from 'ntk-cms-api';
 
 @Component({
   selector: 'app-blog-details',
@@ -47,7 +59,7 @@ export class BlogDetailsComponent implements OnInit {
     filteModelContent.Filters.push(filterDataModel);
     this.blogContentTagService.ServiceGetAll(filteModelContent).subscribe(next => {
       if (next.IsSuccess && next.ListItems.length > 0) {
-        let concat = next.ListItems.map(x => x.LinkTagId).reduce((g: any, LinkTagId: number) => {
+        const concat = next.ListItems.map(x => x.LinkTagId).reduce((g: any, LinkTagId: number) => {
           g += name;
           return g;
         }, '');

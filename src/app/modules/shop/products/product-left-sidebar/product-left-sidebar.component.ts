@@ -110,7 +110,7 @@ export class ProductLeftSidebarComponent implements OnInit {
   // Update tags filter
   public updateTagFilters(tags: any[]) {
     this.tagsFilters = tags;
-    this.animation == 'fadeOut' ? this.fadeIn() : this.fadeOut(); // animation
+    this.animation === 'fadeOut' ? this.fadeIn() : this.fadeOut(); // animation
   }
 
 
@@ -118,7 +118,7 @@ export class ProductLeftSidebarComponent implements OnInit {
   // sorting type ASC / DESC / A-Z / Z-A etc.
   public onChangeSorting(val) {
     this.sortByOrder = val;
-    this.animation == 'fadeOut' ? this.fadeIn() : this.fadeOut(); // animation
+    this.animation === 'fadeOut' ? this.fadeIn() : this.fadeOut(); // animation
   }
 
   // Initialize filetr Items
@@ -145,7 +145,7 @@ export class ProductLeftSidebarComponent implements OnInit {
 
   public onPageChanged(event) {
     this.page = event;
-    this.allItems;
+    // this.allItems;
     window.scrollTo(0, 0);
   }
 

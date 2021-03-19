@@ -13,13 +13,19 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 })
 export class ProductDialogComponent implements OnInit {
 
-  public products           :   HyperShopContentModel[] = [];
-  public counter            :   number = 1;
-  public variantImage       :   any = '';
-  public selectedColor      :   any = '';
-  public selectedSize       :   any = '';
+  public products: HyperShopContentModel[] = [];
+  public counter = 1;
+  public variantImage: any = '';
+  public selectedColor: any = '';
+  public selectedSize: any = '';
 
-  constructor(private router: Router, public productsService: ProductService, private cartService: CartService, public dialogRef: MatDialogRef<ProductDialogComponent>, @Inject(MAT_DIALOG_DATA) public product: HyperShopContentModel) { }
+  constructor(
+    private router: Router,
+    public productsService: ProductService,
+    private cartService: CartService,
+    public dialogRef: MatDialogRef<ProductDialogComponent>,
+    @Inject(MAT_DIALOG_DATA) public product: HyperShopContentModel
+  ) { }
 
   ngOnInit() {
     this.productsService.getProducts().subscribe(product => this.products = product);
@@ -28,7 +34,7 @@ export class ProductDialogComponent implements OnInit {
 
 
   public addToCart(product: HyperShopContentModel, quantity) {
-    if (quantity == 0) return false;
+    if (quantity === 0) return false;
     this.cartService.addToCart(product, parseInt(quantity));
   }
 
@@ -41,15 +47,15 @@ export class ProductDialogComponent implements OnInit {
   }
 
   public decrement() {
-    if(this.counter >1){
-       this.counter -= 1;
+    if (this.counter > 1) {
+      this.counter -= 1;
     }
   }
 
-     // Add to cart
-     public buyNow() {
-      this.router.navigate(['/home/product', this.product.Code]);
-      this.close();
-   }
+  // Add to cart
+  public buyNow() {
+    this.router.navigate(['/home/product', this.product.Code]);
+    this.close();
+  }
 
 }

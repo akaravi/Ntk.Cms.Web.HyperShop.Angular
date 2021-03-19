@@ -36,7 +36,7 @@ export class HomeFiveComponent implements OnInit {
     subtitle: 'Sale up to 30%',
   }]
 
-  ngOnInit() {
+  ngOnInit(): void {
 
     this.cartService.getItems().subscribe(shoppingCartItems => this.shoppingCartItems = shoppingCartItems);
     this.productService.getProducts()
