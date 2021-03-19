@@ -8,7 +8,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DemoComponent } from './components/demo/demo.component';
 import { NgxSpinnerModule } from 'ngx-spinner';
-import { NgxImgZoomModule } from 'ngx-img-zoom';
 import { MainComponent } from './components/main/main.component';
 import { SharedModule } from './shared/shared.module';
 import { environment } from 'src/environments/environment';
@@ -18,6 +17,7 @@ import { ServiceWorkerModule } from '@angular/service-worker';
 import { AccessHelper } from './core/common/helper/accessHelper';
 import { SplashComponent } from './pages/splash/splash.component';
 import { AppRouting } from './app.routing';
+import { NgxImageZoomModule } from 'ngx-image-zoom';
 
 export function appInit(appConfigService: AppConfigService) {
   return () => appConfigService.load();
@@ -39,7 +39,7 @@ export function appInit(appConfigService: AppConfigService) {
     BrowserAnimationsModule,
     FormsModule,
     ReactiveFormsModule,
-    NgxImgZoomModule,
+    NgxImageZoomModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
 
   ],
