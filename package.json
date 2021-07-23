@@ -36,7 +36,7 @@
     "ngx-swiper-wrapper": "^10.0.0",
     "ntk-cms-api": "^1.0.270",
     "rxjs": "^6.6.6",
-    "swiper": "^6.4.15",
+    "swiper": "^6.5.1",
     "tslib": "^1.14.1",
     "zone.js": "^0.10.3"
   },
