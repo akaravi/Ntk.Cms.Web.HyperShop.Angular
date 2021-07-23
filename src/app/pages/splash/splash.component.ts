@@ -76,11 +76,9 @@ export class SplashComponent implements OnInit {
   //   });
   // }
   private DataCurrentSite(): void {
-    debugger;
     this.DataIntro();
     this.coreSiteService.ServiceCurrectSite().subscribe((next) => {
       this.dateModelCoreSite = next;
-      debugger;
       if (this.dateModelCoreSite.IsSuccess && this.dateModelCoreSite.Item.Id > 0) {
         this.DataIntro();
       }
