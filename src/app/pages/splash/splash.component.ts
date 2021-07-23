@@ -22,52 +22,65 @@ export class SplashComponent implements OnInit {
   constructor(private coreAuthService: CoreAuthService,
     private router: Router,
     private coreSiteService: CoreSiteService,
+    private accessHelper: AccessHelper,
     private webDesignerMainIntroService: WebDesignerMainIntroService,
     @Inject(DOCUMENT) private document: Document) {
     const splash = localStorage.getItem('splash');
     if (splash && splash.length > 0) {
-     // todo: karavi this.router.navigate(['home']);
+      // todo: karavi this.router.navigate(['home']);
     }
     this.dateModelTokenInfo = new ErrorExceptionResult<TokenInfoModel>();
   }
 
   loding = true;
   ngOnInit(): void {
-
-    this.DataTokenDevice();
-  }
-
-
-  private DataTokenDevice(): void {
-    const domain = this.document.location.hostname;
-    console.log('domain:', domain);
-    const model: TokenDeviceClientInfoDtoModel = {
-      SecurityKey: environment.cmsTokenConfig.SecurityKey,
-      ClientMACAddress: '',
-      NotificationId: '',
-      OSType: environment.cmsTokenConfig.OSType,
-      DeviceType: environment.cmsTokenConfig.DeviceType,
-      PackageName: environment.cmsTokenConfig.PackageName,
-      AppBuildVer: 0,
-      AppSourceVer: '',
-      Country: '',
-      LocationLat: '',
-      LocationLong: '',
-      SimCard: '',
-      Language: '',
-      DeviceBrand: ''
-    };
-    this.coreAuthService.ServiceGetTokenDevice(model).subscribe((next) => {
-      this.dateModelTokenInfo = next;
-      this.loding = false;
-      if (this.dateModelTokenInfo.IsSuccess) {
+    // this.DataTokenDevice();
+    const DeviceToken = this.coreAuthService.getDeviceToken();
+    if (DeviceToken && DeviceToken.length > 0) {
+      this.DataCurrentSite();
+    } else {
+      const ret = this.accessHelper.CheckTokenDevice().subscribe((nextToken) => {
         this.DataCurrentSite();
-      }
-    });
+      });
+    }
   }
+
+
+  // private DataTokenDevice(): void {
+  //   const domain = this.document.location.hostname;
+  //   console.log('domain:', domain);
+  //   const model: TokenDeviceClientInfoDtoModel = {
+  //     SecurityKey: environment.cmsTokenConfig.SecurityKey,
+  //     ClientMACAddress: '',
+  //     NotificationId: '',
+  //     OSType: environment.cmsTokenConfig.OSType,
+  //     DeviceType: environment.cmsTokenConfig.DeviceType,
+  //     PackageName: environment.cmsTokenConfig.PackageName,
+  //     AppBuildVer: 0,
+  //     AppSourceVer: '',
+  //     Country: '',
+  //     LocationLat: '',
+  //     LocationLong: '',
+  //     SimCard: '',
+  //     Language: '',
+  //     DeviceBrand: ''
+  //   };
+  //   debugger
+  //   this.coreAuthService.ServiceGetTokenDevice(model).subscribe((next) => {
+  //     debugger
+  //     this.dateModelTokenInfo = next;
+  //     this.loding = false;
+  //     if (this.dateModelTokenInfo.IsSuccess) {
+  //       this.DataCurrentSite();
+  //     }
+  //   });
+  // }
   private DataCurrentSite(): void {
+    debugger;
+    this.DataIntro();
     this.coreSiteService.ServiceCurrectSite().subscribe((next) => {
       this.dateModelCoreSite = next;
+      debugger;
       if (this.dateModelCoreSite.IsSuccess && this.dateModelCoreSite.Item.Id > 0) {
         this.DataIntro();
       }

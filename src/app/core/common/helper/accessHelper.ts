@@ -12,28 +12,29 @@ export class AccessHelper {
     const domain = this.document.location.hostname;
     console.log('domain:', domain);
     const DeviceToken = this.coreAuthService.getDeviceToken();
-    if (!DeviceToken || DeviceToken.length === 0) {
-      const model: TokenDeviceClientInfoDtoModel = {
-        SecurityKey: environment.cmsTokenConfig.SecurityKey,
-        ClientMACAddress: '',
-        NotificationId: '',
-        OSType: environment.cmsTokenConfig.OSType,
-        DeviceType: environment.cmsTokenConfig.DeviceType,
-        PackageName: environment.cmsTokenConfig.PackageName,
-        AppBuildVer: 0,
-        AppSourceVer: '',
-        Country: '',
-        LocationLat: '',
-        LocationLong: '',
-        SimCard: '',
-        Language: '',
-        DeviceBrand: ''
-      };
-      return this.coreAuthService.ServiceGetTokenDevice(model).subscribe((next) => {
-        return next;
-      })
-      ;
+    if (DeviceToken && DeviceToken.length > 0) {
+      return;
     }
+    const model: TokenDeviceClientInfoDtoModel = {
+      SecurityKey: environment.cmsTokenConfig.SecurityKey,
+      ClientMACAddress: '',
+      NotificationId: '',
+      OSType: environment.cmsTokenConfig.OSType,
+      DeviceType: environment.cmsTokenConfig.DeviceType,
+      PackageName: environment.cmsTokenConfig.PackageName,
+      AppBuildVer: 0,
+      AppSourceVer: '',
+      Country: '',
+      LocationLat: '',
+      LocationLong: '',
+      SimCard: '',
+      Language: '',
+      DeviceBrand: ''
+    };
+    return this.coreAuthService.ServiceGetTokenDevice(model).subscribe((next) => {
+      return next;
+    });
+
   }
   AccessDeleteRow(model: ErrorExceptionResult<any>): boolean {
     if (!model) { return false; }
