@@ -11,13 +11,14 @@ import { NgxSpinnerModule } from 'ngx-spinner';
 import { MainComponent } from './components/main/main.component';
 import { SharedModule } from './shared/shared.module';
 import { environment } from 'src/environments/environment';
-import { CoreAuthService, CoreSiteService, TokenDeviceClientInfoDtoModel, WebDesignerMainIntroService } from 'ntk-cms-api';
+import { CmsStore, CoreAuthService, CoreSiteService, TokenDeviceClientInfoDtoModel, WebDesignerMainIntroService } from 'ntk-cms-api';
 import { DOCUMENT, HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { AccessHelper } from './core/common/helper/accessHelper';
 import { SplashComponent } from './pages/splash/splash.component';
 import { AppRouting } from './app.routing';
 import { NgxImageZoomModule } from 'ngx-image-zoom';
+import { CmsStoreModule } from './core/reducers/cmsStore.module';
 
 export function appInit(appConfigService: AppConfigService) {
   return () => appConfigService.load();
@@ -36,14 +37,17 @@ export function appInit(appConfigService: AppConfigService) {
     HttpClientModule,
     NgxSpinnerModule,
     SharedModule,
+    CmsStoreModule.forRoot(),
     BrowserAnimationsModule,
     FormsModule,
     ReactiveFormsModule,
     NgxImageZoomModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
 
+
+
   ],
-  exports:[
+  exports: [
 
   ],
   providers: [
@@ -59,13 +63,13 @@ export function appInit(appConfigService: AppConfigService) {
       multi: true,
       deps: [AppConfigService]
     },
-    {provide: LocationStrategy, useClass: HashLocationStrategy}
+    { provide: LocationStrategy, useClass: HashLocationStrategy }
 
   ],
   bootstrap: [AppComponent]
 })
 export class AppModule {
-  constructor(private coreAuthService: CoreAuthService, @Inject(DOCUMENT) private document: Document, private accessHelper: AccessHelper) {
+  constructor(@Inject(CoreAuthService) private coreAuthService: CoreAuthService, @Inject(DOCUMENT) private document: Document, private accessHelper: AccessHelper) {
     // karavi:Important For Test To Local Service
     if (environment.cmsServerConfig.configApiServerPath && environment.cmsServerConfig.configApiServerPath.length > 0) {
       this.coreAuthService.setConfig(environment.cmsServerConfig.configApiServerPath);

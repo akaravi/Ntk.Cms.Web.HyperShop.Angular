@@ -8,6 +8,7 @@ import {
   CoreAuthService, CoreSiteService, CoreSiteModel, WebDesignerMainIntroService, WebDesignerMainIntroModel
 } from 'ntk-cms-api';
 import { AccessHelper } from 'src/app/core/common/helper/accessHelper';
+import { CmsStoreService } from 'src/app/core/reducers/cmsStore.service';
 import { environment } from 'src/environments/environment';
 
 @Component({
@@ -24,6 +25,7 @@ export class SplashComponent implements OnInit {
     private coreSiteService: CoreSiteService,
     private accessHelper: AccessHelper,
     private webDesignerMainIntroService: WebDesignerMainIntroService,
+    private cmsStoreService: CmsStoreService,
     @Inject(DOCUMENT) private document: Document) {
     const splash = localStorage.getItem('splash');
     if (splash && splash.length > 0) {
@@ -75,10 +77,10 @@ export class SplashComponent implements OnInit {
   //     }
   //   });
   // }
-  private DataCurrentSite(): void {
-    this.DataIntro();
+  DataCurrentSite(): void {
     this.coreSiteService.ServiceCurrectSite().subscribe((next) => {
       this.dateModelCoreSite = next;
+      this.cmsStoreService.setState({ toreSiteModelState: next.Item });
       if (this.dateModelCoreSite.IsSuccess && this.dateModelCoreSite.Item.Id > 0) {
         this.DataIntro();
       }
@@ -87,6 +89,7 @@ export class SplashComponent implements OnInit {
   private DataIntro(): void {
     this.webDesignerMainIntroService.ServiceGetAll(null).subscribe((next) => {
       this.dateModelWebDesignerMainIntro = next;
+      this.loading=false;
     });
   }
   onActionStart(): void {

@@ -2,12 +2,16 @@ import { DOCUMENT } from '@angular/common';
 import { Inject, Injectable } from '@angular/core';
 import { CoreAuthService, ErrorExceptionResult, TokenDeviceClientInfoDtoModel } from 'ntk-cms-api';
 import { environment } from 'src/environments/environment';
+import { CmsStoreService } from '../../reducers/cmsStore.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AccessHelper {
-  constructor(private coreAuthService: CoreAuthService, @Inject(DOCUMENT) private document: Document) { }
+  constructor(private coreAuthService: CoreAuthService,
+    private cmsStoreService: CmsStoreService,
+    @Inject(DOCUMENT) private document: Document
+    ) { }
   CheckTokenDevice(): any {
     const domain = this.document.location.hostname;
     console.log('domain:', domain);
@@ -32,6 +36,7 @@ export class AccessHelper {
       DeviceBrand: ''
     };
     return this.coreAuthService.ServiceGetTokenDevice(model).subscribe((next) => {
+      this.cmsStoreService.setState({ tokenInfoModelState: next.Item });
       return next;
     });
 
