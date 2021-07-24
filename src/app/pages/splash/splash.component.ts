@@ -32,7 +32,7 @@ export class SplashComponent implements OnInit {
     this.dateModelTokenInfo = new ErrorExceptionResult<TokenInfoModel>();
   }
 
-  loding = true;
+  loading = true;
   ngOnInit(): void {
     // this.DataTokenDevice();
     const DeviceToken = this.coreAuthService.getDeviceToken();
@@ -69,7 +69,7 @@ export class SplashComponent implements OnInit {
   //   this.coreAuthService.ServiceGetTokenDevice(model).subscribe((next) => {
   //     debugger
   //     this.dateModelTokenInfo = next;
-  //     this.loding = false;
+  //     this.loading = false;
   //     if (this.dateModelTokenInfo.IsSuccess) {
   //       this.DataCurrentSite();
   //     }
