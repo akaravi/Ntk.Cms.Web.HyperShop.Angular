@@ -12,7 +12,7 @@ export class CartComponent implements OnInit {
 
   public cartItems : Observable<CartItem[]> = of([]);
   public shoppingCartItems  : CartItem[] = [];
-
+  productsService: any;
   constructor(private cartService: CartService) { }
 
   ngOnInit() {
