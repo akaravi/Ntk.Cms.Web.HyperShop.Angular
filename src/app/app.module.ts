@@ -69,7 +69,7 @@ export function appInit(appConfigService: AppConfigService) {
   bootstrap: [AppComponent]
 })
 export class AppModule {
-  constructor(@Inject(CoreAuthService) private coreAuthService: CoreAuthService, @Inject(DOCUMENT) private document: Document, private accessHelper: AccessHelper) {
+  constructor(@Inject(CoreAuthService) private coreAuthService: CoreAuthService) {
     // karavi:Important For Test To Local Service
     if (environment.cmsServerConfig.configApiServerPath && environment.cmsServerConfig.configApiServerPath.length > 0) {
       this.coreAuthService.setConfig(environment.cmsServerConfig.configApiServerPath);
