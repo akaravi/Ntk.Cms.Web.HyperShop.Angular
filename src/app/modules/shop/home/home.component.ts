@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductService } from '../../../shared/services/product.service';
 
-import { HyperShopContentModel } from 'ntk-cms-api';
+import { CoreSiteModel, HyperShopContentModel } from 'ntk-cms-api';
+import { CmsStoreService } from 'src/app/core/reducers/cmsStore.service';
+import { AccessHelper } from 'src/app/core/common/helper/accessHelper';
 
 @Component({
   selector: 'app-home',
@@ -19,20 +21,36 @@ export class HomeComponent implements OnInit {
     { title: 'Massive sale', subtitle: 'Only for today', image: 'assets/images/carousel/banner5.jpg' }
   ];
 
-  constructor(private productService: ProductService) { }
+  constructor(
+    private productService: ProductService,
+    private cmsStoreService: CmsStoreService,
+    private accessHelper: AccessHelper,
+  ) {
+    debugger;
 
+    const storeSnapshot = this.cmsStoreService.getStateSnapshot();
+    if (storeSnapshot.coreSiteModelState) {
+      this.coreSiteModel = storeSnapshot.coreSiteModelState;
+    }
+    else {
+      debugger;
+      this.coreSiteModel =this.accessHelper.DataCurrentSite().Item;
+    }
+
+  }
+  coreSiteModel = new CoreSiteModel();
   ngOnInit() {
     this.productService.getBanners()
-    .subscribe(
-      data => this.banners = data
-    );
+      .subscribe(
+        data => this.banners = data
+      );
 
- this.productService.getProducts()
- .subscribe(
-   (product: HyperShopContentModel[]) => {
-     this.products = product
-   }
- )
+    this.productService.getProducts()
+      .subscribe(
+        (product: HyperShopContentModel[]) => {
+          this.products = product
+        }
+      )
 
   }
 

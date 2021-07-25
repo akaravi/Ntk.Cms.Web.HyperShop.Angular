@@ -15,6 +15,12 @@ http-server-spa dist/ntk-cms-web-qwp/ index.html 8080
 http-server -p 8080 -c-1 dist/ntk-cms-web-qwp
 ============================PWA
 
+=========================================Update all npm
+npm i -g npm-check-updates
+ncu -u
+npm install
+=========================================Update all npm
+
 ============================ method 1
 // Create a New Angular CLI Project with NativeScript Support
 npm install -g @angular/cli
@@ -55,4 +61,11 @@ export class GeolocationPage {
     this.loc = await Geolocation.getCurrentPosition();
   }
 }
+==================================TEST SITE
+09131180501
+test0501
+شناسه سایت
+91185
+شناسه اپ
+158
 ==================================

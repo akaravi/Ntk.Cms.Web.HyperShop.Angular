@@ -1,4 +1,5 @@
 import {
+  CoreSiteModel,
   ErrorExceptionResult,
   FilterModel,
   HyperShopCategoryService,
@@ -10,6 +11,8 @@ import { Component, OnInit } from '@angular/core';
 import { CartItem } from 'src/app/modals/cart-item';
 
 import { CartService } from '../../../shared/services/cart.service';
+import { CmsStoreService } from 'src/app/core/reducers/cmsStore.service';
+import { AccessHelper } from 'src/app/core/common/helper/accessHelper';
 
 @Component({
   selector: 'app-home-three',
@@ -23,8 +26,23 @@ export class HomeThreeComponent implements OnInit {
   constructor(
     // private productService: ProductService,
     private cartService: CartService,
-    private hyperShopContentService: HyperShopContentService
-  ) {}
+    private hyperShopContentService: HyperShopContentService,
+    private cmsStoreService: CmsStoreService,
+    private accessHelper: AccessHelper,
+  ) {
+    debugger;
+
+    const storeSnapshot = this.cmsStoreService.getStateSnapshot();
+    if (storeSnapshot.coreSiteModelState) {
+      this.coreSiteModel = storeSnapshot.coreSiteModelState;
+    }
+    else {
+      debugger;
+      this.coreSiteModel =this.accessHelper.DataCurrentSite().Item;
+    }
+
+  }
+  coreSiteModel = new CoreSiteModel();
 
   products: HyperShopContentModel[];
   public banners = [];
@@ -80,6 +98,7 @@ export class HomeThreeComponent implements OnInit {
   ];
 
   ngOnInit() {
+    debugger;
     this.cartService
       .getItems()
       .subscribe(

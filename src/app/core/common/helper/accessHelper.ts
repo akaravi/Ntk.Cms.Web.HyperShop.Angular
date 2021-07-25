@@ -1,17 +1,22 @@
 import { DOCUMENT } from '@angular/common';
 import { Inject, Injectable } from '@angular/core';
-import { CoreAuthService, ErrorExceptionResult, TokenDeviceClientInfoDtoModel } from 'ntk-cms-api';
+import { CoreAuthService, CoreSiteModel, CoreSiteService, ErrorExceptionResult, TokenDeviceClientInfoDtoModel, TokenInfoModel } from 'ntk-cms-api';
+import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { CmsStoreService } from '../../reducers/cmsStore.service';
+import { CmsToastrService } from '../../services/cmsToastr.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AccessHelper {
-  constructor(private coreAuthService: CoreAuthService,
+  constructor(
+    private coreAuthService: CoreAuthService,
+    private coreSiteService: CoreSiteService,
     private cmsStoreService: CmsStoreService,
+    private cmsToastrService: CmsToastrService,
     @Inject(DOCUMENT) private document: Document
-    ) { }
+  ) { }
   CheckTokenDevice(): any {
     const domain = this.document.location.hostname;
     console.log('domain:', domain);
@@ -38,8 +43,20 @@ export class AccessHelper {
     return this.coreAuthService.ServiceGetTokenDevice(model).subscribe((next) => {
       this.cmsStoreService.setState({ tokenInfoModelState: next.Item });
       return next;
-    });
+    },
+      (error) => {
+        this.cmsToastrService.typeError(error);
+      });
 
+  }
+  DataCurrentSite(): any {
+    return this.coreSiteService.ServiceCurrectSite().subscribe((next) => {
+      this.cmsStoreService.setState({ coreSiteModelState: next.Item });
+      return next;
+    },
+      (error) => {
+        this.cmsToastrService.typeError(error);
+      });
   }
   AccessDeleteRow(model: ErrorExceptionResult<any>): boolean {
     if (!model) { return false; }

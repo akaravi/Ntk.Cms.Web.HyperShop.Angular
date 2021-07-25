@@ -9,6 +9,7 @@ import {
 } from 'ntk-cms-api';
 import { AccessHelper } from 'src/app/core/common/helper/accessHelper';
 import { CmsStoreService } from 'src/app/core/reducers/cmsStore.service';
+import { CmsToastrService } from 'src/app/core/services/cmsToastr.service';
 import { environment } from 'src/environments/environment';
 
 @Component({
@@ -25,6 +26,7 @@ export class SplashComponent implements OnInit {
     private coreSiteService: CoreSiteService,
     private accessHelper: AccessHelper,
     private webDesignerMainIntroService: WebDesignerMainIntroService,
+    private cmsToastrService: CmsToastrService,
     private cmsStoreService: CmsStoreService,
     @Inject(DOCUMENT) private document: Document) {
     const splash = localStorage.getItem('splash');
@@ -34,7 +36,8 @@ export class SplashComponent implements OnInit {
     this.dateModelTokenInfo = new ErrorExceptionResult<TokenInfoModel>();
   }
 
-  loading = true;
+  loadingCurrentSite = true;
+  loadingIntro = true;
   ngOnInit(): void {
     // this.DataTokenDevice();
     const DeviceToken = this.coreAuthService.getDeviceToken();
@@ -78,22 +81,33 @@ export class SplashComponent implements OnInit {
   //   });
   // }
   DataCurrentSite(): void {
+    this.loadingCurrentSite=true;
     this.coreSiteService.ServiceCurrectSite().subscribe((next) => {
+      this.loadingCurrentSite=false;
       this.dateModelCoreSite = next;
-      this.cmsStoreService.setState({ toreSiteModelState: next.Item });
+      this.cmsStoreService.setState({ coreSiteModelState: next.Item });
       if (this.dateModelCoreSite.IsSuccess && this.dateModelCoreSite.Item.Id > 0) {
         this.DataIntro();
       }
+    },
+    (error) => {
+      this.cmsToastrService.typeError(error);
+      this.loadingCurrentSite=false;
     });
   }
   private DataIntro(): void {
+    this.loadingIntro=true;
     this.webDesignerMainIntroService.ServiceGetAll(null).subscribe((next) => {
       this.dateModelWebDesignerMainIntro = next;
-      this.loading=false;
+      this.loadingIntro=false;
+    },
+    (error) => {
+      this.cmsToastrService.typeError(error);
+      this.loadingIntro=false;
     });
   }
   onActionStart(): void {
     localStorage.setItem('splash', '1');
-    this.router.navigate(['home']);
+    this.router.navigate(['/home']);
   }
 }

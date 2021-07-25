@@ -1,11 +1,11 @@
 <div class="demo-wrapper">
-  <div *ngIf="loading" class="demo-header">
+  <div *ngIf="loadingCurrentSite" class="demo-header">
     <div class="container">
       <div class="demo-header-wrap" fxLayout='column' fxLayout.lt-md="column">
         <div fxFlex="100" fxFlex.gt-sm="40" class="left-panel">
           <div class="logo"><img src="assets/images/logo-white.png" alt=""> </div>
           <div class="text-intro">
-            <h1><br>در حال بارگزاری<br></h1>
+            <h1><br>در حال بارگزاری ...<br></h1>
           </div>
 
         </div>
@@ -39,7 +39,7 @@
       </div>
     </div>
   </div>
-  <div *ngIf="!loading && dateModelTokenInfo?.IsSuccess==false" class="likeUs sec-padding">
+  <div *ngIf="!loadingCurrentSite && dateModelTokenInfo?.IsSuccess==false" class="likeUs sec-padding">
     <div class="container">
       <div class="theme-features">
         <mat-card fxLayout="row" fxLayout.lt-sm="column" fxLayoutAlign="start start" class="p-0">
@@ -63,7 +63,7 @@
 
   <div class="footer">
     <div class="container">
-      <p>{{(dateModelCoreSite?.Item?.Copyright?.length>0?dateModelCoreSite?.Item?.Copyright.length:'Copyrights © 2020 by NTK co. All Rights Reserved.')}}  </p>
+      <p>{{(dateModelCoreSite?.Item?.Copyright?.length>0?dateModelCoreSite?.Item?.Copyright:'Copyrights © 2020 by NTK co. All Rights Reserved.')}}  </p>
     </div>
   </div>
 </div>

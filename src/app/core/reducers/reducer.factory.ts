@@ -2,6 +2,6 @@ import { CoreSiteModel, EnumModel, ErrorExceptionResult, TokenInfoModel } from '
 
 export interface ReducerCmsStore {
     tokenInfoModelState: TokenInfoModel;
-    toreSiteModelState: CoreSiteModel;
+    coreSiteModelState: CoreSiteModel;
     EnumRecordStatus: ErrorExceptionResult<EnumModel> ;
   }

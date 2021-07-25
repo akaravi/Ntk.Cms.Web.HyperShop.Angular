@@ -17,7 +17,7 @@ export const environment = {
     Pathdashboard: '/dashboard',
   },
   cmsTokenConfig: {
-    SecurityKey: 'AAAA', //site 91185 app:158
+    SecurityKey: 'AAAA', // site 91185 app:158
     ClientMACAddress: '',
     OSType: EnumOperatingSystemType.none,
     DeviceType: EnumDeviceType.WebSite,
