@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
+import { DemoComponent } from './components/demo/demo.component';
 import { MainComponent } from './pages/main/main.component';
 import { SplashComponent } from './pages/splash/splash.component';
 
@@ -12,6 +13,10 @@ const routes: Routes = [
   {
     path: 'splash',
     component: SplashComponent
+  },
+  {
+    path: 'demo',
+    component: DemoComponent
   },
   {
     path: '',
