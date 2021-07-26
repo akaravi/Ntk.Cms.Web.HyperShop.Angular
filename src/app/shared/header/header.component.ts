@@ -1,9 +1,9 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, Input, OnInit, ViewChild } from '@angular/core';
 
 import { CartItem } from 'src/app/modals/cart-item';
 import { CartService } from '../services/cart.service';
 import { SidebarMenuService } from '../sidebar/sidebar-menu.service';
-import { HyperShopContentModel } from 'ntk-cms-api';
+import { CoreSiteModel, HyperShopContentModel } from 'ntk-cms-api';
 
 @Component({
   selector: 'app-header',
@@ -11,6 +11,8 @@ import { HyperShopContentModel } from 'ntk-cms-api';
   styleUrls: ['./header.component.sass']
 })
 export class HeaderComponent implements OnInit {
+  @Input()
+  optionCoreSiteModel=new CoreSiteModel()
   public sidenavMenuItems:Array<any>;
 
   public currencies = ['USD', 'EUR'];

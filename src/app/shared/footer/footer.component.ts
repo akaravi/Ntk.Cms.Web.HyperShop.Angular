@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { CoreSiteModel } from 'ntk-cms-api';
 
 @Component({
   selector: 'app-footer',
@@ -6,7 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./footer.component.sass']
 })
 export class FooterComponent implements OnInit {
-
+  @Input()
+  optionCoreSiteModel=new CoreSiteModel()
   constructor() { }
 
   ngOnInit() {

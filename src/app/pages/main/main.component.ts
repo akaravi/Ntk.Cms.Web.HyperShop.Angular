@@ -5,7 +5,9 @@ import { CartService } from '../../shared/services/cart.service';
 import { Router, NavigationEnd } from '@angular/router';
 import { SidebarMenuService } from '../../shared/sidebar/sidebar-menu.service';
 import { SidenavMenu } from '../../shared/sidebar/sidebar-menu.model';
-import { HyperShopContentModel } from 'ntk-cms-api';
+import { CoreSiteModel, HyperShopContentModel } from 'ntk-cms-api';
+import { CmsStoreService } from 'src/app/core/reducers/cmsStore.service';
+import { AccessHelper } from 'src/app/core/common/helper/accessHelper';
 
 @Component({
   selector: 'app-main',
@@ -259,7 +261,20 @@ export class MainComponent implements OnInit {
     }
   ];
 
-  constructor(public router: Router, private cartService: CartService, public sidenavMenuService: SidebarMenuService) {
+    constructor(
+    public router: Router,
+    private cartService: CartService,
+    private cmsStoreService: CmsStoreService,
+    private accessHelper: AccessHelper,
+    public sidenavMenuService: SidebarMenuService,) {
+    const storeSnapshot = this.cmsStoreService.getStateSnapshot();
+    if (storeSnapshot && storeSnapshot.coreSiteModelState) {
+      this.coreSiteModel = storeSnapshot.coreSiteModelState;
+    }
+    else {
+      this.coreSiteModel = this.accessHelper.DataCurrentSite().Item;
+    }
+
     this.cartService.getItems().subscribe(next => this.shoppingCartItems = next);
     this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
@@ -267,6 +282,7 @@ export class MainComponent implements OnInit {
       }
     });
   }
+  coreSiteModel = new CoreSiteModel();
 
   ngOnInit() {
     this.currency = this.currencies[0];

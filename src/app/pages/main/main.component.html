@@ -63,13 +63,13 @@
 
       </mat-toolbar>
 
-  <app-header *ngIf="url == '/home/one' || url == '/home/three' && url != '/home/two' && url != '/home/four' || router.url.includes('pages') || router.url.includes('products') || router.url.includes('blog') || router.url.includes('product')"></app-header>
+  <app-header [optionCoreSiteModel]="coreSiteModel" *ngIf="url == '/home/one' || url == '/home/three' && url != '/home/two' && url != '/home/four' || router.url.includes('pages') || router.url.includes('products') || router.url.includes('blog') || router.url.includes('product')"></app-header>
   <app-header-two *ngIf="url == '/home/two'  "></app-header-two>
   <app-header-three *ngIf="url == '/home/four' || url == '/home/four'"></app-header-three>
   <app-header-four *ngIf="url == '/home/five' || url == '/home/five'"></app-header-four>
   <router-outlet></router-outlet>
 
-  <app-footer *ngIf="url != '/home/five'"></app-footer>
+  <app-footer [optionCoreSiteModel]="coreSiteModel"  *ngIf="url != '/home/five'"></app-footer>
   <app-footer-two *ngIf="url == '/home/five'"></app-footer-two>
 
 </mat-sidenav-container>

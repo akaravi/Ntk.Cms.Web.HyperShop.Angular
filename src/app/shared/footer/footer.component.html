@@ -39,18 +39,18 @@
 
           <div fxFlex="100" fxFlex.gt-sm="23" fxFlex.sm="50" ngClass.sm="mt-2" ngClass.xs="mt-2" class="footer-widget subscribe-widget">
             <div class="title">
-              <h5>Contact Us</h5>
+              <h5>تماس با ما</h5>
             </div>
             <div fxLayout="row" class="tel-box">
               <div class="icon"><i class="fa fa-map-marker"></i></div>
               <div class="text">
-                <p>Apple St, New York, NY 10012, USA</p>
+                <p> {{optionCoreSiteModel?.AboutUsAddress}}</p>
               </div>
             </div>
             <div fxLayout="row" class="tel-box">
               <div class="icon"><i class="fa fa-phone"></i></div>
               <div class="text">
-                <p>( 018) 65 524 8503  /  (125) 954 7854</p>
+                <p>{{optionCoreSiteModel?.AboutUsTel}} /  {{optionCoreSiteModel?.AboutUsEmail}}</p>
               </div>
             </div>
             <div fxLayout="row" class="tel-box">
@@ -61,10 +61,10 @@
             </div>
 
             <ul fxLayout="row" class="social list-inline">
-              <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-              <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-              <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-              <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+              <li><a href="{{optionCoreSiteModel?.AboutUsLinkFacebook}}"><i class="fa fa-facebook"></i></a></li>
+              <li><a href="{{optionCoreSiteModel?.AboutUsLinklinkedin}}"><i class="fa fa-linkedin"></i></a></li>
+              <li><a href="{{optionCoreSiteModel?.AboutUsLinkTwitter}}"><i class="fa fa-twitter"></i></a></li>
+              <li><a href="{{optionCoreSiteModel?.AboutUsLinkGooglePlus}}"><i class="fa fa-google-plus"></i></a></li>
             </ul>
           </div>
 

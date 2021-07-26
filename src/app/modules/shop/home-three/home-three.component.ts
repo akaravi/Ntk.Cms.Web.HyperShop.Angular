@@ -27,8 +27,7 @@ export class HomeThreeComponent implements OnInit {
   constructor(
     private cartService: CartService,
     private hyperShopContentService: HyperShopContentService,
-    private cmsStoreService: CmsStoreService,
-    private accessHelper: AccessHelper,
+
     private router: Router,
   ) {
     const splash = localStorage.getItem('splash');
@@ -36,17 +35,9 @@ export class HomeThreeComponent implements OnInit {
       this.router.navigate(['splash']);
     }
 
-    const storeSnapshot = this.cmsStoreService.getStateSnapshot();
-    if (storeSnapshot && storeSnapshot.coreSiteModelState) {
-      this.coreSiteModel = storeSnapshot.coreSiteModelState;
-    }
-    else {
-      debugger;
-      this.coreSiteModel = this.accessHelper.DataCurrentSite().Item;
-    }
+
 
   }
-  coreSiteModel = new CoreSiteModel();
 
   products: HyperShopContentModel[];
   public banners = [];

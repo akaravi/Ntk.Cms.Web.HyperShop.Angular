@@ -13,15 +13,13 @@ import { HomeFiveComponent } from './home-five/home-five.component';
 const routes: Routes = [
   { path: '', component: HomeThreeComponent },
 
-  { path: 'one', component: HomeComponent },
-  { path: 'two', component: HomeTwoComponent },
-  { path: 'three', component: HomeThreeComponent },
-  { path: 'four', component: HomeFourComponent },
-  { path: 'five', component: HomeFiveComponent },
+  { path: 'home/one', component: HomeComponent },
+  { path: 'home/two', component: HomeTwoComponent },
+  { path: 'home/three', component: HomeThreeComponent },
+  { path: 'home/four', component: HomeFourComponent },
+  { path: 'home/five', component: HomeFiveComponent },
   { path: 'products/:category', component: ProductLeftSidebarComponent },
   { path: 'product/:id', component: ProductDetailsComponent }
-
-
 ];
 
 
