@@ -3,7 +3,7 @@
             <div *ngFor="let product of product" class="swiper-slide">
                 <mat-card fxLayout="column">
                     <div class="product-img">
-                        <a class="product-link" [routerLink]="['/home/product', product.Code]">
+                        <a class="product-link" [routerLink]="['/product', product.Code]">
                           <img [src]="product.Image" alt="">
                        </a>
                     </div>

@@ -63,7 +63,7 @@ export class MainComponent implements OnInit {
     {
       displayName: 'Products',
       iconName: 'feedback',
-      route: '/home/products/all'
+      route: '/products/all'
     },
     {
       displayName: 'Shop',

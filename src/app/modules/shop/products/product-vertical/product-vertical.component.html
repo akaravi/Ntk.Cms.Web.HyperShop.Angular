@@ -8,10 +8,10 @@
               <ul class="product-list">
                 <li *ngFor="let product of products | slice:0:3 " fxLayout="row">
                   <div class="media-image">
-                    <a [routerLink]="['/home/product', product.Code]"><img [src]="product.Image" class="small" alt=""> </a>
+                    <a [routerLink]="['/product', product.Code]"><img [src]="product.Image" class="small" alt=""> </a>
                   </div>
                   <div class="media-body">
-                    <a [routerLink]="['/home/product', product.Code]"><span>{{product.Name}}</span></a>
+                    <a [routerLink]="['/product', product.Code]"><span>{{product.Name}}</span></a>
                     <div class="stars">
                         <mat-icon class="mat-icon-xs mat-icon material-icons ng-star-inserted">star_rate</mat-icon>
                         <mat-icon class="mat-icon-xs mat-icon material-icons ng-star-inserted">star_rate</mat-icon>
@@ -33,10 +33,10 @@
                 <ul class="product-list">
                   <li *ngFor="let product of products | slice:6:9 " fxLayout="row">
                     <div class="media-image">
-                      <a [routerLink]="['/home/product', product.Code]"><img [src]="product.Image" class="small" alt=""> </a>
+                      <a [routerLink]="['/product', product.Code]"><img [src]="product.Image" class="small" alt=""> </a>
                     </div>
                     <div class="media-body">
-                      <a [routerLink]="['/home/product', product.Code]"><span>{{product.Name}}</span></a>
+                      <a [routerLink]="['/product', product.Code]"><span>{{product.Name}}</span></a>
                       <div class="stars">
                           <mat-icon class="mat-icon-xs mat-icon material-icons ng-star-inserted">star_rate</mat-icon>
                           <mat-icon class="mat-icon-xs mat-icon material-icons ng-star-inserted">star_rate</mat-icon>
@@ -58,10 +58,10 @@
                   <ul class="product-list">
                     <li *ngFor="let product of products | slice:9:12 " fxLayout="row">
                       <div class="media-image">
-                        <a ><img [routerLink]="['/home/product', product.Code]" [src]="product.Image" class="small" alt=""> </a>
+                        <a ><img [routerLink]="['/product', product.Code]" [src]="product.Image" class="small" alt=""> </a>
                       </div>
                       <div class="media-body">
-                       <a [routerLink]="['/home/product', product.Code]"><span>{{product.Name}}</span></a>
+                       <a [routerLink]="['/product', product.Code]"><span>{{product.Name}}</span></a>
                         <div class="stars">
                             <mat-icon class="mat-icon-xs mat-icon material-icons ng-star-inserted">star_rate</mat-icon>
                             <mat-icon class="mat-icon-xs mat-icon material-icons ng-star-inserted">star_rate</mat-icon>

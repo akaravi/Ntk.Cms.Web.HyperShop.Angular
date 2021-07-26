@@ -8,7 +8,7 @@
         <a mat-menu-item [routerLink]="['/home/four']" routerLinkActive="router-link-active">Home-4</a>
         <a mat-menu-item [routerLink]="['/home/five']" routerLinkActive="router-link-active">Home-5</a>
     </mat-menu>
-      <a [routerLink]="['/home/products/all']" routerLinkActive="router-link-active"  mat-button class="mat-button">Products</a>
+      <a [routerLink]="['/products/all']" routerLinkActive="router-link-active"  mat-button class="mat-button">Products</a>
       <a  mat-button [matMenuTriggerFor]="shop" class="mat-button" (click)="openMegaMenu()">Shop<mat-icon class="caret">arrow_drop_down</mat-icon></a>
       <mat-menu #shop="matMenu" [overlapTrigger]="false" class="app-dropdown mega-menu">
           <div fxLayout="row wrap">

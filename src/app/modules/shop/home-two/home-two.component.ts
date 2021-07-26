@@ -4,6 +4,7 @@ import { CartItem } from 'src/app/modals/cart-item';
 import { ProductService } from '../../../shared/services/product.service';
 import { CartService } from '../../../shared/services/cart.service';
 import { HyperShopContentModel } from 'ntk-cms-api';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home-two',
@@ -17,7 +18,7 @@ export class HomeTwoComponent implements OnInit {
   public banners = [];
 
   shoppingCartItems: CartItem[] = [];
-  wishlistItems  :   HyperShopContentModel[] = [];
+  wishlistItems: HyperShopContentModel[] = [];
 
   public featuredProducts: Array<HyperShopContentModel>;
   public onSaleProducts: Array<HyperShopContentModel>;
@@ -32,20 +33,29 @@ export class HomeTwoComponent implements OnInit {
     { title: 'Massive sale', subtitle: 'Only for today', image: 'assets/images/carousel/banner5.jpg' }
   ];
 
-  constructor(private productService: ProductService, private cartService: CartService) { }
+  constructor(
+    private productService: ProductService,
+    private cartService: CartService,
+    private router: Router,
+  ) {
+    const splash = localStorage.getItem('splash');
+    if (!splash || splash.length == 0) {
+      this.router.navigate(['splash']);
+    }
+  }
 
-  ngOnInit():void {
+  ngOnInit(): void {
     this.cartService.getItems().subscribe(shoppingCartItems => this.shoppingCartItems = shoppingCartItems);
     this.productService.getProducts()
-    .subscribe(
-      (product: HyperShopContentModel[]) => {
-        this.products = product;
-      }
-    )
+      .subscribe(
+        (product: HyperShopContentModel[]) => {
+          this.products = product;
+        }
+      )
     this.productService.getBanners()
-    .subscribe(
-      data => this.banners = data
-    );
+      .subscribe(
+        data => this.banners = data
+      );
   }
 
 

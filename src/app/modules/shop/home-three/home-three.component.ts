@@ -13,6 +13,7 @@ import { CartItem } from 'src/app/modals/cart-item';
 import { CartService } from '../../../shared/services/cart.service';
 import { CmsStoreService } from 'src/app/core/reducers/cmsStore.service';
 import { AccessHelper } from 'src/app/core/common/helper/accessHelper';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home-three',
@@ -24,21 +25,24 @@ export class HomeThreeComponent implements OnInit {
   dataModelContentResult: ErrorExceptionResult<HyperShopContentModel> = new ErrorExceptionResult<HyperShopContentModel>();
   loadingStatus = false;
   constructor(
-    // private productService: ProductService,
     private cartService: CartService,
     private hyperShopContentService: HyperShopContentService,
     private cmsStoreService: CmsStoreService,
     private accessHelper: AccessHelper,
+    private router: Router,
   ) {
-    debugger;
+    const splash = localStorage.getItem('splash');
+    if (!splash || splash.length == 0) {
+      this.router.navigate(['splash']);
+    }
 
     const storeSnapshot = this.cmsStoreService.getStateSnapshot();
-    if (storeSnapshot&&storeSnapshot.coreSiteModelState) {
+    if (storeSnapshot && storeSnapshot.coreSiteModelState) {
       this.coreSiteModel = storeSnapshot.coreSiteModelState;
     }
     else {
       debugger;
-      this.coreSiteModel =this.accessHelper.DataCurrentSite().Item;
+      this.coreSiteModel = this.accessHelper.DataCurrentSite().Item;
     }
 
   }

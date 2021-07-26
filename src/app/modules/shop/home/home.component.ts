@@ -4,6 +4,7 @@ import { ProductService } from '../../../shared/services/product.service';
 import { CoreSiteModel, HyperShopContentModel } from 'ntk-cms-api';
 import { CmsStoreService } from 'src/app/core/reducers/cmsStore.service';
 import { AccessHelper } from 'src/app/core/common/helper/accessHelper';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -25,16 +26,19 @@ export class HomeComponent implements OnInit {
     private productService: ProductService,
     private cmsStoreService: CmsStoreService,
     private accessHelper: AccessHelper,
+    private router: Router,
   ) {
-    debugger;
-
+    const splash = localStorage.getItem('splash');
+    if (!splash || splash.length == 0) {
+      this.router.navigate(['splash']);
+    }
     const storeSnapshot = this.cmsStoreService.getStateSnapshot();
     if (storeSnapshot && storeSnapshot.coreSiteModelState) {
       this.coreSiteModel = storeSnapshot.coreSiteModelState;
     }
     else {
       debugger;
-      this.coreSiteModel =this.accessHelper.DataCurrentSite().Item;
+      this.coreSiteModel = this.accessHelper.DataCurrentSite().Item;
     }
 
   }

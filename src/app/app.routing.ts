@@ -4,17 +4,17 @@ import { MainComponent } from './components/main/main.component';
 import { SplashComponent } from './pages/splash/splash.component';
 
 const routes: Routes = [
-  {
-    path: '',
-    redirectTo: 'splash',
-    pathMatch: 'full'
-  },
+  // {
+  //   path: '',
+  //   redirectTo: 'splash',
+  //   pathMatch: 'full'
+  // },
   {
     path: 'splash',
     component: SplashComponent
   },
   {
-    path: 'home',
+    path: '',
     component: MainComponent,
     children: [
       {
@@ -24,7 +24,6 @@ const routes: Routes = [
       {
         path: 'pages',
         loadChildren: () => import('./pages/pages.module').then(m => m.PagesModule)
-
       },
       {
         path: 'blog',
@@ -38,7 +37,7 @@ const routes: Routes = [
   },
   {
     path: '**',
-    redirectTo: 'home'
+    redirectTo: ''
   }
 ];
 
