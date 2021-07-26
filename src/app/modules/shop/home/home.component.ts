@@ -29,7 +29,7 @@ export class HomeComponent implements OnInit {
     debugger;
 
     const storeSnapshot = this.cmsStoreService.getStateSnapshot();
-    if (storeSnapshot.coreSiteModelState) {
+    if (storeSnapshot && storeSnapshot.coreSiteModelState) {
       this.coreSiteModel = storeSnapshot.coreSiteModelState;
     }
     else {
