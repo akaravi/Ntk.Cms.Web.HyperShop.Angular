@@ -1,5 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
+import { CoreSiteService } from 'ntk-cms-api';
+import { CmsStoreService } from '../../reducers/cmsStore.service';
+import { CmsToastrService } from '../../services/cmsToastr.service';
 
 @Injectable({
   providedIn: 'root',
@@ -7,7 +10,9 @@ import { Router } from '@angular/router';
 export class PublicHelper {
   constructor(
     private router: Router,
-
+    private coreSiteService: CoreSiteService,
+    private cmsStoreService: CmsStoreService,
+    private cmsToastrService: CmsToastrService,
   ) { }
 
 
@@ -23,5 +28,13 @@ export class PublicHelper {
   RecordStatus(model): string {
     return (this.RecordStatus)[model];
   }
-
+  DataCurrentSite(): any {
+    return this.coreSiteService.ServiceCurrectSite().subscribe((next) => {
+      this.cmsStoreService.setState({ coreSiteModelState: next.Item });
+      return next;
+    },
+      (error) => {
+        this.cmsToastrService.typeError(error);
+      });
+  }
 }

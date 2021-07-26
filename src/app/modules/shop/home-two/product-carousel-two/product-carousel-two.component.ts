@@ -7,7 +7,7 @@ import { Router } from '@angular/router';
 import { ProductDialogComponent } from '../../products/product-dialog/product-dialog.component';
 import { SwiperDirective } from 'ngx-swiper-wrapper';
 import { SwiperConfigInterface } from 'ngx-swiper-wrapper';
-import { HyperShopContentModel } from 'ntk-cms-api';
+import { CoreSiteModel, HyperShopContentModel } from 'ntk-cms-api';
 import { MatDialog } from '@angular/material/dialog';
 
 @Component({
@@ -16,7 +16,9 @@ import { MatDialog } from '@angular/material/dialog';
   styleUrls: ['./product-carousel-two.component.sass']
 })
 export class ProductCarouselTwoComponent implements OnInit, AfterViewInit {
-  @Output() onOpenProductDialog: EventEmitter<any> = new EventEmitter();
+  @Input()
+  optionCoreSiteModel=new CoreSiteModel();
+    @Output() onOpenProductDialog: EventEmitter<any> = new EventEmitter();
   @Input('product') product: Array<HyperShopContentModel> = [];
   public config: SwiperConfigInterface = {};
 

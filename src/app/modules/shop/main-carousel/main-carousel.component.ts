@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, AfterViewInit } from '@angular/core';
 import { SwiperConfigInterface, SwiperPaginationInterface } from 'ngx-swiper-wrapper';
+import { CoreSiteModel } from 'ntk-cms-api';
 
 @Component({
   selector: 'app-main-carousel',
@@ -7,7 +8,8 @@ import { SwiperConfigInterface, SwiperPaginationInterface } from 'ngx-swiper-wra
   styleUrls: ['./main-carousel.component.sass']
 })
 export class MainCarouselComponent implements OnInit , AfterViewInit {
-
+  @Input()
+  optionCoreSiteModel=new CoreSiteModel();
   @Input('slides') slides: Array<any> = [];
 
   public config: SwiperConfigInterface = {};

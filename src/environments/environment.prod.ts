@@ -9,6 +9,7 @@ export const environment = {
     configRouteUploadFileContent: 'https://apicms.ir/api/v1/FileContent/upload/',
   },
   cmsUiConfig : {
+    theme:1,
     Pathlogin: '/auth/login',
     Pathlogout: '/auth/logout',
     PathRegistery: '/auth/registery',

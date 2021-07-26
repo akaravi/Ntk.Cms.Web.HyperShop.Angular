@@ -1,9 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ProductService } from '../../../shared/services/product.service';
 import { CartService } from '../../../shared/services/cart.service';
 import { CartItem } from 'src/app/modals/cart-item';
 
-import { HyperShopContentModel } from 'ntk-cms-api';
+import { CoreSiteModel, HyperShopContentModel } from 'ntk-cms-api';
 
 @Component({
   selector: 'app-home-five',
@@ -11,6 +11,8 @@ import { HyperShopContentModel } from 'ntk-cms-api';
   styleUrls: ['./home-five.component.sass']
 })
 export class HomeFiveComponent implements OnInit {
+  @Input()
+  optionCoreSiteModel=new CoreSiteModel();
 
   constructor(private productService: ProductService, private cartService: CartService) { }
   products: HyperShopContentModel[];

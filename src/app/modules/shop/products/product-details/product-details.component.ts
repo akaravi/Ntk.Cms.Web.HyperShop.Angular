@@ -1,10 +1,10 @@
-import { Component, OnInit, ViewChild, Output, EventEmitter, AfterViewInit } from '@angular/core';
+import { Component, OnInit, ViewChild, Output, EventEmitter, AfterViewInit, Input } from '@angular/core';
 import { ProductService } from 'src/app/shared/services/product.service';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { CartService } from 'src/app/shared/services/cart.service';
 import { SwiperDirective, SwiperConfigInterface } from 'ngx-swiper-wrapper';
 import { ProductZoomComponent } from './product-zoom/product-zoom.component';
-import { HyperShopContentModel, HyperShopContentService } from 'ntk-cms-api';
+import { CoreSiteModel, HyperShopContentModel, HyperShopContentService } from 'ntk-cms-api';
 import { MatDialog } from '@angular/material/dialog';
 
 
@@ -14,6 +14,8 @@ import { MatDialog } from '@angular/material/dialog';
   styleUrls: ['./product-details.component.sass']
 })
 export class ProductDetailsComponent implements OnInit ,AfterViewInit{
+  @Input()
+  optionCoreSiteModel=new CoreSiteModel();
 
   public config: SwiperConfigInterface = {};
   @Output() onOpenProductDialog: EventEmitter<any> = new EventEmitter<any>();

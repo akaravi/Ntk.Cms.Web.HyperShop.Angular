@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { HyperShopContentModel } from 'ntk-cms-api';
+import { CoreSiteModel, HyperShopContentModel } from 'ntk-cms-api';
 import { ProductService } from 'src/app/shared/services/product.service';
 
 
@@ -9,10 +9,12 @@ import { ProductService } from 'src/app/shared/services/product.service';
   styleUrls: ['./product-vertical.component.sass']
 })
 export class ProductVerticalComponent implements OnInit {
+  @Input()
+  optionCoreSiteModel = new CoreSiteModel();
 
- @Input() products: HyperShopContentModel[];
+  @Input() products: HyperShopContentModel[];
 
-  constructor(private productService: ProductService ) { }
+  constructor(private productService: ProductService) { }
 
   ngOnInit() {
     // this.productService.getProducts()

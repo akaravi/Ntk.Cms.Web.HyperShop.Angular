@@ -1,9 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 import { ProductService } from '../../../shared/services/product.service';
 import { CartItem } from 'src/app/modals/cart-item';
 import { CartService } from '../../../shared/services/cart.service';
-import { HyperShopContentModel } from 'ntk-cms-api';
+import { CoreSiteModel, HyperShopContentModel } from 'ntk-cms-api';
 
 
 
@@ -13,6 +13,9 @@ import { HyperShopContentModel } from 'ntk-cms-api';
   styleUrls: ['./home-four.component.sass']
 })
 export class HomeFourComponent implements OnInit {
+  @Input()
+  optionCoreSiteModel=new CoreSiteModel();
+
   public banners = [];
   public currencies = ['USD', 'EUR'];
   public currency:any;

@@ -5,7 +5,7 @@ import { WishlistService } from 'src/app/shared/services/wishlist.service';
 import { Router } from '@angular/router';
 
 import { ProductDialogComponent } from '../product-dialog/product-dialog.component';
-import { HyperShopContentModel } from 'ntk-cms-api';
+import { CoreSiteModel, HyperShopContentModel } from 'ntk-cms-api';
 import { MatDialog } from '@angular/material/dialog';
 
 @Component({
@@ -14,7 +14,8 @@ import { MatDialog } from '@angular/material/dialog';
   styleUrls: ['./product.component.sass']
 })
 export class ProductComponent implements OnInit {
-
+  @Input()
+  optionCoreSiteModel=new CoreSiteModel();
   @Output() onOpenProductDialog: EventEmitter<any> = new EventEmitter();
   @Input() product: HyperShopContentModel;
 

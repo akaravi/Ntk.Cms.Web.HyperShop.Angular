@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ProductService } from 'src/app/shared/services/product.service';
 import { ActivatedRoute, Params } from '@angular/router';
 import { ColorFilter } from 'src/app/modals/product.model';
-import { HyperShopContentModel, HyperShopCategoryService, HyperShopContentService, FilterModel, FilterDataModel } from 'ntk-cms-api';
+import { HyperShopContentModel, HyperShopCategoryService, HyperShopContentService, FilterModel, FilterDataModel, CoreSiteModel } from 'ntk-cms-api';
 
 @Component({
   selector: 'app-product-left-sidebar',
@@ -10,6 +10,9 @@ import { HyperShopContentModel, HyperShopCategoryService, HyperShopContentServic
   styleUrls: ['./product-left-sidebar.component.sass']
 })
 export class ProductLeftSidebarComponent implements OnInit {
+  @Input()
+  optionCoreSiteModel=new CoreSiteModel();
+
   public sidenavOpen = true;
   public animation: any;   // Animation
   public sortByOrder = '';   // sorting

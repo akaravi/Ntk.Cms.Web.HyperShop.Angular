@@ -8,7 +8,7 @@
             <app-sidebar *ngFor="let item of navItems" [item]="item"></app-sidebar>
         </div>
     </mat-sidenav>
-    <mat-toolbar class="main-topbar" [ngClass]="{topbar_four: url == '/home/four'}">
+    <mat-toolbar class="main-topbar" [ngClass]="{topbar_four: this.env.cmsUiConfig.theme == 4}">
         <mat-toolbar-row fxLayout="row" fxLayoutAlign="space-between center" class="top-bar container" >
                 <span fxHide="false" fxHide.gt-sm   >
                     <button mat-icon-button (click)="start.toggle()">
@@ -63,13 +63,13 @@
 
       </mat-toolbar>
 
-  <app-header [optionCoreSiteModel]="coreSiteModel" *ngIf="url == '/home/one' || url == '/home/three' && url != '/home/two' && url != '/home/four' || router.url.includes('pages') || router.url.includes('products') || router.url.includes('blog') || router.url.includes('product')"></app-header>
-  <app-header-two *ngIf="url == '/home/two'  "></app-header-two>
-  <app-header-three *ngIf="url == '/home/four' || url == '/home/four'"></app-header-three>
-  <app-header-four *ngIf="url == '/home/five' || url == '/home/five'"></app-header-four>
+  <app-header [optionCoreSiteModel]="coreSiteModel" *ngIf="this.env.cmsUiConfig.theme == 1 || this.env.cmsUiConfig.theme == 3 ||  router.url.includes('pages') || router.url.includes('products') || router.url.includes('blog') || router.url.includes('product')"></app-header>
+  <app-header-two *ngIf="this.env.cmsUiConfig.theme == 2  "></app-header-two>
+  <app-header-three *ngIf="this.env.cmsUiConfig.theme == 5 || this.env.cmsUiConfig.theme == 4"></app-header-three>
+  <app-header-four *ngIf="this.env.cmsUiConfig.theme == 5"></app-header-four>
   <router-outlet></router-outlet>
 
-  <app-footer [optionCoreSiteModel]="coreSiteModel"  *ngIf="url != '/home/five'"></app-footer>
-  <app-footer-two *ngIf="url == '/home/five'"></app-footer-two>
+  <app-footer [optionCoreSiteModel]="coreSiteModel"  *ngIf="this.env.cmsUiConfig.theme != 5"></app-footer>
+  <app-footer-two *ngIf="this.env.cmsUiConfig.theme == 5"></app-footer-two>
 
 </mat-sidenav-container>

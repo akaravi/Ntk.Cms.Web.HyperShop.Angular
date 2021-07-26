@@ -1,9 +1,9 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit, Inject, Input } from '@angular/core';
 import { ProductService } from 'src/app/shared/services/product.service';
 
 import { CartService } from 'src/app/shared/services/cart.service';
 import { Router } from '@angular/router';
-import { HyperShopContentModel } from 'ntk-cms-api';
+import { CoreSiteModel, HyperShopContentModel } from 'ntk-cms-api';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 @Component({
@@ -12,6 +12,8 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
   styleUrls: ['./product-dialog.component.sass']
 })
 export class ProductDialogComponent implements OnInit {
+  @Input()
+  optionCoreSiteModel=new CoreSiteModel();
 
   public products: HyperShopContentModel[] = [];
   public counter = 1;

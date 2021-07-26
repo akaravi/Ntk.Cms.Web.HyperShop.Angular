@@ -8,7 +8,7 @@ import { CoreSiteModel } from 'ntk-cms-api';
 })
 export class FooterComponent implements OnInit {
   @Input()
-  optionCoreSiteModel=new CoreSiteModel()
+  optionCoreSiteModel=new CoreSiteModel();
   constructor() { }
 
   ngOnInit() {

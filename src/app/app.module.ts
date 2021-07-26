@@ -23,6 +23,7 @@ import { CmsToastrService } from './core/services/cmsToastr.service';
 import { ToastrModule } from 'ngx-toastr';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { PublicHelper } from './core/common/helper/publicHelper';
 
 export function appInit(appConfigService: AppConfigService) {
   return () => appConfigService.load();
@@ -91,10 +92,11 @@ export function CreateTranslateLoader(http: HttpClient): any {
   bootstrap: [AppComponent]
 })
 export class AppModule {
-  constructor(@Inject(CoreAuthService) private coreAuthService: CoreAuthService) {
+  constructor(@Inject(CoreAuthService) private coreAuthService: CoreAuthService, @Inject(PublicHelper) private publicHelper: PublicHelper) {
     // karavi:Important For Test To Local Service
     if (environment.cmsServerConfig.configApiServerPath && environment.cmsServerConfig.configApiServerPath.length > 0) {
       this.coreAuthService.setConfig(environment.cmsServerConfig.configApiServerPath);
     }
+    this.publicHelper.DataCurrentSite();
   }
 }

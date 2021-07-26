@@ -1,4 +1,5 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
+import { CoreSiteModel } from 'ntk-cms-api';
 
 @Component({
   selector: 'app-price',
@@ -6,7 +7,8 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
   styleUrls: ['./price.component.sass']
 })
 export class PriceComponent implements OnInit {
-
+  @Input()
+  optionCoreSiteModel=new CoreSiteModel();
 
   public priceFrom = 750;
   public priceTo = 1599;

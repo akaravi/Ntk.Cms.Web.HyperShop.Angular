@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ProductService } from '../../../shared/services/product.service';
 
 import { CoreSiteModel, HyperShopContentModel } from 'ntk-cms-api';
 import { CmsStoreService } from 'src/app/core/reducers/cmsStore.service';
 import { AccessHelper } from 'src/app/core/common/helper/accessHelper';
 import { Router } from '@angular/router';
+import { PublicHelper } from 'src/app/core/common/helper/publicHelper';
 
 @Component({
   selector: 'app-home',
@@ -12,6 +13,9 @@ import { Router } from '@angular/router';
   styleUrls: ['./home.component.sass']
 })
 export class HomeComponent implements OnInit {
+  @Input()
+  optionCoreSiteModel=new CoreSiteModel();
+
   products: HyperShopContentModel[];
   public banners = [];
   public slides = [
@@ -26,6 +30,7 @@ export class HomeComponent implements OnInit {
     private productService: ProductService,
     private cmsStoreService: CmsStoreService,
     private accessHelper: AccessHelper,
+    private publicHelper: PublicHelper,
     private router: Router,
   ) {
     const splash = localStorage.getItem('splash');
@@ -38,7 +43,7 @@ export class HomeComponent implements OnInit {
     }
     else {
       debugger;
-      this.coreSiteModel = this.accessHelper.DataCurrentSite().Item;
+      this.coreSiteModel = this.publicHelper.DataCurrentSite().Item;
     }
 
   }

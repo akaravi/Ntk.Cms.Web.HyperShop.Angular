@@ -14,7 +14,7 @@ import { WishlistService } from 'src/app/shared/services/wishlist.service';
 import { Router } from '@angular/router';
 import { ProductDialogComponent } from '../../products/product-dialog/product-dialog.component';
 import { SwiperConfigInterface } from 'ngx-swiper-wrapper';
-import { HyperShopContentModel } from 'ntk-cms-api';
+import { CoreSiteModel, HyperShopContentModel } from 'ntk-cms-api';
 import { MatDialog } from '@angular/material/dialog';
 
 @Component({
@@ -23,6 +23,8 @@ import { MatDialog } from '@angular/material/dialog';
   styleUrls: ['./product-carousel-three.component.sass'],
 })
 export class ProductCarouselThreeComponent implements OnInit, AfterViewInit {
+  @Input()
+  optionCoreSiteModel=new CoreSiteModel();
   @Output() onOpenProductDialog: EventEmitter<any> = new EventEmitter<any>();
   @Input('product') product: Array<HyperShopContentModel> = [];
   public config: SwiperConfigInterface = {};

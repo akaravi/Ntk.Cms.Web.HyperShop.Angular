@@ -1,9 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 import { CartItem } from 'src/app/modals/cart-item';
 import { ProductService } from '../../../shared/services/product.service';
 import { CartService } from '../../../shared/services/cart.service';
-import { HyperShopContentModel } from 'ntk-cms-api';
+import { CoreSiteModel, HyperShopContentModel } from 'ntk-cms-api';
 import { Router } from '@angular/router';
 
 @Component({
@@ -12,7 +12,8 @@ import { Router } from '@angular/router';
   styleUrls: ['./home-two.component.sass']
 })
 export class HomeTwoComponent implements OnInit {
-
+  @Input()
+  optionCoreSiteModel=new CoreSiteModel();
 
   products: HyperShopContentModel[];
   public banners = [];

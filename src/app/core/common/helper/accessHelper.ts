@@ -12,7 +12,6 @@ import { CmsToastrService } from '../../services/cmsToastr.service';
 export class AccessHelper {
   constructor(
     private coreAuthService: CoreAuthService,
-    private coreSiteService: CoreSiteService,
     private cmsStoreService: CmsStoreService,
     private cmsToastrService: CmsToastrService,
     @Inject(DOCUMENT) private document: Document
@@ -49,15 +48,7 @@ export class AccessHelper {
       });
 
   }
-  DataCurrentSite(): any {
-    return this.coreSiteService.ServiceCurrectSite().subscribe((next) => {
-      this.cmsStoreService.setState({ coreSiteModelState: next.Item });
-      return next;
-    },
-      (error) => {
-        this.cmsToastrService.typeError(error);
-      });
-  }
+
   AccessDeleteRow(model: ErrorExceptionResult<any>): boolean {
     if (!model) { return false; }
     if (!model.Access) { return false; }

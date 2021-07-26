@@ -6,7 +6,7 @@ import {
   HyperShopContentModel,
   HyperShopContentService,
 } from 'ntk-cms-api';
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 import { CartItem } from 'src/app/modals/cart-item';
 
@@ -21,6 +21,9 @@ import { Router } from '@angular/router';
   styleUrls: ['./home-three.component.sass'],
 })
 export class HomeThreeComponent implements OnInit {
+  @Input()
+  optionCoreSiteModel=new CoreSiteModel();
+
   filterModelCategory = new FilterModel();
   dataModelContentResult: ErrorExceptionResult<HyperShopContentModel> = new ErrorExceptionResult<HyperShopContentModel>();
   loadingStatus = false;

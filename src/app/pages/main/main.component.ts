@@ -8,6 +8,9 @@ import { SidenavMenu } from '../../shared/sidebar/sidebar-menu.model';
 import { CoreSiteModel, HyperShopContentModel } from 'ntk-cms-api';
 import { CmsStoreService } from 'src/app/core/reducers/cmsStore.service';
 import { AccessHelper } from 'src/app/core/common/helper/accessHelper';
+import { PublicHelper } from 'src/app/core/common/helper/publicHelper';
+import { Subscription } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-main',
@@ -261,20 +264,28 @@ export class MainComponent implements OnInit {
     }
   ];
 
-    constructor(
+  constructor(
     public router: Router,
     private cartService: CartService,
     private cmsStoreService: CmsStoreService,
     private accessHelper: AccessHelper,
+    private publicHelper: PublicHelper,
     public sidenavMenuService: SidebarMenuService,) {
+    //**State */
     const storeSnapshot = this.cmsStoreService.getStateSnapshot();
     if (storeSnapshot && storeSnapshot.coreSiteModelState) {
       this.coreSiteModel = storeSnapshot.coreSiteModelState;
     }
     else {
-      this.coreSiteModel = this.accessHelper.DataCurrentSite().Item;
+      this.coreSiteModel = this.publicHelper.DataCurrentSite().Item;
     }
+    this.cmsStoreService.getStateSnapshot()
+    this.cmsStoreServiceSubscribe = this.cmsStoreService.getState().subscribe((next) => {
+      if(next && next.coreSiteModelState)
+      this.coreSiteModel = next.coreSiteModelState;
+    });
 
+    //**State */
     this.cartService.getItems().subscribe(next => this.shoppingCartItems = next);
     this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
@@ -282,13 +293,16 @@ export class MainComponent implements OnInit {
       }
     });
   }
+  env=environment;
   coreSiteModel = new CoreSiteModel();
-
+  cmsStoreServiceSubscribe: Subscription;
   ngOnInit() {
     this.currency = this.currencies[0];
     this.flag = this.flags[0];
   }
-
+  ngOnDestroy(): void {
+    this.cmsStoreServiceSubscribe.unsubscribe();
+  }
   public changeCurrency(currency) {
     this.currency = currency;
   }
