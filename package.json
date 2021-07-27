@@ -37,7 +37,7 @@
     "ngx-spinner": "^12.0.0",
     "ngx-swiper-wrapper": "^10.0.0",
     "ngx-toastr": "^14.0.0",
-    "ntk-cms-api": "^1.0.276",
+    "ntk-cms-api": "^1.0.278",
     "rxjs": "^7.2.0",
     "swiper": "^6.8.0",
     "tslib": "^2.3.0",
