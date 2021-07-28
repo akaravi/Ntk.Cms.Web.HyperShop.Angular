@@ -34,7 +34,7 @@ export class HomeComponent implements OnInit {
     private router: Router,
   ) {
     const splash = localStorage.getItem('splash');
-    if (!splash || splash.length == 0) {
+    if (!splash || splash.length === 0) {
       this.router.navigate(['splash']);
     }
     const storeSnapshot = this.cmsStoreService.getStateSnapshot();

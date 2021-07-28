@@ -22,6 +22,7 @@ export class PublicHelper {
   }
 
   Truncate(value: string, limit: number = 20, trail: string = '...'): string {
+    value=value+'';
     return value.length > limit ? value.substring(0, limit) + trail : value;
   }
 
