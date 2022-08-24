@@ -20,10 +20,10 @@ export class CategoriesMenuComponent implements OnInit {
 
   DataGetAll(): void {
     this.loadingStatus = true;
-    this.filterModelCategory.AccessLoad = true;
+    this.filterModelCategory.accessLoad = true;
     this.hyperShopCategoryService.ServiceGetAllMicroService(this.filterModelCategory).subscribe(
       (next) => {
-        if (next.IsSuccess) {
+        if (next.isSuccess) {
           this.dataModelResult = next;
         }
         this.loadingStatus = false;

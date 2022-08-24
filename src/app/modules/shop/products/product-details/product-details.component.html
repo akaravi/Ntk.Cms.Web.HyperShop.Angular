@@ -14,7 +14,7 @@
                             <button mat-icon-button fxHide="false" fxHide.gt-md>
                                 <mat-icon>fullscreen</mat-icon>
                             </button>
-                            <img [src]="product.Image" />
+                            <img [src]="product.image" />
                         </div>
                         <a (click)="openProductDialog(product, bigProductImageIndex)" style="cursor: pointer;">
                             <mat-icon>zoom_in</mat-icon>
@@ -25,7 +25,7 @@
                     <div class="small-carousel">
                         <div class="swiper-container" [swiper]="config">
                             <div class="swiper-wrapper">
-                                <div *ngFor="let image of product?.Image; let i=index" class="swiper-slide">
+                                <div *ngFor="let image of product?.image; let i=index" class="swiper-slide">
                                     <mat-card (click)="selectImage(i)" class="p-1">
                                         <img [src]="image.small" class="swiper-lazy" />
                                         <div class="swiper-lazy-preloader"></div>
@@ -45,16 +45,16 @@
 
                     <div class="product-right">
                         <div class="product-details">
-                            <h2>{{product.Name}}</h2>
-                            <h4 *ngIf="!productsService?.catalogMode"><del>{{product.SalePrice | currency:productsService?.currency:'symbol'}}</del><span>{{product.Discount}}% off</span></h4>
-                            <h3 class="price" *ngIf="!productsService?.catalogMode">{{product.Price | currency:productsService?.currency:'symbol'}}</h3>
-                            <p class="text-muted description">{{product.Description}}</p>
+                            <h2>{{product.name}}</h2>
+                            <h4 *ngIf="!productsService?.catalogMode"><del>{{product.salePrice | currency:productsService?.currency:'symbol'}}</del><span>{{product.discount}}% off</span></h4>
+                            <h3 class="price" *ngIf="!productsService?.catalogMode">{{product.price | currency:productsService?.currency:'symbol'}}</h3>
+                            <p class="text-muted description">{{product.description}}</p>
                         </div>
                         <div class="py-1 mt-15">
                             <p>
                                 <span class="text-muted fw-500">Avalibility: </span>
-                                <span class="avalibility" *ngIf="counter <= product.Count"><span>In Stock</span></span>
-                                <span class="avalibility" *ngIf="counter > product.Count"><span>Out of Stock</span></span>
+                                <span class="avalibility" *ngIf="counter <= product.count"><span>In Stock</span></span>
+                                <span class="avalibility" *ngIf="counter > product.count"><span>Out of Stock</span></span>
                             </p>
                         </div>
                         <div class="quantity">

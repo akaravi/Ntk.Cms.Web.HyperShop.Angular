@@ -2,7 +2,6 @@ import {
   CoreSiteModel,
   ErrorExceptionResult,
   FilterModel,
-  HyperShopCategoryService,
   HyperShopContentModel,
   HyperShopContentService,
 } from 'ntk-cms-api';
@@ -11,8 +10,6 @@ import { Component, Input, OnInit } from '@angular/core';
 import { CartItem } from 'src/app/modals/cart-item';
 
 import { CartService } from '../../../shared/services/cart.service';
-import { CmsStoreService } from 'src/app/core/reducers/cmsStore.service';
-import { AccessHelper } from 'src/app/core/common/helper/accessHelper';
 import { Router } from '@angular/router';
 
 @Component({
@@ -111,12 +108,12 @@ export class HomeThreeComponent implements OnInit {
 
   DataProductGetAll(): void {
     this.loadingStatus = true;
-    this.filterModelCategory.AccessLoad = true;
+    this.filterModelCategory.accessLoad = true;
     this.hyperShopContentService
       .ServiceGetAllMicroService(this.filterModelCategory)
       .subscribe(
         (next) => {
-          if (next.IsSuccess) {
+          if (next.isSuccess) {
             this.dataModelContentResult = next;
           }
           this.loadingStatus = false;

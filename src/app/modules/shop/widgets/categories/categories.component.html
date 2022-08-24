@@ -1,7 +1,7 @@
 <div class="category-contant">
     <ul>
         <li><a class="no-brd" [routerLink]="['/products/all']">همه محصولات</a></li>
-        <li *ngFor="let item of dataModelResult.ListItems">
+        <li *ngFor="let item of dataModelResult.listItems">
             <a [routerLink]="['/products/',item.Code]">{{item.Name}}</a></li>
 
     </ul>

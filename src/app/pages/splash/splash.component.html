@@ -12,16 +12,16 @@
       </div>
     </div>
   </div>
-  <div *ngIf="dateModelCoreSite?.IsSuccess" class="demo-header">
+  <div *ngIf="dateModelCoreSite?.isSuccess" class="demo-header">
     <div class="container">
       <div class="demo-header-wrap" fxLayout='column' fxLayout.lt-md="column">
         <div fxFlex="100" fxFlex.gt-sm="40" class="left-panel">
           <div class="logo"><img src="assets/images/logo-white.png" alt=""> </div>
           <div class="text-intro">
-            <h1><br>{{dateModelCoreSite.Item.Title}}<br></h1>
+            <h1><br>{{dateModelCoreSite.item.title}}<br></h1>
           </div>
           <ul fxLayout="row" fxLayout.lt-md="column" fxLayoutAlign="center center">
-            <li fxLayout="row" *ngIf="dateModelCoreSite.Item.Description?.length>0"><i class="material-icons">check</i><span>{{dateModelCoreSite.Item.Description}}</span>
+            <li fxLayout="row" *ngIf="dateModelCoreSite.item.title?.length>0"><i class="material-icons">check</i><span>{{dateModelCoreSite.item.title}}</span>
             </li>
             <li fxLayout="row"><i class="material-icons">check</i><span>Lifetime regular updates</span></li>
             <li fxLayout="row"><i class="material-icons">check</i><span>6 months free support</span></li>
@@ -39,14 +39,14 @@
       </div>
     </div>
   </div>
-  <div *ngIf="!loadingCurrentSite && dateModelTokenInfo?.IsSuccess==false" class="likeUs sec-padding">
+  <div *ngIf="!loadingCurrentSite && dateModelTokenInfo?.isSuccess==false" class="likeUs sec-padding">
     <div class="container">
       <div class="theme-features">
         <mat-card fxLayout="row" fxLayout.lt-sm="column" fxLayoutAlign="start start" class="p-0">
           <div class="item">
             <h2>برروز خطا در اجرای </h2>
             <ul>
-              <li fxLayout="row"><i class="material-icons">check</i><span>{{dateModelTokenInfo.ErrorMessage}}</span>
+              <li fxLayout="row"><i class="material-icons">check</i><span>{{dateModelTokenInfo.errorMessage}}</span>
               </li>
               <li fxLayout="row"><i class="material-icons">check</i><span>اتصال به اینترنت را بررسی کنید.</span></li>
             </ul>
@@ -63,7 +63,7 @@
 
   <div class="footer">
     <div class="container">
-      <p>{{(dateModelCoreSite?.Item?.Copyright?.length>0?dateModelCoreSite?.Item?.Copyright:'Copyrights © 2020 by NTK co. All Rights Reserved.')}}  </p>
+      <p>{{(dateModelCoreSite?.item?.Copyright?.length>0?dateModelCoreSite?.item?.Copyright:'Copyrights © 2020 by NTK co. All Rights Reserved.')}}  </p>
     </div>
   </div>
 </div>

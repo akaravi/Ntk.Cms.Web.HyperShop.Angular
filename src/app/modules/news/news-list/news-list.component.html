@@ -2,7 +2,7 @@
   <div class="container">
       <div fxLayout="row" fxLayout.lt-md="column" fxLayoutAlign="start start" class="blog-list-wrapper sec-padding">
           <div fxFlex="100" fxFlex.gt-sm="70" class="main-blog-panel">
-              <div *ngFor="let item of dataModelResult.ListItems" class="single-blog-list" fxLayout="row" fxLayout.lt-md="column">
+              <div *ngFor="let item of dataModelResult.listItems" class="single-blog-list" fxLayout="row" fxLayout.lt-md="column">
                   <div fxFlex="100" fxFlex.gt-sm="50" class="image-box">
                       <a  [routerLink]="['/news/details/', item.Id]"><img src="{{item.LinkMainImageIdSrc}}" alt=""> </a>
                   </div>
@@ -33,7 +33,7 @@
                               <div class="decor-line"></div>
                           </div>
                           <ul>
-                              <li *ngFor="let item of dataModelLastResult.ListItems" fxLayout="row">
+                              <li *ngFor="let item of dataModelLastResult.listItems" fxLayout="row">
                                   <div fxFlex="100" fxFlex.gt-sm="30" class="icon-box"><img src="{{item.LinkMainImageIdSrc}}" alt="Awesome Image"></div>
                                   <div fxFlex="100" fxFlex.gt-sm="70" class="text-box">
                                       <h5><a  [routerLink]="['/news/news-details/', item.Id]">{{item.Title}}</a></h5><span>{{item.CreatedDate| date}}</span>
@@ -56,7 +56,7 @@
                               <h4>Tags widget</h4>
                           </div>
                           <ul class="list-inline">
-                              <li *ngFor="let item of dataModelTagResult.ListItems"><a  [routerLink]="['/news/listtag/', item.Id]">{{item.Title}}</a></li>
+                              <li *ngFor="let item of dataModelTagResult.listItems"><a  [routerLink]="['/news/listtag/', item.Id]">{{item.Title}}</a></li>
                           </ul>
                       </div>
                   </div>

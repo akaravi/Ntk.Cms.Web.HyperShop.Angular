@@ -16,7 +16,7 @@
                         <p>Aenean ligula nibh, molestie id viverra a, dapibus at dolor. In iaculgis viverra neque Benenatis mauris Vestibulum ante ipsum primis in industry, logistics, finance, business orci ultrices venenatis mauris. It is a long established fact that a reader will be distracted.</p>
                     </div>
                 </div>
-                <div *ngFor="let item of dataModelResult.ListItems" class="single-blog-list">
+                <div *ngFor="let item of dataModelResult.listItems" class="single-blog-list">
                     <div class="image-box">
                         <img src="{{item.LinkMainImageIdSrc}}" alt="">
                     </div>
@@ -51,7 +51,7 @@
                                         <h5><a href="#">How To Reduce Financial Stress </a></h5><span>02 Dec.</span>
                                     </div>
                                 </li>
-                                <li *ngFor="let item of dataModelLastResult.ListItems" fxLayout="row">
+                                <li *ngFor="let item of dataModelLastResult.listItems" fxLayout="row">
                                     <div fxFlex="100" fxFlex.gt-sm="30" class="icon-box"><img src="{{item.LinkMainImageIdSrc}}" alt="Awesome Image"></div>
                                     <div fxFlex="100" fxFlex.gt-sm="70" class="text-box">
                                         <h5><a href="#">{{item.Title}} </a></h5><span>{{ item.CreatedDate | date }}</span>
@@ -74,7 +74,7 @@
                                 <h4>Tags widget</h4>
                             </div>
                             <ul class="list-inline">
-                              <li *ngFor="let item of dataModelTagResult.ListItems"><a  [routerLink]="['/news/listtag/', item.Id]">{{item.Title}}</a></li>
+                              <li *ngFor="let item of dataModelTagResult.listItems"><a  [routerLink]="['/news/listtag/', item.Id]">{{item.Title}}</a></li>
 
                             </ul>
                         </div>

@@ -41,8 +41,8 @@ export class ProductDetailsComponent implements OnInit ,AfterViewInit{
       const id = params.id;
       this.hyperShopContentService.ServiceGetOneMicroService(id).subscribe(
         (next) => {
-          if (next.IsSuccess) {
-            this.product = next.Item;
+          if (next.isSuccess) {
+            this.product = next.item;
           }
           this.loadingStatus = false;
         },

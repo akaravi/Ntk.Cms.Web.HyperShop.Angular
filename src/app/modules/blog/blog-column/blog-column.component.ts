@@ -32,7 +32,7 @@ export class BlogColumnComponent implements OnInit {
         PropertyName: 'LinkCategoryId',
         Value: +category,
       };
-      filteModelContent.Filters.push(aaa as FilterDataModel);
+      filteModelContent.filters.push(aaa as any);
     }
     this.blogContentService.ServiceGetAll(filteModelContent).subscribe(next => {
       this.dataModelResult = next;
@@ -40,7 +40,7 @@ export class BlogColumnComponent implements OnInit {
   }
   dataTagGetAll(): void {
     const filteModelContent = new FilterModel();
-    filteModelContent.SortType = EnumSortType.Random;
+    filteModelContent.sortType = EnumSortType.Random;
     this.coreModuleTagService.ServiceGetAll(filteModelContent).subscribe(next => {
       this.dataModelTagResult = next;
     })

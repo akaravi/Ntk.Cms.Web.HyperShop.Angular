@@ -1,7 +1,7 @@
-import { CoreSiteModel, EnumModel, ErrorExceptionResult, TokenInfoModel } from 'ntk-cms-api';
+import { CoreSiteModel, EnumRecordStatus, ErrorExceptionResult, TokenInfoModel } from 'ntk-cms-api';
 
 export interface ReducerCmsStore {
     tokenInfoModelState: TokenInfoModel;
     coreSiteModelState: CoreSiteModel;
-    EnumRecordStatus: ErrorExceptionResult<EnumModel> ;
+    EnumRecordStatus: ErrorExceptionResult<EnumRecordStatus> ;
   }

@@ -1,7 +1,6 @@
 import { DOCUMENT } from '@angular/common';
 import { Inject, Injectable } from '@angular/core';
-import { CoreAuthService, CoreSiteModel, CoreSiteService, ErrorExceptionResult, TokenDeviceClientInfoDtoModel, TokenInfoModel } from 'ntk-cms-api';
-import { Observable } from 'rxjs';
+import { CoreAuthService, ErrorExceptionResult, TokenDeviceClientInfoDtoModel } from 'ntk-cms-api';
 import { environment } from 'src/environments/environment';
 import { CmsStoreService } from '../../reducers/cmsStore.service';
 import { CmsToastrService } from '../../services/cmsToastr.service';
@@ -23,85 +22,87 @@ export class AccessHelper {
     if (DeviceToken && DeviceToken.length > 0) {
       return;
     }
-    const model: TokenDeviceClientInfoDtoModel = {
-      SecurityKey: environment.cmsTokenConfig.SecurityKey,
-      ClientMACAddress: '',
-      NotificationId: '',
-      OSType: environment.cmsTokenConfig.OSType,
-      DeviceType: environment.cmsTokenConfig.DeviceType,
-      PackageName: environment.cmsTokenConfig.PackageName,
-      AppBuildVer: 0,
-      AppSourceVer: '',
-      Country: '',
-      LocationLat: '',
-      LocationLong: '',
-      SimCard: '',
-      Language: '',
-      DeviceBrand: ''
-    };
-    return this.coreAuthService.ServiceGetTokenDevice(model).subscribe((next) => {
-      this.cmsStoreService.setState({ tokenInfoModelState: next.Item });
-      return next;
-    },
-      (error) => {
-        this.cmsToastrService.typeError(error);
-      });
+    // const model: TokenDeviceClientInfoDtoModel = {
+    //   SecurityKey: environment.cmsTokenConfig.SecurityKey,
+    //   ClientMACAddress: '',
+    //   NotificationId: '',
+    //   OSType: environment.cmsTokenConfig.OSType,
+    //   DeviceType: environment.cmsTokenConfig.DeviceType,
+    //   PackageName: environment.cmsTokenConfig.PackageName,
+    //   AppBuildVer: 0,
+    //   AppSourceVer: '',
+    //   Country: '',
+    //   LocationLat: '',
+    //   LocationLong: '',
+    //   SimCard: '',
+    //   Language: '',
+    //   DeviceBrand: ''
+    // };
+    // return this.coreAuthService.ServiceGetTokenDevice(model).subscribe({
+    //   next: (ret) => {
+    //     this.cmsStoreService.setState({ tokenInfoModelState: ret.item });
+    //     return ret;
+    //   },
+    //   error: (er) => {
+    //     this.cmsToastrService.typeError(er);
+    //   }
+    // });
 
   }
 
   AccessDeleteRow(model: ErrorExceptionResult<any>): boolean {
     if (!model) { return false; }
-    if (!model.Access) { return false; }
-    return model.Access.AccessDeleteRow;
+    if (!model.access) { return false; }
+    return model.access.accessDeleteRow;
   }
   AccessWatchRow(model: ErrorExceptionResult<any>): boolean {
     if (!model) { return false; }
-    if (!model.Access) { return false; }
-    return false; // return model?.Access?.AccessWatchRow;
+    if (!model.access) { return false; }
+    return false; // return model?.access?.AccessWatchRow;
   }
   AccessEditRow(model: ErrorExceptionResult<any>): boolean {
     if (!model) { return false; }
-    if (!model.Access) { return false; }
-    return model.Access.AccessEditRow;
+    if (!model.access) { return false; }
+    return model.access.accessEditRow;
   }
   AccessAddRow(model: ErrorExceptionResult<any>): boolean {
     if (!model) { return false; }
-    if (!model.Access) { return false; }
-    return model.Access.AccessAddRow;
+    if (!model.access) { return false; }
+    return model.access.accessAddRow;
   }
   AccessRowInPanelDemo(model: ErrorExceptionResult<any>): boolean {
     if (!model) { return false; }
-    if (!model.Access) { return false; }
-    return model.Access.AccessRowInPanelDemo;
+    if (!model.access) { return false; }
+    return model.access.accessRowInPanelDemo;
   }
   AccessRowWatchInSharingCategory(model: ErrorExceptionResult<any>): boolean {
     if (!model) { return false; }
-    if (!model.Access) { return false; }
-    return model.Access.AccessRowWatchInSharingCategory;
+    if (!model.access) { return false; }
+    return model.access.accessRowWatchInSharingCategory;
   }
   AccessWatchRowOtherSiteId(model: ErrorExceptionResult<any>): boolean {
     if (!model) { return false; }
-    if (!model.Access) { return false; }
+    if (!model.access) { return false; }
     return false;
   }
   AccessWatchRowOtherCreatedBy(model: ErrorExceptionResult<any>): boolean {
     if (!model) { return false; }
-    if (!model.Access) { return false; }
-    return model.Access.AccessWatchRowOtherCreatedBy;
+    if (!model.access) { return false; }
+    return model.access.accessWatchRowOtherCreatedBy;
   }
   AccessEditRowOtherSiteId(model: ErrorExceptionResult<any>): boolean {
     if (!model) { return false; }
-    if (!model.Access) { return false; }
-    return model.Access.AccessEditRowOtherSiteId;
+    if (!model.access) { return false; }
+    return model.access.accessEditRowOtherSiteId;
   }
   AccessEditRowOtherCreatedBy(model: ErrorExceptionResult<any>): boolean {
     if (!model) { return false; }
-    if (!model.Access) { return false; }
-    return model.Access.AccessEditRowOtherCreatedBy;
+    if (!model.access) { return false; }
+    return model.access.accessEditRowOtherCreatedBy;
   }
   AccessDeleteRowOtherCreatedBy(model: ErrorExceptionResult<any>): boolean {
     if (!model) { return false; }
-    if (!model.Access) { return false; }
-    return model.Access.AccessDeleteRowOtherCreatedBy;
+    if (!model.access) { return false; }
+    return model.access.accessDeleteRowOtherCreatedBy;
   }
 }

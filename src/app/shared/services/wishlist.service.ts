@@ -29,7 +29,7 @@ export class WishlistService {
 
   // If item is aleready added In wishlist
   public hasProduct(product: HyperShopContentModel): boolean {
-    const item = products.find(x => x.id === product.Code);
+    const item = products.find(x => x.id === product.code);
     return item !== undefined;
   }
 
@@ -39,12 +39,12 @@ export class WishlistService {
     let status='';
     let item: HyperShopContentModel | boolean = false;
     if (this.hasProduct(product)) {
-      item = products.filter(item => item.id === product.Code)[0];
+      item = products.filter(item => item.id === product.code)[0];
       const index = products.indexOf(item);
     } else {
       products.push(product);
     }
-    message = 'The product ' + product.Name + ' has been added to wishlist.';
+    message = 'The product ' + product.name + ' has been added to wishlist.';
     status = 'success';
     this.snackBar.open(message, '×', { panelClass: [status], verticalPosition: 'top', duration: 3000 });
     localStorage.setItem('wishlistItem', JSON.stringify(products));

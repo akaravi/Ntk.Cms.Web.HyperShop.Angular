@@ -4,13 +4,11 @@ import { Router } from '@angular/router';
 import {
   ErrorExceptionResult,
   TokenInfoModel,
-  TokenDeviceClientInfoDtoModel,
   CoreAuthService, CoreSiteService, CoreSiteModel, WebDesignerMainIntroService, WebDesignerMainIntroModel
 } from 'ntk-cms-api';
 import { AccessHelper } from 'src/app/core/common/helper/accessHelper';
 import { CmsStoreService } from 'src/app/core/reducers/cmsStore.service';
 import { CmsToastrService } from 'src/app/core/services/cmsToastr.service';
-import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-splash',
@@ -85,8 +83,8 @@ export class SplashComponent implements OnInit {
     this.coreSiteService.ServiceCurrectSite().subscribe((next) => {
       this.loadingCurrentSite=false;
       this.dateModelCoreSite = next;
-      this.cmsStoreService.setState({ coreSiteModelState: next.Item });
-      if (this.dateModelCoreSite.IsSuccess && this.dateModelCoreSite.Item.Id > 0) {
+      this.cmsStoreService.setState({ coreSiteModelState: next.item });
+      if (this.dateModelCoreSite.isSuccess && this.dateModelCoreSite.item.id > 0) {
         this.DataIntro();
       }
     },

@@ -4,20 +4,20 @@
         <div fxFlex="100" fxFlex.gt-sm="70"  class="main-blog-panel">
             <div class="single-blog-list" >
                 <div  class="image-box">
-                  <img src="{{dataModelResult.Item.LinkMainImageIdSrc}}" alt="">
+                  <img src="{{dataModelResult.item.linkMainImageIdSrc}}" alt="">
                 </div>
                 <div class="text-box">
-                  <h4>{{dataModelResult.Item.Title}}</h4>
+                  <h4>{{dataModelResult.item.title}}</h4>
                   <ul class="post-info" fxLayout="row">
-                    <li><i class="material-icons">access_time </i>{{dataModelResult.Item.CreatedDate|date}}</li>
+                    <li><i class="material-icons">access_time </i>{{dataModelResult.item.createdDate|date}}</li>
                     <li><i class="material-icons">person </i>Marc Spenser</li>
-                    <li><i class="material-icons">sms</i>{{dataModelCommentResult.TotalRowCount}} Comments</li>
+                    <li><i class="material-icons">sms</i>{{dataModelCommentResult.totalRowCount}} Comments</li>
                   </ul>
-                  <p [innerHTML]="dataModelResult.Item.Body"></p>
+                  <p [innerHTML]="dataModelResult.item.body"></p>
                   <div class="share-box">
                     <ul class="tag-box pull-left">
                         <li>Tags: </li>
-                        <li *ngFor="let item of dataModelTagRelatResult.ListItems"><a  [routerLink]="['/news/listtag/', item.Id]" rel="tag">{{item.Title}}</a></li>
+                        <li *ngFor="let item of dataModelTagRelatResult.listItems"><a  [routerLink]="['/news/listtag/', item.Id]" rel="tag">{{item.Title}}</a></li>
                     </ul>
                     <div class="social-box pull-right">
                         <ul class="list-inline social">
@@ -47,7 +47,7 @@
                     <h3>Read Comments</h3>
                 </div>
                 <!--Comment Box-->
-                <div *ngFor="let item of dataModelCommentResult.ListItems" class="comment-box" >
+                <div *ngFor="let item of dataModelCommentResult.listItems" class="comment-box" >
                     <div class="comment">
                         <div class="author-thumb"><img src="assets/images/about-us/t2.jpg" alt=""></div>
                         <div class="comment-inner">
@@ -72,27 +72,27 @@
               <form (ngSubmit)="onFormSubmitComment()" fxLayout="row wrap">
                 <div  fxFlex="100" fxFlex.gt-md="50" fxFlex.md="50" class="mt-20 pr-5" ngClass.sm="mt-10" ngClass.xs="mt-10">
                     <mat-form-field class="w-100">
-                        <input matInput placeholder="First name (required)" #name="ngModel"  [(ngModel)]="dataModelComment.Writer" name="name" required>
+                        <input matInput placeholder="First name (required)" #name="ngModel"  [(ngModel)]="dataModelComment.writer" name="name" required>
                         <mat-error *ngIf="name.invalid">Please enter a valid message</mat-error>
                       </mat-form-field>
                 </div>
                 <div  fxFlex="100" fxFlex.gt-md="50" fxFlex.md="50" class="pl-5 mt-20" ngClass.sm="mt-10" ngClass.xs="mt-10">
                     <mat-form-field class="w-100">
-                        <input matInput placeholder="Last name (required)" #email="ngModel"  [(ngModel)]="dataModelComment.Writer" name="email" required>
+                        <input matInput placeholder="Last name (required)" #email="ngModel"  [(ngModel)]="dataModelComment.writer" name="email" required>
                         <mat-error *ngIf="email.invalid">Please enter a valid message</mat-error>
                       </mat-form-field>
                 </div>
 
                 <div  fxFlex="100"  class="mt-20 pr-5" ngClass.sm="mt-10" ngClass.xs="mt-10">
                     <mat-form-field class="w-100">
-                        <input matInput placeholder="Email Address (required)" #email="ngModel"  [(ngModel)]="dataModelComment.Writer"  name="email" required>
+                        <input matInput placeholder="Email Address (required)" #email="ngModel"  [(ngModel)]="dataModelComment.writer"  name="email" required>
                         <mat-error *ngIf="email.invalid">Please enter a valid message</mat-error>
                       </mat-form-field>
                 </div>
 
                 <div  fxFlex="100" fxFlex.gt-sm="100" class="mt-20" ngClass.sm="mt-10" ngClass.xs="mt-10">
                     <mat-form-field class="w-100">
-                        <textarea placeholder="Post content" matInput rows="4" [(ngModel)]="dataModelComment.Comment" name="content"></textarea>
+                        <textarea placeholder="Post content" matInput rows="4" [(ngModel)]="dataModelComment.comment" name="content"></textarea>
                       </mat-form-field>
                 </div>
                 <div class="button-wrap" fxFlex="100" fxFlex.gt-sm="100" class="px-1" ngClass.sm="mt-1" ngClass.xs="mt-1">
@@ -150,7 +150,7 @@
                             <h4>Tags widget</h4>
                         </div>
                         <ul class="list-inline">
-                          <li *ngFor="let item of dataModelTagResult.ListItems"><a  [routerLink]="['/news/listtag/', item.Id]">{{item.Title}}</a></li>
+                          <li *ngFor="let item of dataModelTagResult.listItems"><a  [routerLink]="['/news/listtag/', item.Id]">{{item.Title}}</a></li>
                         </ul>
                     </div>
                 </div>

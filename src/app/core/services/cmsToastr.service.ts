@@ -434,7 +434,7 @@ export class CmsToastrService {
     if (model.error) {
       errorExceptionResult = model.error;
       if (errorExceptionResult) {
-        if (errorExceptionResult.Status === 401) {
+        if (errorExceptionResult.status === 401) {
           message = this.translate.instant('ERRORMESSAGE.MESSAGE.typeError_login') + ' ' + str;
 
           this.toastr.error(message, this.now() + this.translate.instant('ERRORMESSAGE.TITLE.typeError'));

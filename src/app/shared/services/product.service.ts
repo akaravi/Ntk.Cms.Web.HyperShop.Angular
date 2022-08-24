@@ -51,7 +51,7 @@ export class ProductService {
   // Get Products By Id
   public getProduct(id: string): Observable<HyperShopContentModel> {
     return this.products().pipe(map(items => {
-      return items.find((item: HyperShopContentModel) => { return item.Code === id; });
+      return items.find((item: HyperShopContentModel) => { return item.code === id; });
     }));
     // return this.products.find(product=> product.id === id);
 
@@ -76,7 +76,7 @@ export class ProductService {
 
   // If item is aleready added In compare
   public hasProduct(product: HyperShopContentModel): boolean {
-    const item = products.find(item => item.id === product.Code);
+    const item = products.find(item => item.id === product.code);
     return item !== undefined;
   }
 
@@ -86,16 +86,16 @@ export class ProductService {
     let status='';
     let item: HyperShopContentModel | boolean = false;
     if (this.hasProduct(product)) {
-      item = products.filter(item => item.id === product.Code)[0];
+      item = products.filter(item => item.id === product.code)[0];
       const index = products.indexOf(item);
-      this.snackBar.open('The product  ' + product.Name + ' already added to comparison list.', '×',
+      this.snackBar.open('The product  ' + product.name + ' already added to comparison list.', '×',
         { panelClass: 'error', verticalPosition: 'top', duration: 3000 }
       );
 
     } else {
       if (products.length < 4)
         products.push(product);
-      message = 'The product ' + product.Name + ' has been added to comparison list.';
+      message = 'The product ' + product.name + ' has been added to comparison list.';
       status = 'success';
       this.snackBar.open(message, '×', { panelClass: [status], verticalPosition: 'top', duration: 3000 });
 
@@ -119,7 +119,7 @@ export class ProductService {
         if (category === 'all')
           return item
         else
-          return item.Category === category;
+          return item.category === category;
 
       })
     ));

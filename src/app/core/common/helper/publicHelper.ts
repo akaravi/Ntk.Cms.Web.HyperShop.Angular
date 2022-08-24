@@ -31,7 +31,7 @@ export class PublicHelper {
   }
   DataCurrentSite(): any {
     return this.coreSiteService.ServiceCurrectSite().subscribe((next) => {
-      this.cmsStoreService.setState({ coreSiteModelState: next.Item });
+      this.cmsStoreService.setState({ coreSiteModelState: next.item });
       return next;
     },
       (error) => {

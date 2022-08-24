@@ -4,7 +4,7 @@
         <li fxLayout="column"><a [routerLink]="['/products/Headphones']"><i class="material-icons">headset</i> Headphones</a></li>
         <li fxLayout="column"><a [routerLink]="['/products/Laptops']"><i class="material-icons">laptop</i>Laptops</a></li>
 
-        <li *ngFor="let item of dataModelResult.ListItems">
+        <li *ngFor="let item of dataModelResult.listItems">
           <a [routerLink]="['/products/Smartphones']"><i class="material-icons">smartphone</i>{{item.Name}}</a>
         </li>
 

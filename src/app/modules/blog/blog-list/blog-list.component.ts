@@ -4,10 +4,10 @@ import {
   CoreModuleTagService,
   EnumSortType,
   ErrorExceptionResult,
-  FilterDataModel,
   FilterModel,
   BlogContentModel,
-  BlogContentService
+  BlogContentService,
+  FilterDataModel
 } from 'ntk-cms-api';
 
 @Component({
@@ -30,7 +30,7 @@ export class BlogListComponent implements OnInit {
         PropertyName: 'LinkCategoryId',
         Value: +category,
       };
-      filteModelContent.Filters.push(aaa as FilterDataModel);
+      filteModelContent.filters.push(aaa as any);
     }
     this.blogContentService.ServiceGetAll(filteModelContent).subscribe(next => {
       this.dataModelResult = next;
@@ -38,7 +38,7 @@ export class BlogListComponent implements OnInit {
   }
   dataTagGetAll(): void {
     const filteModelContent = new FilterModel();
-    filteModelContent.SortType = EnumSortType.Random;
+    filteModelContent.sortType = EnumSortType.Random;
     this.coreModuleTagService.ServiceGetAll(filteModelContent).subscribe(next => {
       this.dataModelTagResult = next;
     })

@@ -4,16 +4,16 @@
         <div fxFlex="100" fxFlex.gt-sm="70"  class="main-blog-panel">
             <div class="single-blog-list" >
                 <div  class="image-box">
-                  <img src="{{dataModelResult.Item.LinkMainImageIdSrc}}" alt="">
+                  <img src="{{dataModelResult.item.linkMainImageIdSrc}}" alt="">
                 </div>
                 <div class="text-box">
-                  <h4>{{dataModelResult.Item.Title}}</h4>
+                  <h4>{{dataModelResult.item.title}}</h4>
                   <ul class="post-info" fxLayout="row">
-                    <li><i class="material-icons">access_time </i>{{dataModelResult.Item.CreatedDate|date}}</li>
+                    <li><i class="material-icons">access_time </i>{{dataModelResult.item.createdDate|date}}</li>
                     <li><i class="material-icons">person </i>Marc Spenser</li>
                     <li><i class="material-icons">sms</i>05 Comments</li>
                   </ul>
-                  <p [innerHTML]="dataModelResult.Item.Body"></p>
+                  <p [innerHTML]="dataModelResult.item.body"></p>
                   <div class="share-box">
                     <ul class="tag-box pull-left">
                         <li>Tags: </li>

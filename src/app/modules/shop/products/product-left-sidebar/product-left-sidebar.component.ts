@@ -1,8 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { ProductService } from 'src/app/shared/services/product.service';
 import { ActivatedRoute, Params } from '@angular/router';
 import { ColorFilter } from 'src/app/modals/product.model';
-import { HyperShopContentModel, HyperShopCategoryService, HyperShopContentService, FilterModel, FilterDataModel, CoreSiteModel } from 'ntk-cms-api';
+import { HyperShopContentModel, HyperShopContentService, FilterModel, FilterDataModel, CoreSiteModel } from 'ntk-cms-api';
 
 @Component({
   selector: 'app-product-left-sidebar',
@@ -41,13 +40,13 @@ export class ProductLeftSidebarComponent implements OnInit {
     const filteModelContent = new FilterModel();
     if (category>0) {
       const filterDataModel = new FilterDataModel();
-      filterDataModel.PropertyName = 'CategoryCode';
-      filterDataModel.Value = category;
-      filteModelContent.Filters.push(filterDataModel);
+      filterDataModel.propertyName = 'CategoryCode';
+      filterDataModel.value = category;
+      filteModelContent.filters.push(filterDataModel);
     }
     this.hyperShopContentService.ServiceGetAllMicroService(filteModelContent).subscribe(products => {
-      this.allItems = products.ListItems;
-      this.products = products.ListItems.slice(0.8);
+      this.allItems = products.listItems;
+      this.products = products.listItems.slice(0.8);
       this.getTags(products)
       this.getColors(products)
     })
@@ -128,15 +127,15 @@ export class ProductLeftSidebarComponent implements OnInit {
   public filterItems(): HyperShopContentModel[] {
     return this.items.filter((item: HyperShopContentModel) => {
       const Colors: boolean = this.colorFilters.reduce((prev, curr) => { // Match Color
-        if (item.Colors) {
-          if (item.Colors.includes(curr.color)) {
+        if (item.colors) {
+          if (item.colors.includes(curr.color)) {
             return prev && true;
           }
         }
       }, true);
       const Tags: boolean = this.tagsFilters.reduce((prev, curr) => { // Match Tags
-        if (item.Tags) {
-          if (item.Tags.includes(curr)) {
+        if (item.tags) {
+          if (item.tags.includes(curr)) {
             return prev && true;
           }
         }
@@ -172,7 +171,7 @@ export class ProductLeftSidebarComponent implements OnInit {
 
 
     this.allItems = this.products.filter((item: HyperShopContentModel) => {
-      return item.Price >= price.priceFrom && item.Price <= price.priceTo
+      return item.price >= price.priceFrom && item.price <= price.priceTo
     });
     console.log(this.products);
 
@@ -182,7 +181,7 @@ export class ProductLeftSidebarComponent implements OnInit {
     console.log(newBrend);
     this.allItems = newBrend === 'all' ? this.products : this.products.filter(
 
-      item => item.Brand === newBrend
+      item => item.brand === newBrend
     )
     console.log(this.allItems);
 

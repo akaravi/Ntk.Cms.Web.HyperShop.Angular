@@ -139,20 +139,20 @@
 
                               <mat-tab  label="FEATURED PRODUCTS">
 
-                                       <app-product-carousel-three [product]="dataModelContentResult.ListItems | slice:0:8"></app-product-carousel-three>
+                                       <app-product-carousel-three [product]="dataModelContentResult.listItems | slice:0:8"></app-product-carousel-three>
 
 
                               </mat-tab>
 
                               <mat-tab label="LATEST PRODUCTS">
 
-                                      <app-product-carousel-three [product]="dataModelContentResult.ListItems | slice:5:13"></app-product-carousel-three>
+                                      <app-product-carousel-three [product]="dataModelContentResult.listItems | slice:5:13"></app-product-carousel-three>
 
                               </mat-tab>
 
                               <mat-tab label="ON SALE PRODUCTS">
 
-                                        <app-product-carousel-three [product]="dataModelContentResult.ListItems | slice:13:22"></app-product-carousel-three>
+                                        <app-product-carousel-three [product]="dataModelContentResult.listItems | slice:13:22"></app-product-carousel-three>
 
                               </mat-tab>
 
@@ -171,7 +171,7 @@
                           <img src="assets/images/bg/hom3-banner.jpg" alt="">
                         </div>
                     </div>
-                    <app-product-vertical [products]="dataModelContentResult.ListItems"></app-product-vertical>
+                    <app-product-vertical [products]="dataModelContentResult.listItems"></app-product-vertical>
                 </div>
          </div>
         </div>

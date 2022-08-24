@@ -54,12 +54,12 @@ export class BlogDetailsComponent implements OnInit {
     }
     const filteModelContent = new FilterModel();
     const filterDataModel = new FilterDataModel();
-    filterDataModel.PropertyName = 'LinkContentId';
-    filterDataModel.Value = id;
-    filteModelContent.Filters.push(filterDataModel);
+    filterDataModel.propertyName = 'LinkContentId';
+    filterDataModel.value = id;
+    filteModelContent.filters.push(filterDataModel);
     this.blogContentTagService.ServiceGetAll(filteModelContent).subscribe(next => {
-      if (next.IsSuccess && next.ListItems.length > 0) {
-        const concat = next.ListItems.map(x => x.LinkTagId).reduce((g: any, LinkTagId: number) => {
+      if (next.isSuccess && next.listItems.length > 0) {
+        const concat = next.listItems.map(x => x.linkTagId).reduce((g: any, LinkTagId: number) => {
           g += name;
           return g;
         }, '');
@@ -73,9 +73,9 @@ export class BlogDetailsComponent implements OnInit {
     }
     const filteModelContent = new FilterModel();
     const filterDataModel = new FilterDataModel();
-    filterDataModel.PropertyName = 'LinkContentId';
-    filterDataModel.Value = id;
-    filteModelContent.Filters.push(filterDataModel);
+    filterDataModel.propertyName = 'LinkContentId';
+    filterDataModel.value = id;
+    filteModelContent.filters.push(filterDataModel);
     this.blogCommentService.ServiceGetAll(filteModelContent).subscribe(next => {
       this.dataModelCommentResult = next;
     })
@@ -86,11 +86,11 @@ export class BlogDetailsComponent implements OnInit {
     }
     const filteModelContent = new FilterModel();
     const filterDataModel = new FilterDataModel();
-    filterDataModel.PropertyName = 'Id';
-    filterDataModel.Values = ids;
+    filterDataModel.propertyName = 'Id';
+    filterDataModel.values = ids;
 
-    filteModelContent.Filters.push(filterDataModel);
-    filteModelContent.SortType = EnumSortType.Random;
+    filteModelContent.filters.push(filterDataModel);
+    filteModelContent.sortType = EnumSortType.Random;
     this.coreModuleTagService.ServiceGetAll(filteModelContent).subscribe(next => {
       this.dataModelTagRelatResult = next;
     })
@@ -99,13 +99,13 @@ export class BlogDetailsComponent implements OnInit {
 
     const filteModelContent = new FilterModel();
 
-    filteModelContent.SortType = EnumSortType.Random;
+    filteModelContent.sortType = EnumSortType.Random;
     this.coreModuleTagService.ServiceGetAll(filteModelContent).subscribe(next => {
       this.dataModelTagResult = next;
     })
   }
   onFormSubmitComment(): void {
-    if (this.dataModelComment.Comment.length > 0) {
+    if (this.dataModelComment.comment.length > 0) {
       this.dataConetntCommentAdd();
     }
   }

@@ -40,12 +40,12 @@ export class CartService {
     let item: CartItem | boolean = false;
     // If Products exist
     const hasItem = products.find((items, index) => {
-      if (items.product.id === product.Code) {
+      if (items.product.id === product.code) {
         const qty = products[index].quantity + quantity;
         const stock = this.calculateStockCounts(products[index], quantity);
         if (qty != 0 && stock) {
           products[index].quantity = qty;
-          message = 'The product ' + product.Name + ' has been added to cart.';
+          message = 'The product ' + product.name + ' has been added to cart.';
           status = 'success';
           this.snackBar.open(message, '×', { panelClass: [status], verticalPosition: 'top', duration: 3000 });
         }
@@ -57,7 +57,7 @@ export class CartService {
     if (!hasItem) {
       item = { product, quantity };
       products.push(item);
-      message = 'The product ' + product.Name + ' has been added to cart.';
+      message = 'The product ' + product.name + ' has been added to cart.';
       status = 'success';
       this.snackBar.open(message, '×', { panelClass: [status], verticalPosition: 'top', duration: 3000 });
     }
@@ -71,7 +71,7 @@ export class CartService {
   public calculateStockCounts(product: CartItem, quantity): CartItem | Boolean {
 
     const qty = product.quantity + quantity;
-    const stock = product.product.Count;
+    const stock = product.product.count;
     if (stock < qty) {
       // this.toastrService.error('You can not add more items than available. In stock '+ stock +' items.');
       this.snackBar.open('You can not choose more items than available. In stock ' + stock + ' items.', '×',
@@ -98,7 +98,7 @@ export class CartService {
   public getTotalAmount(): Observable<number> {
     return this.cartItems.pipe(map((product: CartItem[]) => {
       return products.reduce((prev, curr: CartItem) => {
-        return prev + curr.product.Price * curr.quantity;
+        return prev + curr.product.price * curr.quantity;
       }, 0);
     }));
   }
@@ -106,7 +106,7 @@ export class CartService {
   // Update Cart Value
   public updateCartQuantity(product: HyperShopContentModel, quantity: number): CartItem | boolean {
     return products.find((items, index) => {
-      if (items.product.id === product.Code) {
+      if (items.product.id === product.code) {
         const qty = products[index].quantity + quantity;
         const stock = this.calculateStockCounts(products[index], quantity);
         if (qty != 0 && stock)

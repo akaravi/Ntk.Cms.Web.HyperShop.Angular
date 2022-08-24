@@ -44,16 +44,16 @@ export class NewsColumnComponent implements OnInit {
     const filteModelContent = new FilterModel();
     if (category > 0) {
       const filterDataModel = new FilterDataModel();
-      filterDataModel.PropertyName = 'LinkCategoryId';
-      filterDataModel.Value = category;
-      filteModelContent.Filters.push(filterDataModel);
+      filterDataModel.propertyName = 'LinkCategoryId';
+      filterDataModel.value = category;
+      filteModelContent.filters.push(filterDataModel);
     }
     if (tag > 0) {
       const filterDataModel = new FilterDataModel();
-      filterDataModel.PropertyName = 'ContentTags';
-      filterDataModel.PropertyAnyName = 'LinkTagId';
-      filterDataModel.Value = tag;
-      filteModelContent.Filters.push(filterDataModel);
+      filterDataModel.propertyName = 'ContentTags';
+      filterDataModel.propertyAnyName = 'LinkTagId';
+      filterDataModel.value = tag;
+      filteModelContent.filters.push(filterDataModel);
     }
     this.newsContentService.ServiceGetAll(filteModelContent).subscribe(next => {
       this.dataModelResult = next;
@@ -68,7 +68,7 @@ export class NewsColumnComponent implements OnInit {
   }
   dataTagGetAll(): void {
     const filteModelContent = new FilterModel();
-    filteModelContent.SortType = EnumSortType.Random;
+    filteModelContent.sortType = EnumSortType.Random;
     this.coreModuleTagService.ServiceGetAll(filteModelContent).subscribe(next => {
       this.dataModelTagResult = next;
     })
